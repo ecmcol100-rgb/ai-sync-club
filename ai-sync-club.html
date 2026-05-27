@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI싱크클럽 — AI 스터디 커뮤니티</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #080e1f;
+      --bg-card:   #0d1829;
+      --bg-card2:  #111e35;
+      --border:    #1e2d4a;
+      --border-hover: #4f8ef7;
+      --accent:    #4f8ef7;
+      --accent2:   #6ee7f7;
+      --text:      #e8edf5;
+      --text-sub:  #8899b4;
+      --text-mute: #4a607e;
+      --radius:    14px;
+      --radius-sm: 8px;
+      --font-ko: 'Noto Sans KR', sans-serif;
+      --font-en: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ko);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── 네비게이션 ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      background: rgba(8, 14, 31, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-en);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo span {
+      display: inline-block;
+      width: 24px; height: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ko);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #3d7def;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(79, 142, 247, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-sub);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    /* ── 공통 컨테이너 ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 7rem 0;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(79, 142, 247, 0.1);
+      border: 1px solid rgba(79, 142, 247, 0.3);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent2);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .section-sub {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── 히어로 ── */
+    #hero {
+      padding-top: 160px;
+      padding-bottom: 8rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse at center,
+        rgba(79, 142, 247, 0.12) 0%,
+        rgba(110, 231, 247, 0.06) 40%,
+        transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-glow2 {
+      position: absolute;
+      top: 30%;
+      left: 20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(ellipse at center,
+        rgba(110, 231, 247, 0.07) 0%,
+        transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title .gradient {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-btns .btn-primary {
+      padding: 0.75rem 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-btns .btn-secondary {
+      padding: 0.75rem 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-meta {
+      margin-top: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-stat span {
+      font-size: 0.82rem;
+      color: var(--text-mute);
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+
+    /* ── 특징/혜택 ── */
+    #features {
+      border-top: 1px solid var(--border);
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .features-header .section-sub {
+      margin: 1rem auto 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(79, 142, 247, 0.12);
+    }
+
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(79, 142, 247, 0.1);
+      border: 1px solid rgba(79, 142, 247, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+    }
+
+    /* ── 활동 일정 ── */
+    #schedule {
+      border-top: 1px solid var(--border);
+    }
+
+    .schedule-header {
+      margin-bottom: 3rem;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .schedule-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .schedule-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .schedule-day {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 52px; height: 52px;
+      border-radius: 10px;
+      background: rgba(79, 142, 247, 0.1);
+      border: 1px solid rgba(79, 142, 247, 0.25);
+    }
+
+    .schedule-day .day-ko {
+      font-size: 0.7rem;
+      color: var(--text-mute);
+      line-height: 1;
+    }
+
+    .schedule-day .day-num {
+      font-family: var(--font-en);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    .schedule-info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .schedule-info p {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+    }
+
+    .schedule-info .tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    .tag-blue {
+      background: rgba(79, 142, 247, 0.12);
+      color: var(--accent);
+    }
+
+    .tag-cyan {
+      background: rgba(110, 231, 247, 0.1);
+      color: var(--accent2);
+    }
+
+    .tag-purple {
+      background: rgba(139, 92, 246, 0.12);
+      color: #a78bfa;
+    }
+
+    /* ── 가입 CTA ── */
+    #cta {
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .cta-box {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+    }
+
+    .cta-box .section-title {
+      margin-bottom: 1rem;
+    }
+
+    .cta-box .section-sub {
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    /* ── 푸터 ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-en);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-mute);
+    }
+
+    /* ── 반응형 ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .container { padding: 0 1.25rem; }
+      section { padding: 5rem 0; }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title { font-size: 2.2rem; }
+
+      .hero-meta { gap: 1.25rem; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── 플로팅 계산기 ── */
+    .calc-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(79, 142, 247, 0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+      padding: 0;
+    }
+
+    .calc-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(79, 142, 247, 0.55);
+    }
+
+    .calc-fab:active {
+      transform: scale(0.95);
+    }
+
+    .calc-popup {
+      position: fixed;
+      bottom: 88px;
+      right: 24px;
+      z-index: 200;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .calc-popup.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .calc-popup .calc-widget {
+      width: 290px;
+      background: linear-gradient(160deg, #2a2a2e 0%, #1a1a1e 100%);
+      border-radius: 24px;
+      padding: 28px 22px 22px;
+      box-shadow:
+        0 2px 0 #111 inset,
+        0 -2px 0 #3a3a3e inset,
+        6px 0 0 #111 inset,
+        -6px 0 0 #3a3a3e inset,
+        20px 40px 80px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    .calc-popup .calc-widget::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .calc-popup .calc-display {
+      background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+      border-radius: 14px;
+      padding: 18px 16px 16px;
+      margin-bottom: 18px;
+      box-shadow:
+        inset 0 2px 8px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(0,0,0,0.8),
+        0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .calc-popup .calc-expr {
+      font-size: 13px;
+      color: #4a5568;
+      min-height: 18px;
+      margin-bottom: 8px;
+      text-align: right;
+      letter-spacing: 0.02em;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .calc-popup .calc-result {
+      font-size: 46px;
+      font-weight: 300;
+      color: #e2e8f0;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-align: right;
+      text-shadow: 0 0 20px rgba(94,92,230,0.4);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .calc-popup .calc-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .calc-popup .calc-buttons button {
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 17px 0;
+      cursor: pointer;
+      border-radius: 10px;
+      letter-spacing: 0.01em;
+      position: relative;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+      background: none;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .calc-popup .calc-buttons button:active {
+      transform: translateY(3px);
+    }
+
+    .calc-popup .cb-num {
+      background: linear-gradient(180deg, #48484a 0%, #3a3a3c 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 5px 0 #1e1e20, 0 6px 10px rgba(0,0,0,0.4) !important;
+    }
+
+    .calc-popup .cb-num:hover {
+      background: linear-gradient(180deg, #58585a 0%, #4a4a4c 100%) !important;
+    }
+
+    .calc-popup .cb-num:active {
+      box-shadow: 0 1px 0 #1e1e20, 0 2px 4px rgba(0,0,0,0.4) !important;
+    }
+
+    .calc-popup .cb-op {
+      background: linear-gradient(180deg, #7b79f0 0%, #5e5ce6 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 5px 0 #2e2cb0, 0 6px 10px rgba(94,92,230,0.4) !important;
+    }
+
+    .calc-popup .cb-op:hover {
+      background: linear-gradient(180deg, #9190f5 0%, #7b79f0 100%) !important;
+    }
+
+    .calc-popup .cb-op:active {
+      box-shadow: 0 1px 0 #2e2cb0, 0 2px 6px rgba(94,92,230,0.3) !important;
+    }
+
+    .calc-popup .cb-eq {
+      background: linear-gradient(180deg, #7b79f0 0%, #5e5ce6 100%) !important;
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      box-shadow: 0 5px 0 #2e2cb0, 0 6px 10px rgba(94,92,230,0.4) !important;
+    }
+
+    .calc-popup .cb-eq:hover {
+      background: linear-gradient(180deg, #9190f5 0%, #7b79f0 100%) !important;
+    }
+
+    .calc-popup .cb-eq:active {
+      box-shadow: 0 1px 0 #2e2cb0, 0 2px 6px rgba(94,92,230,0.3) !important;
+    }
+
+    .calc-popup .cb-sp {
+      background: linear-gradient(180deg, #636366 0%, #48484a 100%) !important;
+      color: #ebebf5 !important;
+      font-size: 13px !important;
+      box-shadow: 0 5px 0 #252527, 0 6px 10px rgba(0,0,0,0.35) !important;
+    }
+
+    .calc-popup .cb-sp:hover {
+      background: linear-gradient(180deg, #737376 0%, #585858 100%) !important;
+    }
+
+    .calc-popup .cb-sp:active {
+      box-shadow: 0 1px 0 #252527, 0 2px 4px rgba(0,0,0,0.3) !important;
+    }
+
+    .calc-popup .cb-zero {
+      grid-column: span 2;
+      text-align: left !important;
+      padding-left: 20px !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 네비게이션 -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <span></span>
+      AI싱크클럽
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">특징</a></li>
+      <li><a href="#schedule">일정</a></li>
+    </ul>
+    <a href="#cta" class="btn btn-primary">참가 신청</a>
+  </nav>
+
+  <!-- 히어로 -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="container hero-content">
+      <div class="section-badge">✦ AI Study Community</div>
+      <h1 class="hero-title">
+        AI와 함께 성장하는<br />
+        <span class="gradient">스터디 커뮤니티</span>
+      </h1>
+      <p class="hero-sub">
+        매주 모여 AI 기술을 함께 배우고, 실전 프로젝트를 만들어가는
+        AI싱크클럽에 합류하세요.
+      </p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn btn-primary">지금 참가하기 →</a>
+        <a href="#features" class="btn btn-secondary">더 알아보기</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-stat">
+          <strong>50+</strong>
+          <span>활동 멤버</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <strong>매주 2회</strong>
+          <span>정기 세션</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <strong>온/오프라인</strong>
+          <span>하이브리드 운영</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 특징/혜택 -->
+  <section id="features">
+    <div class="container">
+      <div class="features-header">
+        <div class="section-badge">Features</div>
+        <h2 class="section-title">AI싱크클럽에서<br />경험할 수 있는 것들</h2>
+        <p class="section-sub">
+          혼자 공부하는 것보다 함께 성장하는 것이 빠릅니다.
+          검증된 커뮤니티와 함께하세요.
+        </p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>함께 배우기</h3>
+          <p>
+            매주 정해진 주제로 함께 공부합니다. 혼자서는 어렵던
+            개념도 토론을 통해 빠르게 이해할 수 있어요.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>실전 프로젝트</h3>
+          <p>
+            ChatGPT, Claude, Gemini 등 AI 툴을 직접 실습합니다.
+            이론에서 끝나지 않고 실제로 만들어봅니다.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3>인사이트 공유</h3>
+          <p>
+            최신 AI 트렌드와 논문, 사례를 함께 분석합니다.
+            멤버들의 다양한 시각으로 더 깊이 이해해보세요.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 활동 일정 -->
+  <section id="schedule">
+    <div class="container">
+      <div class="schedule-header">
+        <div class="section-badge">Schedule</div>
+        <h2 class="section-title">주간 활동 일정</h2>
+        <p class="section-sub">
+          매주 두 번의 정기 세션과 자유로운 온라인 채널 운영으로
+          꾸준한 학습 루틴을 만들어드립니다.
+        </p>
+      </div>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <div class="schedule-day">
+            <span class="day-ko">매주</span>
+            <span class="day-num">화</span>
+          </div>
+          <div class="schedule-info">
+            <h4>AI 논문 리뷰 세션</h4>
+            <p>오후 7:30 — 온라인 (Zoom)</p>
+            <span class="tag tag-blue">논문 리뷰</span>
+          </div>
+        </div>
+        <div class="schedule-card">
+          <div class="schedule-day">
+            <span class="day-ko">매주</span>
+            <span class="day-num">목</span>
+          </div>
+          <div class="schedule-info">
+            <h4>AI 툴 실습 세션</h4>
+            <p>오후 7:30 — 오프라인 (서울)</p>
+            <span class="tag tag-cyan">실습</span>
+          </div>
+        </div>
+        <div class="schedule-card">
+          <div class="schedule-day">
+            <span class="day-ko">격주</span>
+            <span class="day-num">토</span>
+          </div>
+          <div class="schedule-info">
+            <h4>프로젝트 데모데이</h4>
+            <p>오후 2:00 — 오프라인 (서울)</p>
+            <span class="tag tag-purple">프로젝트</span>
+          </div>
+        </div>
+        <div class="schedule-card">
+          <div class="schedule-day">
+            <span class="day-ko">상시</span>
+            <span class="day-num">🗨</span>
+          </div>
+          <div class="schedule-info">
+            <h4>온라인 스터디 채널</h4>
+            <p>Discord 상시 운영</p>
+            <span class="tag tag-blue">커뮤니티</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div class="section-badge">Join Us</div>
+        <h2 class="section-title">지금 바로 합류하세요</h2>
+        <p class="section-sub">
+          AI싱크클럽은 누구에게나 열려 있습니다.<br />
+          함께 배우고 성장할 준비가 되셨나요?
+        </p>
+        <a href="mailto:ecmcol100@gmail.com" class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 1rem;">
+          참가 신청하기 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#hero" class="footer-logo">AI싱크클럽</a>
+        <p class="footer-copy">© 2026 AI싱크클럽. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- 플로팅 계산기 -->
+  <button class="calc-fab" id="calcFab" onclick="toggleCalc()" aria-label="계산기">🧮</button>
+  <div class="calc-popup" id="calcPopup">
+    <div class="calc-widget">
+      <div class="calc-display">
+        <div class="calc-expr" id="calc-expression"></div>
+        <div class="calc-result" id="calc-result">0</div>
+      </div>
+      <div class="calc-buttons">
+        <button class="cb-sp" onclick="clearAll()">AC</button>
+        <button class="cb-sp" onclick="toggleSign()">+/−</button>
+        <button class="cb-sp" onclick="percent()">%</button>
+        <button class="cb-op" onclick="inputOp('/')">÷</button>
+
+        <button class="cb-num" onclick="inputNum('7')">7</button>
+        <button class="cb-num" onclick="inputNum('8')">8</button>
+        <button class="cb-num" onclick="inputNum('9')">9</button>
+        <button class="cb-op" onclick="inputOp('*')">×</button>
+
+        <button class="cb-num" onclick="inputNum('4')">4</button>
+        <button class="cb-num" onclick="inputNum('5')">5</button>
+        <button class="cb-num" onclick="inputNum('6')">6</button>
+        <button class="cb-op" onclick="inputOp('-')">−</button>
+
+        <button class="cb-num" onclick="inputNum('1')">1</button>
+        <button class="cb-num" onclick="inputNum('2')">2</button>
+        <button class="cb-num" onclick="inputNum('3')">3</button>
+        <button class="cb-op" onclick="inputOp('+')">+</button>
+
+        <button class="cb-num cb-zero" onclick="inputNum('0')">0</button>
+        <button class="cb-num" onclick="inputDot()">.</button>
+        <button class="cb-eq" onclick="calculate()">=</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleCalc() {
+      document.getElementById('calcPopup').classList.toggle('open');
+    }
+
+    let cur = '0', prev = '', op = null, resetNext = false;
+    const resultEl = document.getElementById('calc-result');
+    const exprEl   = document.getElementById('calc-expression');
+    const opMap = { '+': '+', '-': '−', '*': '×', '/': '÷' };
+
+    function updateDisplay() { resultEl.textContent = cur; }
+
+    function inputNum(n) {
+      if (resetNext) { cur = n; resetNext = false; }
+      else cur = cur === '0' ? n : cur + n;
+      updateDisplay();
+    }
+
+    function inputDot() {
+      if (resetNext) { cur = '0.'; resetNext = false; }
+      else if (!cur.includes('.')) cur += '.';
+      updateDisplay();
+    }
+
+    function inputOp(o) {
+      if (op && !resetNext) calculate();
+      prev = cur; op = o; resetNext = true;
+      exprEl.textContent = prev + ' ' + opMap[o];
+    }
+
+    function calculate() {
+      if (!op || resetNext) return;
+      const a = parseFloat(prev), b = parseFloat(cur);
+      exprEl.textContent = prev + ' ' + opMap[op] + ' ' + cur + ' =';
+      let res;
+      if (op === '+') res = a + b;
+      else if (op === '-') res = a - b;
+      else if (op === '*') res = a * b;
+      else res = b !== 0 ? a / b : 'Error';
+      cur = res === 'Error' ? 'Error' : String(parseFloat(res.toFixed(10)));
+      op = null; resetNext = true;
+      updateDisplay();
+    }
+
+    function clearAll() {
+      cur = '0'; prev = ''; op = null; resetNext = false;
+      exprEl.textContent = ''; updateDisplay();
+    }
+
+    function toggleSign() { cur = String(parseFloat(cur) * -1); updateDisplay(); }
+    function percent()    { cur = String(parseFloat(cur) / 100); updateDisplay(); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key >= '0' && e.key <= '9') inputNum(e.key);
+      else if (e.key === '.') inputDot();
+      else if (['+', '-', '*'].includes(e.key)) inputOp(e.key);
+      else if (e.key === '/') { e.preventDefault(); inputOp('/'); }
+      else if (e.key === 'Enter' || e.key === '=') calculate();
+      else if (e.key === 'Escape') {
+        clearAll();
+        document.getElementById('calcPopup').classList.remove('open');
+      }
+      else if (e.key === 'Backspace') {
+        cur = cur.length > 1 ? cur.slice(0, -1) : '0';
+        updateDisplay();
+      }
+    });
+  </script>
+</body>
+</html>

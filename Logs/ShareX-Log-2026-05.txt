@@ -1,0 +1,202 @@
+﻿2026-05-24 22:45:01.385 - ShareX starting.
+2026-05-24 22:45:01.387 - Version: 20.1
+2026-05-24 22:45:01.387 - Build: Release
+2026-05-24 22:45:01.388 - Command line: "C:\Program Files\ShareX\ShareX.dll"
+2026-05-24 22:45:01.388 - Personal path: C:\Users\Test\OneDrive\AI\클로드코드
+2026-05-24 22:45:01.388 - Personal path detection method: PersonalPath.cfg file (C:\Users\Test\OneDrive\문서\ShareX\PersonalPath.cfg)
+2026-05-24 22:45:01.388 - Operating system: Windows 10 Home (64-bit)
+2026-05-24 22:45:01.389 - .NET version: 9.0.15
+2026-05-24 22:45:01.389 - Running as elevated process: False
+2026-05-24 22:45:01.398 - ApplicationConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:45:01.398 - ApplicationConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json.temp
+2026-05-24 22:45:01.398 - ApplicationConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\Backup\ApplicationConfig.json
+2026-05-24 22:45:01.398 - Loading new ApplicationConfig instance.
+2026-05-24 22:45:01.494 - Avalonia init started.
+2026-05-24 22:45:01.496 - UploadersConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-24 22:45:01.496 - UploadersConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json.temp
+2026-05-24 22:45:01.496 - UploadersConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\Backup\UploadersConfig.json
+2026-05-24 22:45:01.497 - Loading new UploadersConfig instance.
+2026-05-24 22:45:01.502 - HotkeysConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-24 22:45:01.502 - HotkeysConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json.temp
+2026-05-24 22:45:01.502 - HotkeysConfig file does not exist: C:\Users\Test\OneDrive\AI\클로드코드\Backup\HotkeysConfig.json
+2026-05-24 22:45:01.502 - Loading new HotkeysConfig instance.
+2026-05-24 22:45:01.764 - Avalonia init finished.
+2026-05-24 22:45:01.764 - MainForm init started.
+2026-05-24 22:45:02.198 - MainForm init finished.
+2026-05-24 22:45:02.293 - Hotkey registered: Hotkey: Ctrl + Print Screen, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-24 22:45:02.293 - Hotkey registered: Hotkey: Print Screen, Description: 전체 화면 촬영, Job: PrintScreen
+2026-05-24 22:45:02.293 - Unable to register hotkey: Alt + Print Screen
+2026-05-24 22:45:02.293 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-05-24 22:45:02.293 - Hotkey registered: Hotkey: Shift + Print Screen, Description: 화면 녹화 (FFmpeg), Job: ScreenRecorder
+2026-05-24 22:45:02.293 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: 화면 녹화 (GIF), Job: ScreenRecorderGIF
+2026-05-24 22:45:05.282 - HotkeyManager started.
+2026-05-24 22:45:05.282 - WatchFolderManager started.
+2026-05-24 22:45:05.308 - Startup time: 3984 ms
+2026-05-24 22:45:23.984 - Executing: 직사각형 영역 촬영
+2026-05-24 22:45:41.220 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:45:41.348 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:45:52.506 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:45:52.579 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:45:54.169 - Folder opened: C:\Users\Test\OneDrive\AI\클로드코드\Screenshots\
+2026-05-24 22:45:56.854 - Folder opened: C:\Users\Test\OneDrive\AI\클로드코드\Screenshots\
+2026-05-24 22:46:08.892 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:46:08.959 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:46:15.913 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:46:15.983 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:46:16.073 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:46:16.074 - UploadersConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-24 22:46:16.079 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-24 22:46:16.119 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-24 22:46:16.158 - UploadersConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-24 22:46:16.246 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:47:11.600 - Arguments received: ""
+2026-05-24 22:47:16.132 - Unable to register hotkey: Alt + Print Screen
+2026-05-24 22:47:16.132 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-05-24 22:47:19.353 - Hotkey unregistered: Hotkey: None, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-24 22:47:19.353 - Unable to register hotkey: Alt + Print Screen
+2026-05-24 22:47:19.353 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-05-24 22:47:33.528 - Hotkey registered: Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-24 22:47:33.528 - Unable to register hotkey: Alt + Print Screen
+2026-05-24 22:47:33.528 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-05-24 22:47:36.444 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-24 22:47:36.493 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-24 22:48:06.045 - Hotkey triggered. Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-24 22:48:06.045 - Executing: 직사각형 영역 촬영
+2026-05-24 22:48:11.529 - Task in queue. Job: Job, Type: Image, Host: 
+2026-05-24 22:48:11.649 - Task status: Preparing
+2026-05-24 22:48:11.683 - Image copied to clipboard.
+2026-05-24 22:48:11.703 - Image saved to file: C:\Users\Test\OneDrive\AI\클로드코드\Screenshots\2026-05\WindowsTerminal_0bLXxdZqb0.png
+2026-05-24 22:48:11.728 - Task completed. File name: WindowsTerminal_0bLXxdZqb0.png, Duration: 74 ms
+2026-05-24 22:51:13.463 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-24 22:51:13.464 - UploadersConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-24 22:51:13.465 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-24 22:51:13.505 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-24 22:51:13.525 - UploadersConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-24 22:51:13.605 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 00:28:27.371 - Updating ShareX from version 20.1.0 to 20.2.0
+2026-05-25 00:28:27.417 - Downloading: "https://api.github.com/repos/ShareX/ShareX/releases/assets/426774424" -> "C:\Users\Test\AppData\Local\Temp\ShareX\ShareX-20.2.0-setup-x64.exe"
+2026-05-25 00:28:35.115 - Hotkey unregister failed: Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-25 00:28:35.115 - Hotkey unregister failed: Hotkey: Print Screen, Description: 전체 화면 촬영, Job: PrintScreen
+2026-05-25 00:28:35.115 - Hotkey unregister failed: Hotkey: Shift + Print Screen, Description: 화면 녹화 (FFmpeg), Job: ScreenRecorder
+2026-05-25 00:28:35.115 - Hotkey unregister failed: Hotkey: Ctrl + Shift + Print Screen, Description: 화면 녹화 (GIF), Job: ScreenRecorderGIF
+2026-05-25 00:28:35.146 - ShareX closing.
+2026-05-25 00:28:35.149 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 00:28:35.265 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 00:28:35.265 - UploadersConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 00:28:35.309 - UploadersConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 00:28:35.309 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 00:28:35.325 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 00:28:35.325 - ShareX closed.
+2026-05-25 00:29:43.202 - ShareX starting.
+2026-05-25 00:29:43.203 - Version: 20.2
+2026-05-25 00:29:43.203 - Build: Release
+2026-05-25 00:29:43.203 - Command line: "C:\Program Files\ShareX\ShareX.dll"
+2026-05-25 00:29:43.204 - Personal path: C:\Users\Test\OneDrive\AI\클로드코드
+2026-05-25 00:29:43.204 - Personal path detection method: PersonalPath.cfg file (C:\Users\Test\OneDrive\문서\ShareX\PersonalPath.cfg)
+2026-05-25 00:29:43.204 - Operating system: Windows 10 Home (64-bit)
+2026-05-25 00:29:43.204 - .NET version: 9.0.15
+2026-05-25 00:29:43.204 - Running as elevated process: False
+2026-05-25 00:29:43.646 - ApplicationConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 00:29:47.310 - ApplicationConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 00:29:48.052 - Avalonia init started.
+2026-05-25 00:29:48.053 - UploadersConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 00:29:48.072 - ShareX temp folder cleaned: C:\Users\Test\AppData\Local\Temp\ShareX
+2026-05-25 00:29:48.438 - UploadersConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 00:29:48.439 - HotkeysConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 00:29:48.454 - HotkeysConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 00:29:53.346 - Avalonia init finished.
+2026-05-25 00:29:53.346 - MainForm init started.
+2026-05-25 00:29:54.059 - MainForm init finished.
+2026-05-25 00:29:54.177 - Hotkey registered: Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-25 00:29:54.177 - Hotkey registered: Hotkey: Print Screen, Description: 전체 화면 촬영, Job: PrintScreen
+2026-05-25 00:29:54.178 - Unable to register hotkey: Alt + Print Screen
+2026-05-25 00:29:54.178 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-05-25 00:29:54.178 - Hotkey registered: Hotkey: Shift + Print Screen, Description: 화면 녹화 (FFmpeg), Job: ScreenRecorder
+2026-05-25 00:29:54.178 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: 화면 녹화 (GIF), Job: ScreenRecorderGIF
+2026-05-25 00:30:02.828 - HotkeyManager started.
+2026-05-25 00:30:02.829 - WatchFolderManager started.
+2026-05-25 00:30:02.873 - Startup time: 20952 ms
+2026-05-25 00:30:03.743 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 00:30:03.743 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 00:30:03.743 - UploadersConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 00:30:03.806 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 00:30:03.842 - UploadersConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 00:30:03.852 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 01:16:39.154 - ShareX closing.
+2026-05-25 01:16:39.169 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 01:16:39.346 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 01:16:39.346 - UploadersConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 01:16:39.387 - UploadersConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 01:16:39.387 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 01:16:39.403 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 01:16:39.403 - ShareX closed.
+2026-05-25 20:37:07.998 - ShareX starting.
+2026-05-25 20:37:08.001 - Version: 20.2
+2026-05-25 20:37:08.001 - Build: Release
+2026-05-25 20:37:08.001 - Command line: "C:\Program Files\ShareX\ShareX.dll" -silent
+2026-05-25 20:37:08.002 - Personal path: C:\Users\Test\OneDrive\AI\클로드코드
+2026-05-25 20:37:08.002 - Personal path detection method: PersonalPath.cfg file (C:\Users\Test\OneDrive\문서\ShareX\PersonalPath.cfg)
+2026-05-25 20:37:08.002 - Operating system: Windows 10 Home (64-bit)
+2026-05-25 20:37:08.003 - .NET version: 9.0.15
+2026-05-25 20:37:08.003 - Running as elevated process: False
+2026-05-25 20:37:08.049 - Flags: SilentRun
+2026-05-25 20:37:08.246 - ApplicationConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 20:37:10.543 - ApplicationConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-25 20:37:11.317 - Avalonia init started.
+2026-05-25 20:37:11.319 - UploadersConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 20:37:11.730 - UploadersConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-25 20:37:11.734 - HotkeysConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 20:37:11.818 - HotkeysConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-25 20:37:16.521 - Avalonia init finished.
+2026-05-25 20:37:16.521 - MainForm init started.
+2026-05-25 20:37:18.220 - MainForm init finished.
+2026-05-25 20:37:18.379 - Hotkey registered: Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-25 20:37:18.379 - Unable to register hotkey: Print Screen
+2026-05-25 20:37:18.379 - Hotkey register failed: Hotkey: Print Screen, Description: 전체 화면 촬영, Job: PrintScreen
+2026-05-25 20:37:18.379 - Unable to register hotkey: Alt + Print Screen
+2026-05-25 20:37:18.379 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-05-25 20:37:18.379 - Hotkey registered: Hotkey: Shift + Print Screen, Description: 화면 녹화 (FFmpeg), Job: ScreenRecorder
+2026-05-25 20:37:18.379 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: 화면 녹화 (GIF), Job: ScreenRecorderGIF
+2026-05-25 20:51:14.983 - HotkeyManager started.
+2026-05-25 20:51:14.983 - WatchFolderManager started.
+2026-05-25 20:51:15.001 - Startup time: 849966 ms
+2026-05-25 20:51:15.003 - CommandLine: -silent
+2026-05-26 00:23:54.014 - ShareX closing.
+2026-05-26 00:23:54.023 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-26 00:23:54.204 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-26 00:23:54.204 - UploadersConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-26 00:23:54.266 - UploadersConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-26 00:23:54.267 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-26 00:23:54.293 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-26 00:23:54.293 - ShareX closed.
+2026-05-27 22:39:10.427 - ShareX starting.
+2026-05-27 22:39:10.430 - Version: 20.2
+2026-05-27 22:39:10.430 - Build: Release
+2026-05-27 22:39:10.430 - Command line: "C:\Program Files\ShareX\ShareX.dll" -silent
+2026-05-27 22:39:10.430 - Personal path: C:\Users\Test\OneDrive\AI\클로드코드
+2026-05-27 22:39:10.430 - Personal path detection method: PersonalPath.cfg file (C:\Users\Test\OneDrive\문서\ShareX\PersonalPath.cfg)
+2026-05-27 22:39:10.431 - Operating system: Windows 10 Home (64-bit)
+2026-05-27 22:39:10.431 - .NET version: 9.0.15
+2026-05-27 22:39:10.432 - Running as elevated process: False
+2026-05-27 22:39:10.468 - Flags: SilentRun
+2026-05-27 22:39:10.586 - ApplicationConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-27 22:39:12.291 - ApplicationConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-05-27 22:39:12.573 - Avalonia init started.
+2026-05-27 22:39:12.574 - UploadersConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-27 22:39:12.803 - UploadersConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-05-27 22:39:12.805 - HotkeysConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-27 22:39:12.841 - HotkeysConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-05-27 22:39:14.764 - Avalonia init finished.
+2026-05-27 22:39:14.764 - MainForm init started.
+2026-05-27 22:39:15.510 - MainForm init finished.
+2026-05-27 22:39:15.611 - Hotkey registered: Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-05-27 22:39:15.611 - Unable to register hotkey: Print Screen
+2026-05-27 22:39:15.611 - Hotkey register failed: Hotkey: Print Screen, Description: 전체 화면 촬영, Job: PrintScreen
+2026-05-27 22:39:15.611 - Unable to register hotkey: Alt + Print Screen
+2026-05-27 22:39:15.611 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-05-27 22:39:15.611 - Hotkey registered: Hotkey: Shift + Print Screen, Description: 화면 녹화 (FFmpeg), Job: ScreenRecorder
+2026-05-27 22:39:15.611 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: 화면 녹화 (GIF), Job: ScreenRecorderGIF
+2026-05-27 22:40:35.131 - HotkeyManager started.
+2026-05-27 22:40:35.131 - WatchFolderManager started.
+2026-05-27 22:40:35.144 - Startup time: 87801 ms
+2026-05-27 22:40:35.145 - CommandLine: -silent

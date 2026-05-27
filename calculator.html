@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계산기</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 60% 40%, #c9d6e3, #a0b4c8 60%, #7a95ad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      perspective: 900px;
+    }
+
+    .scene {
+      perspective: 900px;
+    }
+
+    .calc {
+      width: 290px;
+      background: linear-gradient(160deg, #2a2a2e 0%, #1a1a1e 100%);
+      border-radius: 24px;
+      padding: 28px 22px 22px;
+      transform-style: preserve-3d;
+      transform: rotateX(6deg) rotateY(-4deg);
+      transition: transform 0.15s ease;
+      box-shadow:
+        0 2px 0 #111 inset,
+        0 -2px 0 #3a3a3e inset,
+        6px 0 0 #111 inset,
+        -6px 0 0 #3a3a3e inset,
+        20px 40px 80px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    /* 옆면 효과 */
+    .calc::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .display {
+      background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+      border-radius: 14px;
+      padding: 18px 16px 16px;
+      margin-bottom: 18px;
+      box-shadow:
+        inset 0 2px 8px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(0,0,0,0.8),
+        0 1px 0 rgba(255,255,255,0.06);
+      transform: translateZ(4px);
+    }
+
+    .expression {
+      font-size: 13px;
+      color: #4a5568;
+      min-height: 18px;
+      margin-bottom: 8px;
+      text-align: right;
+      letter-spacing: 0.02em;
+    }
+
+    .result {
+      font-size: 46px;
+      font-weight: 300;
+      color: #e2e8f0;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-align: right;
+      text-shadow: 0 0 20px rgba(94,92,230,0.4);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      transform: translateZ(4px);
+    }
+
+    button {
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 17px 0;
+      cursor: pointer;
+      border-radius: 10px;
+      letter-spacing: 0.01em;
+      position: relative;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+      transform-style: preserve-3d;
+    }
+
+    button:active {
+      transform: translateY(3px) translateZ(-2px);
+    }
+
+    .btn-number {
+      background: linear-gradient(180deg, #48484a 0%, #3a3a3c 100%);
+      color: #ffffff;
+      box-shadow:
+        0 5px 0 #1e1e20,
+        0 6px 10px rgba(0,0,0,0.4);
+    }
+    .btn-number:hover {
+      background: linear-gradient(180deg, #58585a 0%, #4a4a4c 100%);
+    }
+    .btn-number:active {
+      box-shadow: 0 1px 0 #1e1e20, 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .btn-op {
+      background: linear-gradient(180deg, #7b79f0 0%, #5e5ce6 100%);
+      color: #ffffff;
+      box-shadow:
+        0 5px 0 #2e2cb0,
+        0 6px 10px rgba(94,92,230,0.4);
+    }
+    .btn-op:hover {
+      background: linear-gradient(180deg, #9190f5 0%, #7b79f0 100%);
+    }
+    .btn-op:active {
+      box-shadow: 0 1px 0 #2e2cb0, 0 2px 6px rgba(94,92,230,0.3);
+    }
+
+    .btn-equal {
+      background: linear-gradient(180deg, #7b79f0 0%, #5e5ce6 100%);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow:
+        0 5px 0 #2e2cb0,
+        0 6px 10px rgba(94,92,230,0.4);
+    }
+    .btn-equal:hover {
+      background: linear-gradient(180deg, #9190f5 0%, #7b79f0 100%);
+    }
+    .btn-equal:active {
+      box-shadow: 0 1px 0 #2e2cb0, 0 2px 6px rgba(94,92,230,0.3);
+    }
+
+    .btn-special {
+      background: linear-gradient(180deg, #636366 0%, #48484a 100%);
+      color: #ebebf5;
+      font-size: 13px;
+      box-shadow:
+        0 5px 0 #252527,
+        0 6px 10px rgba(0,0,0,0.35);
+    }
+    .btn-special:hover {
+      background: linear-gradient(180deg, #737376 0%, #585858 100%);
+    }
+    .btn-special:active {
+      box-shadow: 0 1px 0 #252527, 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .btn-zero { grid-column: span 2; text-align: left; padding-left: 20px; }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="calc" id="calc">
+      <div class="display">
+        <div class="expression" id="expression"></div>
+        <div class="result" id="result">0</div>
+      </div>
+      <div class="buttons">
+        <button class="btn-special" onclick="clearAll()">AC</button>
+        <button class="btn-special" onclick="toggleSign()">+/−</button>
+        <button class="btn-special" onclick="percent()">%</button>
+        <button class="btn-op" onclick="inputOp('/')">÷</button>
+
+        <button class="btn-number" onclick="inputNum('7')">7</button>
+        <button class="btn-number" onclick="inputNum('8')">8</button>
+        <button class="btn-number" onclick="inputNum('9')">9</button>
+        <button class="btn-op" onclick="inputOp('*')">×</button>
+
+        <button class="btn-number" onclick="inputNum('4')">4</button>
+        <button class="btn-number" onclick="inputNum('5')">5</button>
+        <button class="btn-number" onclick="inputNum('6')">6</button>
+        <button class="btn-op" onclick="inputOp('-')">−</button>
+
+        <button class="btn-number" onclick="inputNum('1')">1</button>
+        <button class="btn-number" onclick="inputNum('2')">2</button>
+        <button class="btn-number" onclick="inputNum('3')">3</button>
+        <button class="btn-op" onclick="inputOp('+')">+</button>
+
+        <button class="btn-number btn-zero" onclick="inputNum('0')">0</button>
+        <button class="btn-number" onclick="inputDot()">.</button>
+        <button class="btn-equal" onclick="calculate()">=</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cur = '0', prev = '', op = null, resetNext = false;
+    const resultEl = document.getElementById('result');
+    const exprEl = document.getElementById('expression');
+    const calcEl = document.getElementById('calc');
+    const opMap = { '+': '+', '-': '−', '*': '×', '/': '÷' };
+
+    // 마우스 기울기 효과
+    document.addEventListener('mousemove', e => {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      const rx = ((e.clientY - cy) / cy) * -8;
+      const ry = ((e.clientX - cx) / cx) * 8;
+      calcEl.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    document.addEventListener('mouseleave', () => {
+      calcEl.style.transform = 'rotateX(6deg) rotateY(-4deg)';
+    });
+
+    function updateDisplay() { resultEl.textContent = cur; }
+
+    function inputNum(n) {
+      if (resetNext) { cur = n; resetNext = false; }
+      else cur = cur === '0' ? n : cur + n;
+      updateDisplay();
+    }
+
+    function inputDot() {
+      if (resetNext) { cur = '0.'; resetNext = false; }
+      else if (!cur.includes('.')) cur += '.';
+      updateDisplay();
+    }
+
+    function inputOp(o) {
+      if (op && !resetNext) calculate();
+      prev = cur; op = o; resetNext = true;
+      exprEl.textContent = prev + ' ' + opMap[o];
+    }
+
+    function calculate() {
+      if (!op || resetNext) return;
+      const a = parseFloat(prev), b = parseFloat(cur);
+      exprEl.textContent = prev + ' ' + opMap[op] + ' ' + cur + ' =';
+      let res;
+      if (op === '+') res = a + b;
+      else if (op === '-') res = a - b;
+      else if (op === '*') res = a * b;
+      else res = b !== 0 ? a / b : 'Error';
+      cur = res === 'Error' ? 'Error' : String(parseFloat(res.toFixed(10)));
+      op = null; resetNext = true;
+      updateDisplay();
+    }
+
+    function clearAll() {
+      cur = '0'; prev = ''; op = null; resetNext = false;
+      exprEl.textContent = ''; updateDisplay();
+    }
+
+    function toggleSign() { cur = String(parseFloat(cur) * -1); updateDisplay(); }
+    function percent() { cur = String(parseFloat(cur) / 100); updateDisplay(); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key >= '0' && e.key <= '9') inputNum(e.key);
+      else if (e.key === '.') inputDot();
+      else if (['+', '-', '*'].includes(e.key)) inputOp(e.key);
+      else if (e.key === '/') { e.preventDefault(); inputOp('/'); }
+      else if (e.key === 'Enter' || e.key === '=') calculate();
+      else if (e.key === 'Escape') clearAll();
+      else if (e.key === 'Backspace') {
+        cur = cur.length > 1 ? cur.slice(0, -1) : '0';
+        updateDisplay();
+      }
+    });
+  </script>
+</body>
+</html>

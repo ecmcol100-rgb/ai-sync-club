@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Test/OneDrive/AI/8체질의학의 노래/**)",
+      "Bash(python)"
+    ]
+  }
+}
