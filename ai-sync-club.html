@@ -3,32 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI싱크클럽 — AI 스터디 커뮤니티</title>
+  <title>AI싱크클럽 — 실무 AI 인사이트 스터디</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ── 변수 ── */
     :root {
-      --bg:        #080e1f;
-      --bg-card:   #0d1829;
-      --bg-card2:  #111e35;
-      --border:    #1e2d4a;
+      --bg:           #080e1f;
+      --bg-card:      #0d1829;
+      --bg-card2:     #111e35;
+      --border:       #1e2d4a;
       --border-hover: #4f8ef7;
-      --accent:    #4f8ef7;
-      --accent2:   #6ee7f7;
-      --text:      #e8edf5;
-      --text-sub:  #8899b4;
-      --text-mute: #4a607e;
-      --radius:    14px;
-      --radius-sm: 8px;
-      --font-ko: 'Noto Sans KR', sans-serif;
-      --font-en: 'Inter', sans-serif;
+      --accent:       #4f8ef7;
+      --accent2:      #6ee7f7;
+      --purple:       #a78bfa;
+      --green:        #34d399;
+      --text:         #e8edf5;
+      --text-sub:     #8899b4;
+      --text-mute:    #4a607e;
+      --radius:       14px;
+      --radius-sm:    8px;
+      --font-ko:      'Noto Sans KR', sans-serif;
+      --font-en:      'Inter', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -47,46 +48,49 @@
       justify-content: space-between;
       padding: 0 2rem;
       height: 64px;
-      background: rgba(8, 14, 31, 0.75);
-      backdrop-filter: blur(16px);
+      background: rgba(8, 14, 31, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav-logo {
       font-family: var(--font-en);
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       letter-spacing: -0.02em;
       color: var(--text);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
     }
-
-    .nav-logo span {
-      display: inline-block;
-      width: 24px; height: 24px;
+    .nav-logo-mark {
+      width: 26px; height: 26px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border-radius: 6px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
     }
-
     .nav-links {
       display: flex;
       align-items: center;
       gap: 2rem;
       list-style: none;
     }
-
     .nav-links a {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       color: var(--text-sub);
       text-decoration: none;
       transition: color 0.2s;
     }
-
     .nav-links a:hover { color: var(--text); }
 
+    /* ── 공통 ── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -94,75 +98,71 @@
       padding: 0.5rem 1.25rem;
       border-radius: var(--radius-sm);
       font-family: var(--font-ko);
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 500;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.2s;
       border: none;
     }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
+    .btn-primary { background: var(--accent); color: #fff; }
     .btn-primary:hover {
       background: #3d7def;
       transform: translateY(-1px);
       box-shadow: 0 4px 20px rgba(79, 142, 247, 0.35);
     }
-
     .btn-secondary {
       background: transparent;
       color: var(--text-sub);
       border: 1px solid var(--border);
     }
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--text);
-    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--text); }
 
-    /* ── 공통 컨테이너 ── */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    section {
-      padding: 7rem 0;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 7rem 0; }
 
     .section-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       padding: 4px 12px;
-      background: rgba(79, 142, 247, 0.1);
-      border: 1px solid rgba(79, 142, 247, 0.3);
+      background: rgba(79, 142, 247, 0.08);
+      border: 1px solid rgba(79, 142, 247, 0.22);
       border-radius: 100px;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 500;
       color: var(--accent2);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
-
     .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.2;
       letter-spacing: -0.03em;
       color: var(--text);
     }
-
     .section-sub {
-      margin-top: 1rem;
-      font-size: 1.05rem;
+      margin-top: 0.875rem;
+      font-size: 1rem;
       color: var(--text-sub);
-      max-width: 520px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .tag-blue   { background: rgba(79,142,247,.12);  color: var(--accent); }
+    .tag-cyan   { background: rgba(110,231,247,.10); color: var(--accent2); }
+    .tag-purple { background: rgba(167,139,250,.12); color: var(--purple); }
+    .tag-green  { background: rgba(52,211,153,.10);  color: var(--green); }
 
     /* ── 히어로 ── */
     #hero {
@@ -172,307 +172,316 @@
       overflow: hidden;
       text-align: center;
     }
-
     .hero-glow {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-      width: 700px;
-      height: 500px;
-      background: radial-gradient(ellipse at center,
-        rgba(79, 142, 247, 0.12) 0%,
-        rgba(110, 231, 247, 0.06) 40%,
+      top: 40%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 560px;
+      background: radial-gradient(ellipse,
+        rgba(79,142,247,.10) 0%,
+        rgba(110,231,247,.05) 45%,
         transparent 70%);
       pointer-events: none;
     }
-
-    .hero-glow2 {
-      position: absolute;
-      top: 30%;
-      left: 20%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(ellipse at center,
-        rgba(110, 231, 247, 0.07) 0%,
-        transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
+    .hero-content { position: relative; z-index: 1; }
     .hero-title {
-      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-size: clamp(2.2rem, 5.5vw, 3.75rem);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.04em;
       margin-bottom: 1.5rem;
     }
-
     .hero-title .gradient {
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .hero-sub {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--text-sub);
-      max-width: 480px;
+      max-width: 420px;
       margin: 0 auto 2.5rem;
-      line-height: 1.75;
+      line-height: 1.8;
     }
-
     .hero-btns {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.875rem;
       flex-wrap: wrap;
+      margin-bottom: 4rem;
     }
+    .hero-btns .btn { padding: 0.7rem 1.6rem; font-size: 0.95rem; }
 
-    .hero-btns .btn-primary {
-      padding: 0.75rem 1.75rem;
-      font-size: 0.95rem;
-    }
-
-    .hero-btns .btn-secondary {
-      padding: 0.75rem 1.75rem;
-      font-size: 0.95rem;
-    }
-
-    .hero-meta {
-      margin-top: 3.5rem;
+    .hero-stats {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
+      max-width: 460px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
-
     .hero-stat {
+      flex: 1;
+      padding: 1.25rem 1rem;
       text-align: center;
+      border-right: 1px solid var(--border);
     }
-
+    .hero-stat:last-child { border-right: none; }
     .hero-stat strong {
       display: block;
-      font-size: 1.6rem;
+      font-family: var(--font-en);
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: -0.03em;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.3rem;
     }
+    .hero-stat span { font-size: 0.75rem; color: var(--text-mute); }
 
-    .hero-stat span {
-      font-size: 0.82rem;
-      color: var(--text-mute);
-    }
-
-    .hero-divider {
-      width: 1px;
-      height: 32px;
-      background: var(--border);
-    }
-
-    /* ── 특징/혜택 ── */
-    #features {
-      border-top: 1px solid var(--border);
-    }
-
-    .features-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .features-header .section-sub {
-      margin: 1rem auto 0;
-    }
-
-    .features-grid {
+    /* ── 페르소나 섹션 ── */
+    #persona { border-top: 1px solid var(--border); }
+    .persona-header { margin-bottom: 3.5rem; }
+    .persona-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
     }
-
-    .feature-card {
+    .persona-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 2rem;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      transition: border-color 0.25s, transform 0.25s;
     }
-
-    .feature-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(79, 142, 247, 0.12);
-    }
-
-    .feature-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: rgba(79, 142, 247, 0.1);
-      border: 1px solid rgba(79, 142, 247, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
+    .persona-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+    .persona-num {
+      font-family: var(--font-en);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 1.25rem;
     }
-
-    .feature-card h3 {
-      font-size: 1.05rem;
+    .persona-card h3 {
+      font-size: 0.975rem;
       font-weight: 600;
       letter-spacing: -0.02em;
-      margin-bottom: 0.6rem;
       color: var(--text);
+      line-height: 1.45;
+      margin-bottom: 0.65rem;
     }
+    .persona-card p { font-size: 0.85rem; color: var(--text-sub); line-height: 1.7; }
 
-    .feature-card p {
-      font-size: 0.9rem;
-      color: var(--text-sub);
-      line-height: 1.65;
-    }
-
-    /* ── 활동 일정 ── */
-    #schedule {
-      border-top: 1px solid var(--border);
-    }
-
-    .schedule-header {
-      margin-bottom: 3rem;
-    }
-
-    .schedule-grid {
+    /* ── 최근 세션 섹션 ── */
+    #sessions { border-top: 1px solid var(--border); }
+    .sessions-header { margin-bottom: 3rem; }
+    .sessions-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
     }
-
-    .schedule-card {
+    .session-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.5rem 1.75rem;
+      padding: 1.75rem;
       display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      transition: border-color 0.25s, transform 0.2s;
+      flex-direction: column;
+      gap: 0.875rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-
-    .schedule-card:hover {
+    .session-card:hover {
       border-color: var(--border-hover);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(79, 142, 247, 0.1);
+    }
+    .session-card.featured {
+      grid-column: span 2;
+      background: var(--bg-card2);
+      border-color: rgba(79, 142, 247, 0.22);
+    }
+    .session-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .session-date {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      color: var(--text-mute);
+      letter-spacing: 0.03em;
+    }
+    .session-title {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .session-card.featured .session-title { font-size: 1.1rem; }
+    .session-summary {
+      font-size: 0.83rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+      margin-top: auto;
     }
 
-    .schedule-day {
+    /* ── 운영 방식 섹션 ── */
+    #schedule { border-top: 1px solid var(--border); }
+    .schedule-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .schedule-header { margin-bottom: 2rem; }
+    .schedule-list { display: flex; flex-direction: column; gap: 0.875rem; }
+    .schedule-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.125rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .schedule-item:hover { border-color: var(--border-hover); }
+    .schedule-dot {
       flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(79,142,247,.07);
+      border: 1px solid rgba(79,142,247,.18);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 52px; height: 52px;
-      border-radius: 10px;
-      background: rgba(79, 142, 247, 0.1);
-      border: 1px solid rgba(79, 142, 247, 0.25);
-    }
-
-    .schedule-day .day-ko {
-      font-size: 0.7rem;
-      color: var(--text-mute);
       line-height: 1;
+      gap: 1px;
     }
+    .dot-label { font-size: 0.62rem; color: var(--text-mute); }
+    .dot-day   { font-family: var(--font-en); font-size: 1rem; font-weight: 700; color: var(--accent); }
+    .dot-icon  { font-size: 1.15rem; line-height: 1; }
+    .schedule-info { flex: 1; min-width: 0; }
+    .schedule-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.15rem; }
+    .schedule-info p  { font-size: 0.78rem; color: var(--text-sub); }
 
-    .schedule-day .day-num {
-      font-family: var(--font-en);
-      font-size: 1.1rem;
+    .schedule-aside {
+      background: var(--bg-card2);
+      border: 1px solid rgba(79,142,247,.18);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .schedule-aside::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .aside-block { margin-bottom: 1.75rem; }
+    .aside-block:last-child { margin-bottom: 0; }
+    .aside-block h3 {
+      font-size: 0.875rem;
       font-weight: 700;
-      color: var(--accent);
-      line-height: 1.2;
-    }
-
-    .schedule-info h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
       color: var(--text);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.875rem;
     }
-
-    .schedule-info p {
-      font-size: 0.82rem;
+    .depth-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .depth-list li {
+      display: flex;
+      gap: 0.625rem;
+      font-size: 0.85rem;
       color: var(--text-sub);
+      line-height: 1.55;
     }
+    .check-yes { color: var(--accent);    flex-shrink: 0; font-weight: 700; }
+    .check-no  { color: var(--text-mute); flex-shrink: 0; font-weight: 700; }
 
-    .schedule-info .tag {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.72rem;
-      font-weight: 500;
+    /* ── 멤버 배경 섹션 ── */
+    #members { border-top: 1px solid var(--border); }
+    .members-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
     }
-
-    .tag-blue {
-      background: rgba(79, 142, 247, 0.12);
-      color: var(--accent);
+    .bar-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .bar-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.45rem;
     }
-
-    .tag-cyan {
-      background: rgba(110, 231, 247, 0.1);
-      color: var(--accent2);
+    .bar-label { font-size: 0.875rem; color: var(--text-sub); font-weight: 500; }
+    .bar-pct   { font-family: var(--font-en); font-size: 0.875rem; font-weight: 600; color: var(--accent); }
+    .bar-track {
+      height: 5px;
+      background: rgba(255,255,255,.05);
+      border-radius: 100px;
+      overflow: hidden;
     }
-
-    .tag-purple {
-      background: rgba(139, 92, 246, 0.12);
-      color: #a78bfa;
+    .bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .bar-fill.animated { width: var(--target-width); }
 
-    /* ── 가입 CTA ── */
-    #cta {
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
+    /* ── CTA 섹션 ── */
+    #cta { border-top: 1px solid var(--border); text-align: center; }
     .cta-box {
       background: var(--bg-card2);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       position: relative;
       overflow: hidden;
     }
-
     .cta-box::before {
       content: '';
       position: absolute;
       top: 0; left: 50%; transform: translateX(-50%);
-      width: 60%;
-      height: 1px;
+      width: 55%; height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
     }
-
-    .cta-box .section-title {
-      margin-bottom: 1rem;
+    .cta-box .section-title { margin-bottom: 1rem; }
+    .cta-box .section-sub   { max-width: 380px; margin: 0 auto 2.5rem; }
+    .cta-form-tags {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.25rem;
+      background: rgba(79,142,247,.06);
+      border: 1px solid rgba(79,142,247,.15);
+      border-radius: 100px;
     }
-
-    .cta-box .section-sub {
-      margin: 0 auto 2.5rem;
-      text-align: center;
-    }
+    .cta-form-tags span { font-size: 0.78rem; color: var(--text-mute); }
+    .cta-form-tags .sep { color: var(--border-hover); }
+    .cta-note { margin-top: 0.875rem; font-size: 0.78rem; color: var(--text-mute); }
 
     /* ── 푸터 ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 0;
-    }
-
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; }
     .footer-inner {
       display: flex;
       align-items: center;
@@ -480,233 +489,55 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     .footer-logo {
       font-family: var(--font-en);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-sub);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }
+    .footer-logo-mark {
+      width: 20px; height: 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .footer-copy { font-size: 0.78rem; color: var(--text-mute); }
 
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--text-mute);
+    /* ── 스크롤 리빌 ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
 
     /* ── 반응형 ── */
+    @media (max-width: 960px) {
+      .persona-grid  { grid-template-columns: 1fr; }
+      .sessions-grid { grid-template-columns: 1fr; }
+      .session-card.featured { grid-column: span 1; }
+      .schedule-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .members-layout  { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
     @media (max-width: 768px) {
       nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
       .container { padding: 0 1.25rem; }
       section { padding: 5rem 0; }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .schedule-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title { font-size: 2.2rem; }
-
-      .hero-meta { gap: 1.25rem; }
-
+      #hero { padding-top: 140px; padding-bottom: 5rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* ── 플로팅 계산기 ── */
-    .calc-fab {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 200;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: none;
-      cursor: pointer;
-      font-size: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(79, 142, 247, 0.4);
-      transition: transform 0.15s, box-shadow 0.15s;
-      padding: 0;
-    }
-
-    .calc-fab:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 28px rgba(79, 142, 247, 0.55);
-    }
-
-    .calc-fab:active {
-      transform: scale(0.95);
-    }
-
-    .calc-popup {
-      position: fixed;
-      bottom: 88px;
-      right: 24px;
-      z-index: 200;
-      opacity: 0;
-      transform: translateY(12px);
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .calc-popup.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .calc-popup .calc-widget {
-      width: 290px;
-      background: linear-gradient(160deg, #2a2a2e 0%, #1a1a1e 100%);
-      border-radius: 24px;
-      padding: 28px 22px 22px;
-      box-shadow:
-        0 2px 0 #111 inset,
-        0 -2px 0 #3a3a3e inset,
-        6px 0 0 #111 inset,
-        -6px 0 0 #3a3a3e inset,
-        20px 40px 80px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(255,255,255,0.06);
-      position: relative;
-    }
-
-    .calc-popup .calc-widget::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .calc-popup .calc-display {
-      background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
-      border-radius: 14px;
-      padding: 18px 16px 16px;
-      margin-bottom: 18px;
-      box-shadow:
-        inset 0 2px 8px rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(0,0,0,0.8),
-        0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    .calc-popup .calc-expr {
-      font-size: 13px;
-      color: #4a5568;
-      min-height: 18px;
-      margin-bottom: 8px;
-      text-align: right;
-      letter-spacing: 0.02em;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .calc-popup .calc-result {
-      font-size: 46px;
-      font-weight: 300;
-      color: #e2e8f0;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      text-align: right;
-      text-shadow: 0 0 20px rgba(94,92,230,0.4);
-      font-family: 'Inter', sans-serif;
-    }
-
-    .calc-popup .calc-buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-    }
-
-    .calc-popup .calc-buttons button {
-      border: none;
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      padding: 17px 0;
-      cursor: pointer;
-      border-radius: 10px;
-      letter-spacing: 0.01em;
-      position: relative;
-      transition: transform 0.08s ease, box-shadow 0.08s ease;
-      background: none;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .calc-popup .calc-buttons button:active {
-      transform: translateY(3px);
-    }
-
-    .calc-popup .cb-num {
-      background: linear-gradient(180deg, #48484a 0%, #3a3a3c 100%) !important;
-      color: #ffffff !important;
-      box-shadow: 0 5px 0 #1e1e20, 0 6px 10px rgba(0,0,0,0.4) !important;
-    }
-
-    .calc-popup .cb-num:hover {
-      background: linear-gradient(180deg, #58585a 0%, #4a4a4c 100%) !important;
-    }
-
-    .calc-popup .cb-num:active {
-      box-shadow: 0 1px 0 #1e1e20, 0 2px 4px rgba(0,0,0,0.4) !important;
-    }
-
-    .calc-popup .cb-op {
-      background: linear-gradient(180deg, #7b79f0 0%, #5e5ce6 100%) !important;
-      color: #ffffff !important;
-      box-shadow: 0 5px 0 #2e2cb0, 0 6px 10px rgba(94,92,230,0.4) !important;
-    }
-
-    .calc-popup .cb-op:hover {
-      background: linear-gradient(180deg, #9190f5 0%, #7b79f0 100%) !important;
-    }
-
-    .calc-popup .cb-op:active {
-      box-shadow: 0 1px 0 #2e2cb0, 0 2px 6px rgba(94,92,230,0.3) !important;
-    }
-
-    .calc-popup .cb-eq {
-      background: linear-gradient(180deg, #7b79f0 0%, #5e5ce6 100%) !important;
-      color: #ffffff !important;
-      font-weight: 600 !important;
-      box-shadow: 0 5px 0 #2e2cb0, 0 6px 10px rgba(94,92,230,0.4) !important;
-    }
-
-    .calc-popup .cb-eq:hover {
-      background: linear-gradient(180deg, #9190f5 0%, #7b79f0 100%) !important;
-    }
-
-    .calc-popup .cb-eq:active {
-      box-shadow: 0 1px 0 #2e2cb0, 0 2px 6px rgba(94,92,230,0.3) !important;
-    }
-
-    .calc-popup .cb-sp {
-      background: linear-gradient(180deg, #636366 0%, #48484a 100%) !important;
-      color: #ebebf5 !important;
-      font-size: 13px !important;
-      box-shadow: 0 5px 0 #252527, 0 6px 10px rgba(0,0,0,0.35) !important;
-    }
-
-    .calc-popup .cb-sp:hover {
-      background: linear-gradient(180deg, #737376 0%, #585858 100%) !important;
-    }
-
-    .calc-popup .cb-sp:active {
-      box-shadow: 0 1px 0 #252527, 0 2px 4px rgba(0,0,0,0.3) !important;
-    }
-
-    .calc-popup .cb-zero {
-      grid-column: span 2;
-      text-align: left !important;
-      padding-left: 20px !important;
     }
   </style>
 </head>
@@ -715,149 +546,295 @@
   <!-- 네비게이션 -->
   <nav>
     <a href="#hero" class="nav-logo">
-      <span></span>
+      <span class="nav-logo-mark">A</span>
       AI싱크클럽
     </a>
     <ul class="nav-links">
-      <li><a href="#features">특징</a></li>
-      <li><a href="#schedule">일정</a></li>
+      <li><a href="#sessions">최근 세션</a></li>
+      <li><a href="#schedule">운영 방식</a></li>
+      <li><a href="#members">멤버</a></li>
     </ul>
+    <!-- ★ 더미: href를 실제 구글폼 URL로 교체 -->
     <a href="#cta" class="btn btn-primary">참가 신청</a>
   </nav>
 
   <!-- 히어로 -->
   <section id="hero">
     <div class="hero-glow"></div>
-    <div class="hero-glow2"></div>
     <div class="container hero-content">
-      <div class="section-badge">✦ AI Study Community</div>
-      <h1 class="hero-title">
-        AI와 함께 성장하는<br />
-        <span class="gradient">스터디 커뮤니티</span>
+      <div class="section-badge reveal">실무 AI 인사이트</div>
+      <h1 class="hero-title reveal">
+        AI 노이즈는 걷어내고,<br />
+        <span class="gradient">쓸 수 있는 것만</span> 남깁니다
       </h1>
-      <p class="hero-sub">
-        매주 모여 AI 기술을 함께 배우고, 실전 프로젝트를 만들어가는
-        AI싱크클럽에 합류하세요.
+      <p class="hero-sub reveal">
+        개발·데이터 실무자를 위한 AI 스터디.<br />
+        매주 핵심 인사이트를 함께 파고듭니다.
       </p>
-      <div class="hero-btns">
-        <a href="#cta" class="btn btn-primary">지금 참가하기 →</a>
-        <a href="#features" class="btn btn-secondary">더 알아보기</a>
+      <div class="hero-btns reveal">
+        <!-- ★ 더미: href를 실제 구글폼 URL로 교체 -->
+        <a href="#cta" class="btn btn-primary">참가 신청하기 →</a>
+        <a href="#sessions" class="btn btn-secondary">최근 세션 보기 ↓</a>
       </div>
-      <div class="hero-meta">
+      <!-- ★ 더미: 아래 수치를 실제 데이터로 교체 -->
+      <div class="hero-stats reveal">
         <div class="hero-stat">
           <strong>50+</strong>
           <span>활동 멤버</span>
         </div>
-        <div class="hero-divider"></div>
         <div class="hero-stat">
-          <strong>매주 2회</strong>
-          <span>정기 세션</span>
+          <strong>80+</strong>
+          <span>누적 세션</span>
         </div>
-        <div class="hero-divider"></div>
         <div class="hero-stat">
-          <strong>온/오프라인</strong>
-          <span>하이브리드 운영</span>
+          <strong>2년+</strong>
+          <span>운영 기간</span>
+        </div>
+      </div>
+      <!-- ★ 더미 끝 -->
+    </div>
+  </section>
+
+  <!-- 이런 분들을 위해 -->
+  <section id="persona">
+    <div class="container">
+      <div class="persona-header reveal">
+        <div class="section-badge">이런 분들을 위해</div>
+        <h2 class="section-title">낯설지 않으신가요?</h2>
+        <p class="section-sub">AI싱크클럽은 이 세 가지 상황에서 출발했습니다.</p>
+      </div>
+      <div class="persona-grid">
+        <div class="persona-card reveal">
+          <div class="persona-num">01</div>
+          <h3>AI 뉴스는 쏟아지는데<br />뭘 실무에 써야 할지 모르겠다</h3>
+          <p>매일 새로운 모델, 툴, 논문… 정작 현업에 바로 쓸 수 있는 게 뭔지 파악하기 어렵습니다.</p>
+        </div>
+        <div class="persona-card reveal reveal-d1">
+          <div class="persona-num">02</div>
+          <h3>코드·논문은 읽을 수 있는데<br />혼자 공부하면 방향이 없다</h3>
+          <p>깊이 파고들 수 있는 수준인데, 함께 토론하고 검증해줄 동료가 없습니다.</p>
+        </div>
+        <div class="persona-card reveal reveal-d2">
+          <div class="persona-num">03</div>
+          <h3>입문 스터디는 너무 쉽고<br />다른 AI 모임은 방향이 다르다</h3>
+          <p>실무에 바로 쓸 수 있는 AI를 탐구하는, 적절한 수준의 모임을 찾기 어렵습니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 특징/혜택 -->
-  <section id="features">
+  <!-- 최근 세션 -->
+  <section id="sessions">
     <div class="container">
-      <div class="features-header">
-        <div class="section-badge">Features</div>
-        <h2 class="section-title">AI싱크클럽에서<br />경험할 수 있는 것들</h2>
-        <p class="section-sub">
-          혼자 공부하는 것보다 함께 성장하는 것이 빠릅니다.
-          검증된 커뮤니티와 함께하세요.
-        </p>
+      <div class="sessions-header reveal">
+        <div class="section-badge">최근 세션</div>
+        <h2 class="section-title">실제로 이런 걸 다룹니다</h2>
+        <p class="section-sub">추상적인 설명 대신, 지난 세션 목록으로 직접 확인하세요.</p>
       </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🤝</div>
-          <h3>함께 배우기</h3>
-          <p>
-            매주 정해진 주제로 함께 공부합니다. 혼자서는 어렵던
-            개념도 토론을 통해 빠르게 이해할 수 있어요.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3>실전 프로젝트</h3>
-          <p>
-            ChatGPT, Claude, Gemini 등 AI 툴을 직접 실습합니다.
-            이론에서 끝나지 않고 실제로 만들어봅니다.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💡</div>
-          <h3>인사이트 공유</h3>
-          <p>
-            최신 AI 트렌드와 논문, 사례를 함께 분석합니다.
-            멤버들의 다양한 시각으로 더 깊이 이해해보세요.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 활동 일정 -->
-  <section id="schedule">
-    <div class="container">
-      <div class="schedule-header">
-        <div class="section-badge">Schedule</div>
-        <h2 class="section-title">주간 활동 일정</h2>
-        <p class="section-sub">
-          매주 두 번의 정기 세션과 자유로운 온라인 채널 운영으로
-          꾸준한 학습 루틴을 만들어드립니다.
-        </p>
-      </div>
-      <div class="schedule-grid">
-        <div class="schedule-card">
-          <div class="schedule-day">
-            <span class="day-ko">매주</span>
-            <span class="day-num">화</span>
-          </div>
-          <div class="schedule-info">
-            <h4>AI 논문 리뷰 세션</h4>
-            <p>오후 7:30 — 온라인 (Zoom)</p>
-            <span class="tag tag-blue">논문 리뷰</span>
-          </div>
-        </div>
-        <div class="schedule-card">
-          <div class="schedule-day">
-            <span class="day-ko">매주</span>
-            <span class="day-num">목</span>
-          </div>
-          <div class="schedule-info">
-            <h4>AI 툴 실습 세션</h4>
-            <p>오후 7:30 — 오프라인 (서울)</p>
+      <!--
+        ★ 더미 데이터 — 교체 방법:
+        · session-date: 날짜 텍스트 교체 (예: 2026.05.20)
+        · tag 클래스: tag-blue(논문 리뷰), tag-cyan(실습), tag-purple(토론), tag-green(아키텍처)
+        · session-title: 세션 제목 교체
+        · session-summary: 한 줄 요약 교체
+        · 첫 번째 카드 class="session-card featured" → 가장 최근 세션에 강조 효과
+      -->
+      <div class="sessions-grid">
+
+        <div class="session-card featured reveal">
+          <div class="session-meta">
+            <span class="session-date">2026.05.20</span>
             <span class="tag tag-cyan">실습</span>
           </div>
+          <div class="session-title">Claude Tool Use 실전 패턴 5가지 — 실무에서 바로 쓰는 구조</div>
+          <div class="session-summary">단순 function calling을 넘어, orchestration 레이어 설계와 에러 복구 패턴까지. 실제 프로덕션 코드 기반으로 다뤘습니다.</div>
         </div>
-        <div class="schedule-card">
-          <div class="schedule-day">
-            <span class="day-ko">격주</span>
-            <span class="day-num">토</span>
+
+        <div class="session-card reveal reveal-d1">
+          <div class="session-meta">
+            <span class="session-date">2026.05.13</span>
+            <span class="tag tag-purple">토론</span>
           </div>
-          <div class="schedule-info">
-            <h4>프로젝트 데모데이</h4>
-            <p>오후 2:00 — 오프라인 (서울)</p>
-            <span class="tag tag-purple">프로젝트</span>
+          <div class="session-title">RAG vs Fine-tuning: 언제 뭘 쓸까</div>
+          <div class="session-summary">비용·지연시간·데이터 요구사항 기준으로 선택 기준을 정리했습니다.</div>
+        </div>
+
+        <div class="session-card reveal">
+          <div class="session-meta">
+            <span class="session-date">2026.05.06</span>
+            <span class="tag tag-blue">논문 리뷰</span>
+          </div>
+          <div class="session-title">LLM 평가 지표 제대로 이해하기</div>
+          <div class="session-summary">MMLU, HumanEval, MT-Bench의 한계와 실무 평가 파이프라인 설계.</div>
+        </div>
+
+        <div class="session-card reveal reveal-d1">
+          <div class="session-meta">
+            <span class="session-date">2026.04.29</span>
+            <span class="tag tag-green">아키텍처</span>
+          </div>
+          <div class="session-title">LangGraph vs AutoGen: 에이전트 프레임워크 비교</div>
+          <div class="session-summary">두 프레임워크의 추상화 방식 차이와 유스케이스별 선택 기준을 코드로 비교.</div>
+        </div>
+
+        <div class="session-card reveal reveal-d2">
+          <div class="session-meta">
+            <span class="session-date">2026.04.22</span>
+            <span class="tag tag-cyan">실습</span>
+          </div>
+          <div class="session-title">Prompt Caching 실무 적용기</div>
+          <div class="session-summary">Anthropic API prompt caching으로 비용 60% 절감. 캐시 hit율을 높이는 프롬프트 구조 설계.</div>
+        </div>
+
+      </div>
+      <!-- ★ 더미 끝 -->
+    </div>
+  </section>
+
+  <!-- 운영 방식 -->
+  <section id="schedule">
+    <div class="container">
+      <div class="schedule-layout">
+
+        <div>
+          <div class="schedule-header reveal">
+            <div class="section-badge">운영 방식</div>
+            <h2 class="section-title">주간 루틴</h2>
+            <p class="section-sub">정해진 루틴이 꾸준한 학습을 만들어줍니다.</p>
+          </div>
+          <!-- ★ 더미: 아래 일정을 실제 일정으로 교체 -->
+          <div class="schedule-list">
+            <div class="schedule-item reveal">
+              <div class="schedule-dot">
+                <span class="dot-label">매주</span>
+                <span class="dot-day">화</span>
+              </div>
+              <div class="schedule-info">
+                <h4>AI 논문·트렌드 리뷰</h4>
+                <p>오후 7:30 · 온라인 (Zoom)</p>
+              </div>
+              <span class="tag tag-blue">논문 리뷰</span>
+            </div>
+            <div class="schedule-item reveal reveal-d1">
+              <div class="schedule-dot">
+                <span class="dot-label">매주</span>
+                <span class="dot-day">목</span>
+              </div>
+              <div class="schedule-info">
+                <h4>AI 툴 실습 세션</h4>
+                <p>오후 7:30 · 오프라인 (서울)</p>
+              </div>
+              <span class="tag tag-cyan">실습</span>
+            </div>
+            <div class="schedule-item reveal reveal-d2">
+              <div class="schedule-dot">
+                <span class="dot-label">격주</span>
+                <span class="dot-day">토</span>
+              </div>
+              <div class="schedule-info">
+                <h4>프로젝트 데모데이</h4>
+                <p>오후 2:00 · 오프라인 (서울)</p>
+              </div>
+              <span class="tag tag-purple">데모</span>
+            </div>
+            <div class="schedule-item reveal reveal-d3">
+              <div class="schedule-dot">
+                <span class="dot-icon">💬</span>
+              </div>
+              <div class="schedule-info">
+                <h4>Discord 커뮤니티 채널</h4>
+                <p>상시 운영 · 아티클 공유, Q&amp;A</p>
+              </div>
+              <span class="tag tag-blue">상시</span>
+            </div>
+          </div>
+          <!-- ★ 더미 끝 -->
+        </div>
+
+        <div class="schedule-aside reveal">
+          <div class="aside-block">
+            <h3>우리가 다루지 않는 것</h3>
+            <ul class="depth-list">
+              <li><span class="check-no">✕</span> ChatGPT 기초 사용법, 프롬프트 입문 개념</li>
+              <li><span class="check-no">✕</span> AI 뉴스 단순 요약 및 나열</li>
+              <li><span class="check-no">✕</span> 기술 배경 없이 따라올 수 있는 입문 강의</li>
+            </ul>
+          </div>
+          <div class="aside-block">
+            <h3>우리가 집중하는 것</h3>
+            <ul class="depth-list">
+              <li><span class="check-yes">✓</span> 실무에 바로 적용 가능한 패턴과 아키텍처</li>
+              <li><span class="check-yes">✓</span> 논문·코드 기반의 밀도 있는 토론</li>
+              <li><span class="check-yes">✓</span> 개발·데이터 배경자 수준에서 시작하는 깊이</li>
+            </ul>
           </div>
         </div>
-        <div class="schedule-card">
-          <div class="schedule-day">
-            <span class="day-ko">상시</span>
-            <span class="day-num">🗨</span>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 멤버 배경 -->
+  <section id="members">
+    <div class="container">
+      <div class="members-layout">
+
+        <div class="reveal">
+          <div class="section-badge">멤버 배경</div>
+          <h2 class="section-title">어떤 사람들이<br />함께하나요?</h2>
+          <p class="section-sub">
+            기술 배경이 있는 실무자들의 모임입니다.<br />
+            수준이 비슷한 사람들과 함께할 때<br />학습 밀도가 달라집니다.
+          </p>
+        </div>
+
+        <!--
+          ★ 더미 데이터 — 교체 방법:
+          · bar-label: 직군명 교체
+          · bar-pct: 퍼센트 텍스트 교체 (예: 45%)
+          · --target-width: 바 너비 교체 (bar-pct와 동일한 값)
+        -->
+        <div class="bar-list reveal" id="barList">
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="bar-label">개발자 / 엔지니어</span>
+              <span class="bar-pct">45%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="--target-width: 45%"></div>
+            </div>
           </div>
-          <div class="schedule-info">
-            <h4>온라인 스터디 채널</h4>
-            <p>Discord 상시 운영</p>
-            <span class="tag tag-blue">커뮤니티</span>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="bar-label">데이터 / ML 엔지니어</span>
+              <span class="bar-pct">35%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="--target-width: 35%"></div>
+            </div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="bar-label">퀀트 / 금융공학</span>
+              <span class="bar-pct">10%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="--target-width: 10%"></div>
+            </div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span class="bar-label">기타 (PM, 연구자 등)</span>
+              <span class="bar-pct">10%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="--target-width: 10%"></div>
+            </div>
           </div>
         </div>
+        <!-- ★ 더미 끝 -->
+
       </div>
     </div>
   </section>
@@ -865,16 +842,27 @@
   <!-- CTA -->
   <section id="cta">
     <div class="container">
-      <div class="cta-box">
+      <div class="cta-box reveal">
         <div class="section-badge">Join Us</div>
-        <h2 class="section-title">지금 바로 합류하세요</h2>
+        <h2 class="section-title">지금 합류하세요</h2>
         <p class="section-sub">
-          AI싱크클럽은 누구에게나 열려 있습니다.<br />
-          함께 배우고 성장할 준비가 되셨나요?
+          짧은 신청서를 통해 배경과 동기를 알려주시면<br />
+          빠르게 검토 후 안내드립니다.
         </p>
-        <a href="mailto:ecmcol100@gmail.com" class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 1rem;">
+        <!-- ★ 더미: href="#google-form-url"을 실제 구글폼 URL로 교체, target="_blank" 유지 -->
+        <a href="#google-form-url" target="_blank" class="btn btn-primary" style="padding: 0.8rem 2.25rem; font-size: 1rem;">
           참가 신청하기 →
         </a>
+        <div>
+          <div class="cta-form-tags">
+            <span>이름</span>
+            <span class="sep">·</span>
+            <span>직군 및 배경</span>
+            <span class="sep">·</span>
+            <span>합류 동기</span>
+          </div>
+        </div>
+        <p class="cta-note">3문항 · 약 2분 소요</p>
       </div>
     </div>
   </section>
@@ -883,116 +871,34 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <a href="#hero" class="footer-logo">AI싱크클럽</a>
+        <a href="#hero" class="footer-logo">
+          <span class="footer-logo-mark">A</span>
+          AI싱크클럽
+        </a>
         <p class="footer-copy">© 2026 AI싱크클럽. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-
-  <!-- 플로팅 계산기 -->
-  <button class="calc-fab" id="calcFab" onclick="toggleCalc()" aria-label="계산기">🧮</button>
-  <div class="calc-popup" id="calcPopup">
-    <div class="calc-widget">
-      <div class="calc-display">
-        <div class="calc-expr" id="calc-expression"></div>
-        <div class="calc-result" id="calc-result">0</div>
-      </div>
-      <div class="calc-buttons">
-        <button class="cb-sp" onclick="clearAll()">AC</button>
-        <button class="cb-sp" onclick="toggleSign()">+/−</button>
-        <button class="cb-sp" onclick="percent()">%</button>
-        <button class="cb-op" onclick="inputOp('/')">÷</button>
-
-        <button class="cb-num" onclick="inputNum('7')">7</button>
-        <button class="cb-num" onclick="inputNum('8')">8</button>
-        <button class="cb-num" onclick="inputNum('9')">9</button>
-        <button class="cb-op" onclick="inputOp('*')">×</button>
-
-        <button class="cb-num" onclick="inputNum('4')">4</button>
-        <button class="cb-num" onclick="inputNum('5')">5</button>
-        <button class="cb-num" onclick="inputNum('6')">6</button>
-        <button class="cb-op" onclick="inputOp('-')">−</button>
-
-        <button class="cb-num" onclick="inputNum('1')">1</button>
-        <button class="cb-num" onclick="inputNum('2')">2</button>
-        <button class="cb-num" onclick="inputNum('3')">3</button>
-        <button class="cb-op" onclick="inputOp('+')">+</button>
-
-        <button class="cb-num cb-zero" onclick="inputNum('0')">0</button>
-        <button class="cb-num" onclick="inputDot()">.</button>
-        <button class="cb-eq" onclick="calculate()">=</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    function toggleCalc() {
-      document.getElementById('calcPopup').classList.toggle('open');
-    }
+    /* 스크롤 리빌 애니메이션 */
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    let cur = '0', prev = '', op = null, resetNext = false;
-    const resultEl = document.getElementById('calc-result');
-    const exprEl   = document.getElementById('calc-expression');
-    const opMap = { '+': '+', '-': '−', '*': '×', '/': '÷' };
-
-    function updateDisplay() { resultEl.textContent = cur; }
-
-    function inputNum(n) {
-      if (resetNext) { cur = n; resetNext = false; }
-      else cur = cur === '0' ? n : cur + n;
-      updateDisplay();
-    }
-
-    function inputDot() {
-      if (resetNext) { cur = '0.'; resetNext = false; }
-      else if (!cur.includes('.')) cur += '.';
-      updateDisplay();
-    }
-
-    function inputOp(o) {
-      if (op && !resetNext) calculate();
-      prev = cur; op = o; resetNext = true;
-      exprEl.textContent = prev + ' ' + opMap[o];
-    }
-
-    function calculate() {
-      if (!op || resetNext) return;
-      const a = parseFloat(prev), b = parseFloat(cur);
-      exprEl.textContent = prev + ' ' + opMap[op] + ' ' + cur + ' =';
-      let res;
-      if (op === '+') res = a + b;
-      else if (op === '-') res = a - b;
-      else if (op === '*') res = a * b;
-      else res = b !== 0 ? a / b : 'Error';
-      cur = res === 'Error' ? 'Error' : String(parseFloat(res.toFixed(10)));
-      op = null; resetNext = true;
-      updateDisplay();
-    }
-
-    function clearAll() {
-      cur = '0'; prev = ''; op = null; resetNext = false;
-      exprEl.textContent = ''; updateDisplay();
-    }
-
-    function toggleSign() { cur = String(parseFloat(cur) * -1); updateDisplay(); }
-    function percent()    { cur = String(parseFloat(cur) / 100); updateDisplay(); }
-
-    document.addEventListener('keydown', e => {
-      if (e.key >= '0' && e.key <= '9') inputNum(e.key);
-      else if (e.key === '.') inputDot();
-      else if (['+', '-', '*'].includes(e.key)) inputOp(e.key);
-      else if (e.key === '/') { e.preventDefault(); inputOp('/'); }
-      else if (e.key === 'Enter' || e.key === '=') calculate();
-      else if (e.key === 'Escape') {
-        clearAll();
-        document.getElementById('calcPopup').classList.remove('open');
-      }
-      else if (e.key === 'Backspace') {
-        cur = cur.length > 1 ? cur.slice(0, -1) : '0';
-        updateDisplay();
-      }
-    });
+    /* 멤버 배경 바 애니메이션 — 뷰포트 진입 시 한 번만 실행 */
+    const barObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('.bar-fill').forEach(b => b.classList.add('animated'));
+        barObserver.unobserve(e.target);
+      }),
+      { threshold: 0.3 }
+    );
+    const barList = document.getElementById('barList');
+    if (barList) barObserver.observe(barList);
   </script>
 </body>
 </html>
