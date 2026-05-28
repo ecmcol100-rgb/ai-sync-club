@@ -45,6 +45,21 @@
 ### 4. 브라우저 실행 (완료)
 `start` 명령으로 기본 브라우저에서 파일 열기 완료.
 
+### 5. GitHub Pages 배포 설정 (완료) — 2026-05-28
+
+**배포 URL:** https://ecmcol100-rgb.github.io/ai-sync-club/
+
+변경사항:
+- `.github/workflows/pages.yml` 생성 — `master` push 시 자동 배포
+- `ai-sync-club.html` → `_site/index.html`로 복사 후 GitHub Pages에 업로드
+- GitHub Pages 소스를 "GitHub Actions"로 활성화 (`gh api`)
+- 워크트리 브랜치(`worktree-modular-crunching-haven`)의 신버전 `ai-sync-club.html`을 `master`에 반영
+
+**배포 검증 결과 (PASS):**
+- 모든 섹션(Hero, 페르소나, 세션 카드, 주간 루틴, 멤버 바 차트, CTA) 정상 렌더링
+- 레이아웃 깨짐 없음, JS 오류 없음
+- 구글폼 URL은 `#google-form-url` 더미 상태 (예상된 상태)
+
 ---
 
 ## 더미 데이터 현황
@@ -81,8 +96,9 @@
    - Hero 카피라인 확정 (현재: "AI 노이즈는 걷어내고, 쓸 수 있는 것만 남깁니다")
    - 모바일 뷰 직접 확인
 
-3. **배포 (미논의)**
-   - 현재 로컬 단일 HTML 파일. 배포 방식 미정.
+3. **배포 완료** ✅
+   - GitHub Pages 배포 중: https://ecmcol100-rgb.github.io/ai-sync-club/
+   - `master` push → 자동 재배포 파이프라인 구성됨
 
 ---
 
@@ -90,16 +106,17 @@
 
 ```
 C:\Users\Test\OneDrive\AI\클로드코드\
-├── ai-sync-club.html              ← 원본 (구버전, 계산기 포함)
+├── ai-sync-club.html              ← master 반영본 (신버전, 배포 중)
 ├── ai-sync-club-plan-spec.md      ← 인터뷰 기반 plan spec
+├── .github\workflows\pages.yml    ← GitHub Pages 자동 배포 워크플로우
 └── .claude\worktrees\modular-crunching-haven\
     ├── ai-sync-club.html          ← 재구성된 신버전 ★ 여기가 작업본
     ├── ai-sync-club-plan-spec.md  ← plan spec 사본
     └── HANDOFF.md                 ← 이 파일
 ```
 
-> **주의:** 작업은 워크트리(`modular-crunching-haven`) 안에서 진행됨.  
-> 원본 디렉토리의 `ai-sync-club.html`은 구버전이므로 혼동 주의.
+> **참고:** `master`의 `ai-sync-club.html`은 워크트리 작업본과 동일한 신버전.  
+> 실제 데이터 교체는 워크트리에서 작업 후 `master`에 반영하면 자동 재배포됨.
 
 ---
 
