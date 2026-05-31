@@ -24,12 +24,13 @@ export const Scene06: React.FC = () => {
       <FadeText delay={0} duration={20}>
         <div
           style={{
-            fontSize: 44,
+            fontSize: 54,
             color: COLORS.red,
             fontFamily: FONT,
             fontWeight: 800,
             textAlign: 'center',
             transform: `translateX(${shakeX}px)`,
+            whiteSpace: 'nowrap',
           }}
         >
           이것들은 모두 '약'입니다
@@ -56,15 +57,15 @@ export const Scene06: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: 6,
+                gap: 8,
                 backgroundColor: 'rgba(255,255,255,0.85)',
                 borderRadius: 14,
-                padding: '16px 28px',
+                padding: '18px 32px',
                 border: `1.5px solid ${COLORS.cardBorder}`,
               }}
             >
-              <span style={{ fontSize: 42 }}>{herb.emoji}</span>
-              <span style={{ fontSize: 22, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>{herb.name}</span>
+              <span style={{ fontSize: 48 }}>{herb.emoji}</span>
+              <span style={{ fontSize: 28, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>{herb.name}</span>
             </div>
           );
         })}
@@ -77,12 +78,13 @@ export const Scene06: React.FC = () => {
             backgroundColor: 'rgba(230,57,70,0.12)',
             border: `2px solid ${COLORS.red}`,
             borderRadius: 12,
-            padding: '14px 36px',
-            fontSize: 24,
+            padding: '16px 40px',
+            fontSize: 30,
             color: COLORS.red,
             fontFamily: FONT,
             fontWeight: 700,
             textAlign: 'center',
+            whiteSpace: 'nowrap',
           }}
         >
           장기 복용 시 약물 의존 주의

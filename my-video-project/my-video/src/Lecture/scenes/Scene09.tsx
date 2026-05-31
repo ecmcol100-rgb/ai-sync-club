@@ -15,7 +15,7 @@ export const Scene09: React.FC = () => {
   return (
     <FullLayout avatarImage="레팬4.png">
       <FadeText delay={0} duration={20}>
-        <div style={{ fontSize: 36, color: COLORS.text, fontFamily: FONT, fontWeight: 600, textAlign: 'center' }}>
+        <div style={{ fontSize: 46, color: COLORS.text, fontFamily: FONT, fontWeight: 600, textAlign: 'center' }}>
           진짜 핵심은
         </div>
       </FadeText>
@@ -26,19 +26,20 @@ export const Scene09: React.FC = () => {
             backgroundColor: 'rgba(230,57,70,0.1)',
             border: `3px solid ${COLORS.red}`,
             borderRadius: 18,
-            padding: '22px 56px',
+            padding: '26px 60px',
             transform: `translateX(${shakeX}px)`,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
-            <span style={{ fontSize: 40 }}>🚫</span>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18 }}>
+            <span style={{ fontSize: 48 }}>🚫</span>
             <span
               style={{
-                fontSize: 44,
+                fontSize: 54,
                 color: COLORS.red,
                 fontFamily: FONT,
                 fontWeight: 900,
                 textAlign: 'center',
+                whiteSpace: 'nowrap',
               }}
             >
               해로운 음식 멀리하기
@@ -48,7 +49,7 @@ export const Scene09: React.FC = () => {
       </FadeText>
 
       <FadeText delay={50} duration={20}>
-        <div style={{ fontSize: 24, color: COLORS.textLight, fontFamily: FONT, textAlign: 'center' }}>
+        <div style={{ fontSize: 30, color: COLORS.textLight, fontFamily: FONT, textAlign: 'center' }}>
           유익한 음식을 더 먹는 것보다 훨씬 중요합니다
         </div>
       </FadeText>

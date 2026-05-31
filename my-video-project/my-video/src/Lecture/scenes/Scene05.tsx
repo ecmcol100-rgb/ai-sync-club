@@ -17,7 +17,7 @@ export const Scene05: React.FC = () => {
     <SlideLayout avatarImage="레팬4.png">
       {/* 표 제목 */}
       <FadeText delay={0} duration={18}>
-        <div style={{ fontSize: 28, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, marginBottom: 4 }}>
+        <div style={{ fontSize: 36, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, marginBottom: 4 }}>
           음식 vs 약물 비교
         </div>
       </FadeText>
@@ -32,11 +32,11 @@ export const Scene05: React.FC = () => {
                 key={h}
                 style={{
                   flex: i === 0 ? 0.8 : 1,
-                  padding: '14px 20px',
+                  padding: '18px 20px',
                   color: COLORS.white,
                   fontFamily: FONT,
                   fontWeight: 700,
-                  fontSize: 22,
+                  fontSize: 28,
                   textAlign: 'center',
                 }}
               >
@@ -66,13 +66,13 @@ export const Scene05: React.FC = () => {
                   borderTop: `1px solid ${COLORS.cardBorder}`,
                 }}
               >
-                <div style={{ flex: 0.8, padding: '13px 20px', fontFamily: FONT, fontWeight: 700, fontSize: 21, color: COLORS.blue, textAlign: 'center' }}>
+                <div style={{ flex: 0.8, padding: '16px 20px', fontFamily: FONT, fontWeight: 700, fontSize: 28, color: COLORS.blue, textAlign: 'center' }}>
                   {row.label}
                 </div>
-                <div style={{ flex: 1, padding: '13px 20px', fontFamily: FONT, fontSize: 21, color: COLORS.topBar, textAlign: 'center', fontWeight: 600 }}>
+                <div style={{ flex: 1, padding: '16px 20px', fontFamily: FONT, fontSize: 28, color: COLORS.topBar, textAlign: 'center', fontWeight: 600 }}>
                   {row.food}
                 </div>
-                <div style={{ flex: 1, padding: '13px 20px', fontFamily: FONT, fontSize: 21, color: COLORS.red, textAlign: 'center', fontWeight: 600 }}>
+                <div style={{ flex: 1, padding: '16px 20px', fontFamily: FONT, fontSize: 28, color: COLORS.red, textAlign: 'center', fontWeight: 600 }}>
                   {row.drug}
                 </div>
               </div>

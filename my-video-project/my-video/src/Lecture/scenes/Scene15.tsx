@@ -15,12 +15,12 @@ export const Scene15: React.FC = () => (
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 12,
+          gap: 14,
           marginBottom: 4,
         }}
       >
-        <span style={{ fontSize: 30 }}>💡</span>
-        <span style={{ fontSize: 30, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800 }}>
+        <span style={{ fontSize: 36 }}>💡</span>
+        <span style={{ fontSize: 38, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800 }}>
           진정한 건강이란
         </span>
       </div>
@@ -31,21 +31,21 @@ export const Scene15: React.FC = () => (
         style={{
           backgroundColor: COLORS.greenLight,
           borderRadius: 14,
-          padding: '20px 26px',
+          padding: '22px 28px',
           borderLeft: `5px solid ${COLORS.topBar}`,
         }}
       >
-        <div style={{ fontSize: 24, fontFamily: FONT, color: COLORS.text, lineHeight: 1.7 }}>
+        <div style={{ fontSize: 32, fontFamily: FONT, color: COLORS.text, lineHeight: 1.7 }}>
           약물이나 보조제 없이도 몸이 스스로
         </div>
-        <div style={{ fontSize: 24, fontFamily: FONT, color: COLORS.text, lineHeight: 1.7 }}>
+        <div style={{ fontSize: 32, fontFamily: FONT, color: COLORS.text, lineHeight: 1.7 }}>
           <span style={{ color: COLORS.topBar, fontWeight: 700 }}>균형을 유지하는 상태</span>
         </div>
       </div>
     </FadeText>
 
     <FadeText delay={40} duration={18}>
-      <div style={{ fontSize: 22, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>
+      <div style={{ fontSize: 28, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>
         실천 원칙
       </div>
     </FadeText>
@@ -56,15 +56,15 @@ export const Scene15: React.FC = () => (
           style={{
             display: 'flex',
             alignItems: 'flex-start',
-            gap: 12,
-            padding: '12px 20px',
+            gap: 14,
+            padding: '14px 22px',
             backgroundColor: COLORS.cardBg,
             border: `1.5px solid ${COLORS.cardBorder}`,
             borderRadius: 10,
           }}
         >
-          <span style={{ fontSize: 22, color: COLORS.topBar, marginTop: 1 }}>✅</span>
-          <span style={{ fontSize: 22, fontFamily: FONT, color: COLORS.text, lineHeight: 1.6 }}>{p}</span>
+          <span style={{ fontSize: 26, color: COLORS.topBar, marginTop: 2 }}>✅</span>
+          <span style={{ fontSize: 28, fontFamily: FONT, color: COLORS.text, lineHeight: 1.6 }}>{p}</span>
         </div>
       </FadeText>
     ))}

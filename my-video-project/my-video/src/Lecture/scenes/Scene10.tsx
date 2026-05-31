@@ -25,7 +25,7 @@ export const Scene10: React.FC = () => {
   return (
     <SlideLayout avatarImage="레팬5.png">
       <FadeText delay={0} duration={18}>
-        <div style={{ fontSize: 26, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, marginBottom: 4 }}>
+        <div style={{ fontSize: 34, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, marginBottom: 4 }}>
           과잉 섭취 사례
         </div>
       </FadeText>
@@ -43,21 +43,21 @@ export const Scene10: React.FC = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 18,
+              gap: 20,
               backgroundColor: COLORS.cardBg,
               border: `1.5px solid ${COLORS.cardBorder}`,
               borderRadius: 14,
-              padding: '18px 24px',
+              padding: '22px 28px',
               opacity: op,
               transform: `translateY(${ty}px)`,
             }}
           >
-            <span style={{ fontSize: 38 }}>{c.emoji}</span>
+            <span style={{ fontSize: 44 }}>{c.emoji}</span>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 24, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>
+              <div style={{ fontSize: 32, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>
                 {c.title}
               </div>
-              <div style={{ fontSize: 22, fontFamily: FONT, color: COLORS.red, fontWeight: 600, marginTop: 6 }}>
+              <div style={{ fontSize: 28, fontFamily: FONT, color: COLORS.red, fontWeight: 600, marginTop: 8 }}>
                 → {c.result}
               </div>
             </div>
@@ -71,11 +71,11 @@ export const Scene10: React.FC = () => {
             backgroundColor: 'rgba(230,57,70,0.08)',
             border: `2px solid ${COLORS.red}`,
             borderRadius: 12,
-            padding: '14px 24px',
+            padding: '16px 28px',
             textAlign: 'center',
           }}
         >
-          <span style={{ fontSize: 24, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
+          <span style={{ fontSize: 30, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
             즙으로 농축하면 약처럼 작용합니다
           </span>
         </div>
