@@ -15,6 +15,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - [ ] 테스트 코드 필수
 
 ## 중요 규칙
+- 세션 시작 시 HANDOFF.md가 있으면 반드시 먼저 읽을 것
 - 내용이 없으면 절대 임의로 채우지 말 것
 - 모르는 정보는 반드시 먼저 질문할 것
 
