@@ -15,7 +15,7 @@ export const Scene09: React.FC = () => {
   return (
     <FullLayout avatarImage="레팬4.png">
       <FadeText delay={0} duration={20}>
-        <div style={{ fontSize: 46, color: COLORS.text, fontFamily: FONT, fontWeight: 600, textAlign: 'center' }}>
+        <div style={{ fontSize: 56, color: COLORS.text, fontFamily: FONT, fontWeight: 600, textAlign: 'center' }}>
           진짜 핵심은
         </div>
       </FadeText>
@@ -31,10 +31,10 @@ export const Scene09: React.FC = () => {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18 }}>
-            <span style={{ fontSize: 48 }}>🚫</span>
+            <span style={{ fontSize: 58 }}>🚫</span>
             <span
               style={{
-                fontSize: 54,
+                fontSize: 64,
                 color: COLORS.red,
                 fontFamily: FONT,
                 fontWeight: 900,
@@ -49,7 +49,7 @@ export const Scene09: React.FC = () => {
       </FadeText>
 
       <FadeText delay={50} duration={20}>
-        <div style={{ fontSize: 30, color: COLORS.textLight, fontFamily: FONT, textAlign: 'center' }}>
+        <div style={{ fontSize: 36, color: COLORS.textLight, fontFamily: FONT, textAlign: 'center' }}>
           유익한 음식을 먹는 것보다 훨씬 중요합니다
         </div>
       </FadeText>

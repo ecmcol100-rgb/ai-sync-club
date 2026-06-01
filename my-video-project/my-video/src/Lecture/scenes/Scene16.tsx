@@ -62,7 +62,7 @@ export const Scene16: React.FC = () => {
         <FadeText delay={14} duration={18}>
           <div
             style={{
-              fontSize: 36,
+              fontSize: 44,
               color: COLORS.darkGreen,
               fontFamily: FONT,
               fontWeight: 900,
@@ -81,7 +81,7 @@ export const Scene16: React.FC = () => {
                 borderRadius: 50,
                 padding: '12px 28px',
                 color: COLORS.white,
-                fontSize: 22,
+                fontSize: 26,
                 fontFamily: FONT,
                 fontWeight: 700,
               }}
@@ -94,7 +94,7 @@ export const Scene16: React.FC = () => {
                 borderRadius: 50,
                 padding: '12px 28px',
                 color: COLORS.white,
-                fontSize: 22,
+                fontSize: 26,
                 fontFamily: FONT,
                 fontWeight: 700,
               }}

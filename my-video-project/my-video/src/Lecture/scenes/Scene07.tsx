@@ -7,10 +7,10 @@ export const Scene07: React.FC = () => (
   <SlideLayout avatarImage="레팬9.png">
     <FadeText delay={0} duration={18}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span style={{ fontSize: 28, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>📌</span>
+        <span style={{ fontSize: 34, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>📌</span>
         <span
           style={{
-            fontSize: 28,
+            fontSize: 34,
             color: COLORS.topBar,
             fontFamily: FONT,
             fontWeight: 700,
@@ -26,7 +26,7 @@ export const Scene07: React.FC = () => (
     </FadeText>
 
     <FadeText delay={15} duration={22}>
-      <div style={{ fontSize: 52, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
+      <div style={{ fontSize: 62, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
         유익한 음식의 진짜 의미
       </div>
     </FadeText>
@@ -43,8 +43,8 @@ export const Scene07: React.FC = () => (
           gap: 14,
         }}
       >
-        <span style={{ fontSize: 34 }}>❌</span>
-        <span style={{ fontSize: 34, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
+        <span style={{ fontSize: 40 }}>❌</span>
+        <span style={{ fontSize: 40, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
           유익한 음식 = 마법의 약?, 많이 먹을수록 좋다?
         </span>
       </div>

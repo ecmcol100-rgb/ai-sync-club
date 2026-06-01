@@ -6,7 +6,7 @@ import { FadeText } from '../components/FadeText';
 export const Scene12: React.FC = () => (
   <SlideLayout avatarImage="레팬6.png">
     <FadeText delay={0} duration={18}>
-      <div style={{ fontSize: 36, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800 }}>
+      <div style={{ fontSize: 44, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800 }}>
         수체질의 인삼 복용, 언제 맞고 언제 주의할까?
       </div>
     </FadeText>
@@ -22,12 +22,12 @@ export const Scene12: React.FC = () => (
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-          <span style={{ fontSize: 30 }}>🏥</span>
-          <span style={{ fontSize: 28, fontFamily: FONT, fontWeight: 700, color: COLORS.topBar }}>
+          <span style={{ fontSize: 36 }}>🏥</span>
+          <span style={{ fontSize: 34, fontFamily: FONT, fontWeight: 700, color: COLORS.topBar }}>
             위장 기능 저하 시
           </span>
         </div>
-        <div style={{ fontSize: 28, fontFamily: FONT, color: COLORS.text, lineHeight: 1.6 }}>
+        <div style={{ fontSize: 34, fontFamily: FONT, color: COLORS.text, lineHeight: 1.6 }}>
           인삼을 약으로 단기 사용 ✅
         </div>
       </div>
@@ -44,19 +44,19 @@ export const Scene12: React.FC = () => (
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-          <span style={{ fontSize: 30 }}>☀️</span>
-          <span style={{ fontSize: 28, fontFamily: FONT, fontWeight: 700, color: '#B07A10' }}>
+          <span style={{ fontSize: 36 }}>☀️</span>
+          <span style={{ fontSize: 34, fontFamily: FONT, fontWeight: 700, color: '#B07A10' }}>
             평상시
           </span>
         </div>
-        <div style={{ fontSize: 28, fontFamily: FONT, color: COLORS.text, lineHeight: 1.6 }}>
+        <div style={{ fontSize: 34, fontFamily: FONT, color: COLORS.text, lineHeight: 1.6 }}>
           매일 장복 ⚠️ 권장하지 않음
         </div>
       </div>
     </FadeText>
 
     <FadeText delay={68} duration={20}>
-      <div style={{ fontSize: 28, color: COLORS.textLight, fontFamily: FONT, lineHeight: 1.6 }}>
+      <div style={{ fontSize: 34, color: COLORS.textLight, fontFamily: FONT, lineHeight: 1.6 }}>
         💡 이유: 인삼에 의존하다 보면 위장 기능이 점차 약해질 수 있음
       </div>
     </FadeText>

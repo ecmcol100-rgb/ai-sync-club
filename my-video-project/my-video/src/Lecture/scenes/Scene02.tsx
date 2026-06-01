@@ -15,13 +15,13 @@ export const Scene02: React.FC = () => (
           padding: '28px 32px',
         }}
       >
-        <div style={{ fontSize: 26, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700, marginBottom: 12 }}>
+        <div style={{ fontSize: 32, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700, marginBottom: 12 }}>
           💬 오늘의 질문
         </div>
-        <div style={{ fontSize: 40, color: COLORS.text, fontFamily: FONT, fontWeight: 600, lineHeight: 1.6 }}>
+        <div style={{ fontSize: 48, color: COLORS.text, fontFamily: FONT, fontWeight: 600, lineHeight: 1.6 }}>
           "수체질에게 인삼이 좋으니까
         </div>
-        <div style={{ fontSize: 40, color: COLORS.text, fontFamily: FONT, fontWeight: 600, lineHeight: 1.6 }}>
+        <div style={{ fontSize: 48, color: COLORS.text, fontFamily: FONT, fontWeight: 600, lineHeight: 1.6 }}>
           인삼을 매일 꾸준히 먹어도 되지 않나요?"
         </div>
       </div>
@@ -40,8 +40,8 @@ export const Scene02: React.FC = () => (
           border: `1.5px solid ${COLORS.cardBorder}`,
         }}
       >
-        <span style={{ fontSize: 32 }}>→</span>
-        <span style={{ fontSize: 36, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
+        <span style={{ fontSize: 38 }}>→</span>
+        <span style={{ fontSize: 44, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
           체질의학의 흔한 오해 중 하나입니다
         </span>
       </div>

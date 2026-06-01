@@ -7,10 +7,10 @@ export const Scene11: React.FC = () => (
   <SlideLayout avatarImage="레팬9.png">
     <FadeText delay={0} duration={18}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span style={{ fontSize: 28, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>📌</span>
+        <span style={{ fontSize: 34, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>📌</span>
         <span
           style={{
-            fontSize: 28,
+            fontSize: 34,
             color: COLORS.topBar,
             fontFamily: FONT,
             fontWeight: 700,
@@ -26,7 +26,7 @@ export const Scene11: React.FC = () => (
     </FadeText>
 
     <FadeText delay={15} duration={22}>
-      <div style={{ fontSize: 52, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
+      <div style={{ fontSize: 62, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
         수체질과 인삼
       </div>
     </FadeText>
@@ -43,8 +43,8 @@ export const Scene11: React.FC = () => (
           gap: 14,
         }}
       >
-        <span style={{ fontSize: 32 }}>✅</span>
-        <div style={{ fontSize: 32, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700, lineHeight: 1.5 }}>
+        <span style={{ fontSize: 38 }}>✅</span>
+        <div style={{ fontSize: 38, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700, lineHeight: 1.5 }}>
           수양·수음체질 → 인삼이 긍정적으로 작용
         </div>
       </div>

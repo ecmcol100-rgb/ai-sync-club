@@ -24,7 +24,7 @@ export const Scene06: React.FC = () => {
       <FadeText delay={0} duration={20}>
         <div
           style={{
-            fontSize: 54,
+            fontSize: 64,
             color: COLORS.red,
             fontFamily: FONT,
             fontWeight: 800,
@@ -64,8 +64,8 @@ export const Scene06: React.FC = () => {
                 border: `1.5px solid ${COLORS.cardBorder}`,
               }}
             >
-              <span style={{ fontSize: 48 }}>{herb.emoji}</span>
-              <span style={{ fontSize: 28, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>{herb.name}</span>
+              <span style={{ fontSize: 58 }}>{herb.emoji}</span>
+              <span style={{ fontSize: 34, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>{herb.name}</span>
             </div>
           );
         })}
@@ -79,7 +79,7 @@ export const Scene06: React.FC = () => {
             border: `2px solid ${COLORS.red}`,
             borderRadius: 12,
             padding: '16px 40px',
-            fontSize: 30,
+            fontSize: 36,
             color: COLORS.red,
             fontFamily: FONT,
             fontWeight: 700,

@@ -24,7 +24,7 @@ export const TopBar: React.FC<TopBarProps> = ({ title = '8체질의학회' }) =>
     <span
       style={{
         color: COLORS.white,
-        fontSize: 22,
+        fontSize: 26,
         fontFamily: FONT,
         fontWeight: 700,
         letterSpacing: 3,

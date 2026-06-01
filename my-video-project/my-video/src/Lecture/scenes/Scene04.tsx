@@ -40,14 +40,14 @@ export const Scene04: React.FC = () => {
             opacity: box1Opacity,
           }}
         >
-          <div style={{ fontSize: 36, marginBottom: 12 }}>📚 음식</div>
-          <div style={{ fontSize: 28, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
+          <div style={{ fontSize: 44, marginBottom: 12 }}>📚 음식</div>
+          <div style={{ fontSize: 34, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
             "숙제할 때 도움이 필요하면 말해줘.
           </div>
-          <div style={{ fontSize: 28, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
+          <div style={{ fontSize: 34, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
             연필이나 지우개 갖다줄까?"
           </div>
-          <div style={{ marginTop: 16, fontSize: 26, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>
+          <div style={{ marginTop: 16, fontSize: 32, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>
             → 보조 역할
           </div>
         </div>
@@ -64,14 +64,14 @@ export const Scene04: React.FC = () => {
             opacity: box2Opacity,
           }}
         >
-          <div style={{ fontSize: 36, marginBottom: 12 }}>⚡ 약물</div>
-          <div style={{ fontSize: 28, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
+          <div style={{ fontSize: 44, marginBottom: 12 }}>⚡ 약물</div>
+          <div style={{ fontSize: 34, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
             "잠깐 비켜봐,
           </div>
-          <div style={{ fontSize: 28, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
+          <div style={{ fontSize: 34, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
             내가 대신 숙제를 해줄게"
           </div>
-          <div style={{ marginTop: 16, fontSize: 26, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
+          <div style={{ marginTop: 16, fontSize: 32, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
             → 대리 역할
           </div>
         </div>
@@ -82,7 +82,7 @@ export const Scene04: React.FC = () => {
         <div
           style={{
             textAlign: 'center',
-            fontSize: 34,
+            fontSize: 40,
             color: COLORS.blue,
             fontFamily: FONT,
             fontWeight: 700,

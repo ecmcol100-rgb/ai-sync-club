@@ -8,10 +8,10 @@ export const Scene03: React.FC = () => (
     {/* 챕터 번호 */}
     <FadeText delay={0} duration={18}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span style={{ fontSize: 28, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>📌</span>
+        <span style={{ fontSize: 34, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>📌</span>
         <span
           style={{
-            fontSize: 28,
+            fontSize: 34,
             color: COLORS.topBar,
             fontFamily: FONT,
             fontWeight: 700,
@@ -30,7 +30,7 @@ export const Scene03: React.FC = () => (
     <FadeText delay={15} duration={22}>
       <div
         style={{
-          fontSize: 52,
+          fontSize: 62,
           color: COLORS.darkGreen,
           fontFamily: FONT,
           fontWeight: 800,
@@ -54,7 +54,7 @@ export const Scene03: React.FC = () => (
           alignItems: 'center',
         }}
       >
-        <div style={{ fontSize: 30, color: COLORS.text, fontFamily: FONT, lineHeight: 1.6 }}>
+        <div style={{ fontSize: 36, color: COLORS.text, fontFamily: FONT, lineHeight: 1.6 }}>
           <span style={{ color: COLORS.textLight, fontWeight: 500 }}>우리가 흔히 하는 실수: </span>
           <span style={{ color: COLORS.red, fontWeight: 700 }}>약을 음식처럼 먹거나</span>
           <span style={{ color: COLORS.textLight }}> / </span>

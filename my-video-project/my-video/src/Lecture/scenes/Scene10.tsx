@@ -25,7 +25,7 @@ export const Scene10: React.FC = () => {
   return (
     <SlideLayout avatarImage="레팬5.png">
       <FadeText delay={0} duration={18}>
-        <div style={{ fontSize: 34, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, marginBottom: 4 }}>
+        <div style={{ fontSize: 40, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, marginBottom: 4 }}>
           과잉 섭취 사례
         </div>
       </FadeText>
@@ -52,12 +52,12 @@ export const Scene10: React.FC = () => {
               transform: `translateY(${ty}px)`,
             }}
           >
-            <span style={{ fontSize: 44 }}>{c.emoji}</span>
+            <span style={{ fontSize: 52 }}>{c.emoji}</span>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 32, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>
+              <div style={{ fontSize: 38, fontFamily: FONT, fontWeight: 700, color: COLORS.text }}>
                 {c.title}
               </div>
-              <div style={{ fontSize: 28, fontFamily: FONT, color: COLORS.red, fontWeight: 600, marginTop: 8 }}>
+              <div style={{ fontSize: 34, fontFamily: FONT, color: COLORS.red, fontWeight: 600, marginTop: 8 }}>
                 → {c.result}
               </div>
             </div>
@@ -75,7 +75,7 @@ export const Scene10: React.FC = () => {
             textAlign: 'center',
           }}
         >
-          <span style={{ fontSize: 30, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
+          <span style={{ fontSize: 36, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
             과식하거나 즙으로 농축해서 마시면 약처럼 작용합니다
           </span>
         </div>
