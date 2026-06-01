@@ -317,3 +317,14 @@
 2026-05-31 17:34:14.309 - WatchFolderManager started.
 2026-05-31 17:34:14.320 - Startup time: 301254 ms
 2026-05-31 17:34:14.321 - CommandLine: -silent
+2026-06-01 00:39:06.259 - Hotkey unregistered: Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-06-01 00:39:06.261 - Hotkey unregistered: Hotkey: Shift + Print Screen, Description: 화면 녹화 (FFmpeg), Job: ScreenRecorder
+2026-06-01 00:39:06.261 - Hotkey unregistered: Hotkey: Ctrl + Shift + Print Screen, Description: 화면 녹화 (GIF), Job: ScreenRecorderGIF
+2026-06-01 00:39:06.315 - ShareX closing.
+2026-06-01 00:39:06.336 - ApplicationConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-06-01 00:39:06.464 - ApplicationConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-06-01 00:39:06.464 - UploadersConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-06-01 00:39:06.501 - UploadersConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-06-01 00:39:06.502 - HotkeysConfig save started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-06-01 00:39:06.521 - HotkeysConfig save successful: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-06-01 00:39:06.521 - ShareX closed.

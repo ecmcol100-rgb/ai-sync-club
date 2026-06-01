@@ -1,0 +1,31 @@
+﻿2026-06-01 21:59:02.273 - ShareX starting.
+2026-06-01 21:59:02.277 - Version: 20.2
+2026-06-01 21:59:02.277 - Build: Release
+2026-06-01 21:59:02.278 - Command line: "C:\Program Files\ShareX\ShareX.dll" -silent
+2026-06-01 21:59:02.278 - Personal path: C:\Users\Test\OneDrive\AI\클로드코드
+2026-06-01 21:59:02.278 - Personal path detection method: PersonalPath.cfg file (C:\Users\Test\OneDrive\문서\ShareX\PersonalPath.cfg)
+2026-06-01 21:59:02.279 - Operating system: Windows 10 Home (64-bit)
+2026-06-01 21:59:02.281 - .NET version: 9.0.15
+2026-06-01 21:59:02.281 - Running as elevated process: False
+2026-06-01 21:59:02.334 - Flags: SilentRun
+2026-06-01 21:59:02.564 - ApplicationConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-06-01 21:59:04.783 - ApplicationConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\ApplicationConfig.json
+2026-06-01 21:59:05.048 - Avalonia init started.
+2026-06-01 21:59:05.049 - UploadersConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-06-01 21:59:05.281 - UploadersConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\UploadersConfig.json
+2026-06-01 21:59:05.283 - HotkeysConfig load started: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-06-01 21:59:05.329 - HotkeysConfig load finished: C:\Users\Test\OneDrive\AI\클로드코드\HotkeysConfig.json
+2026-06-01 21:59:09.122 - Avalonia init finished.
+2026-06-01 21:59:09.122 - MainForm init started.
+2026-06-01 21:59:11.327 - MainForm init finished.
+2026-06-01 21:59:11.650 - Hotkey registered: Hotkey: Ctrl + Shift + S, Description: 직사각형 영역 촬영, Job: RectangleRegion
+2026-06-01 21:59:11.651 - Unable to register hotkey: Print Screen
+2026-06-01 21:59:11.651 - Hotkey register failed: Hotkey: Print Screen, Description: 전체 화면 촬영, Job: PrintScreen
+2026-06-01 21:59:11.651 - Unable to register hotkey: Alt + Print Screen
+2026-06-01 21:59:11.651 - Hotkey register failed: Hotkey: Alt + Print Screen, Description: 현재 창 촬영, Job: ActiveWindow
+2026-06-01 21:59:11.651 - Hotkey registered: Hotkey: Shift + Print Screen, Description: 화면 녹화 (FFmpeg), Job: ScreenRecorder
+2026-06-01 21:59:11.651 - Hotkey registered: Hotkey: Ctrl + Shift + Print Screen, Description: 화면 녹화 (GIF), Job: ScreenRecorderGIF
+2026-06-01 22:05:32.700 - HotkeyManager started.
+2026-06-01 22:05:32.701 - WatchFolderManager started.
+2026-06-01 22:05:32.724 - Startup time: 393299 ms
+2026-06-01 22:05:32.726 - CommandLine: -silent
