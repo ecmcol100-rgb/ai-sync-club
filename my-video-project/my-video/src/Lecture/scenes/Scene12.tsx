@@ -7,7 +7,7 @@ export const Scene12: React.FC = () => (
   <SlideLayout avatarImage="레팬6.png">
     <FadeText delay={0} duration={18}>
       <div style={{ fontSize: 36, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800 }}>
-        인삼 복용, 언제 맞고 언제 주의할까?
+        수체질의 인삼 복용, 언제 맞고 언제 주의할까?
       </div>
     </FadeText>
 
@@ -57,7 +57,7 @@ export const Scene12: React.FC = () => (
 
     <FadeText delay={68} duration={20}>
       <div style={{ fontSize: 28, color: COLORS.textLight, fontFamily: FONT, lineHeight: 1.6 }}>
-        💡 이유: 위장 기능이 점차 약해질 수 있음
+        💡 이유: 인삼에 의존하다 보면 위장 기능이 점차 약해질 수 있음
       </div>
     </FadeText>
   </SlideLayout>

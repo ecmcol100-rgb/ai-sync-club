@@ -4,7 +4,7 @@ import { FadeText } from '../components/FadeText';
 
 const principles = [
   '체질에 맞는 음식을 골고루, 적절한 양으로',
-  '약성 식재료는 8체질 한의사 진단 후 사용',
+  '약성이 강한 식재료는 8체질 한의사 진단 후 사용',
 ];
 
 /** 장면15 — 결론 (레팬8, 20초) */

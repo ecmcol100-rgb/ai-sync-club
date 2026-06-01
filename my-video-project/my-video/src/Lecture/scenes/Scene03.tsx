@@ -38,19 +38,7 @@ export const Scene03: React.FC = () => (
           whiteSpace: 'nowrap',
         }}
       >
-        음식과 약물은
-      </div>
-      <div
-        style={{
-          fontSize: 52,
-          color: COLORS.darkGreen,
-          fontFamily: FONT,
-          fontWeight: 800,
-          lineHeight: 1.4,
-          whiteSpace: 'nowrap',
-        }}
-      >
-        역할이 다릅니다
+        음식과 약물은 역할이 다릅니다
       </div>
     </FadeText>
 
@@ -66,10 +54,11 @@ export const Scene03: React.FC = () => (
           alignItems: 'center',
         }}
       >
-        <div style={{ fontSize: 34, color: COLORS.text, fontFamily: FONT, lineHeight: 1.6 }}>
-          <span style={{ color: COLORS.topBar, fontWeight: 700 }}>음식처럼 먹는 약</span>
+        <div style={{ fontSize: 30, color: COLORS.text, fontFamily: FONT, lineHeight: 1.6 }}>
+          <span style={{ color: COLORS.textLight, fontWeight: 500 }}>우리가 흔히 하는 실수: </span>
+          <span style={{ color: COLORS.red, fontWeight: 700 }}>약을 음식처럼 먹거나</span>
           <span style={{ color: COLORS.textLight }}> / </span>
-          <span style={{ color: COLORS.blue, fontWeight: 700 }}>약처럼 먹는 음식</span>
+          <span style={{ color: COLORS.blue, fontWeight: 700 }}>음식을 약처럼 먹거나</span>
         </div>
       </div>
     </FadeText>

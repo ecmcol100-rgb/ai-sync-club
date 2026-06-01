@@ -29,7 +29,7 @@ export const Scene08: React.FC = () => (
             휘발유 차 + 휘발유
           </div>
           <div style={{ fontSize: 26, fontFamily: FONT, color: COLORS.topBar, marginTop: 6 }}>
-            연료는 맞습니다 ✅
+            차가 움직입니다 ✅
           </div>
         </div>
       </div>
@@ -70,6 +70,8 @@ export const Scene08: React.FC = () => (
       >
         <span style={{ fontSize: 34, color: COLORS.blue, fontFamily: FONT, fontWeight: 800 }}>
           유익한 음식 ≠ 치료제
+          <br />
+          유익한 음식 = 연료
         </span>
       </div>
     </FadeText>

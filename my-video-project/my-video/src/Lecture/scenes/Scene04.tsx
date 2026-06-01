@@ -42,10 +42,10 @@ export const Scene04: React.FC = () => {
         >
           <div style={{ fontSize: 36, marginBottom: 12 }}>📚 음식</div>
           <div style={{ fontSize: 28, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
-            "필요하면 도와줄게,
+            "숙제할 때 도움이 필요하면 말해줘.
           </div>
           <div style={{ fontSize: 28, color: COLORS.text, fontFamily: FONT, fontWeight: 500, lineHeight: 1.6 }}>
-            연필이나 지우개 필요해?"
+            연필이나 지우개 갖다줄까?"
           </div>
           <div style={{ marginTop: 16, fontSize: 26, color: COLORS.topBar, fontFamily: FONT, fontWeight: 700 }}>
             → 보조 역할

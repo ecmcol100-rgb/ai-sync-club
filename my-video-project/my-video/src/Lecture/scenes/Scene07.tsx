@@ -27,10 +27,7 @@ export const Scene07: React.FC = () => (
 
     <FadeText delay={15} duration={22}>
       <div style={{ fontSize: 52, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
-        유익한 음식의
-      </div>
-      <div style={{ fontSize: 52, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
-        진짜 의미
+        유익한 음식의 진짜 의미
       </div>
     </FadeText>
 
@@ -48,7 +45,7 @@ export const Scene07: React.FC = () => (
       >
         <span style={{ fontSize: 34 }}>❌</span>
         <span style={{ fontSize: 34, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
-          유익한 음식 = 마법의 약?
+          유익한 음식 = 마법의 약?, 많이 먹을수록 좋다?
         </span>
       </div>
     </FadeText>

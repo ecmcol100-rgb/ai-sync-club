@@ -21,7 +21,7 @@ export const Scene14: React.FC = () => (
         }}
       >
         <div style={{ fontSize: 28, fontFamily: FONT, color: COLORS.text, lineHeight: 1.7 }}>
-          홍삼 = 인삼을 <span style={{ color: COLORS.topBar, fontWeight: 700 }}>찌고 말린</span> 가공품
+          홍삼 = 인삼을 <span style={{ color: COLORS.topBar, fontWeight: 700 }}>찌고 말린</span> 가공품, 본질적으로 인삼과 동일
         </div>
         <div style={{ marginTop: 12, display: 'flex', gap: 20, flexWrap: 'wrap' }}>
           {['약성 ↓', '부작용 ↓', '약효 ↓'].map((t) => (
@@ -54,11 +54,14 @@ export const Scene14: React.FC = () => (
           padding: '18px 26px',
         }}
       >
-        <div style={{ fontSize: 28, fontFamily: FONT, color: COLORS.red, fontWeight: 600, lineHeight: 1.7 }}>
+        <div style={{ fontSize: 26, fontFamily: FONT, color: COLORS.red, fontWeight: 600, lineHeight: 1.7 }}>
           ⚠️ 인삼이 안 맞는 5개 체질엔 홍삼도 부적합
         </div>
-        <div style={{ fontSize: 28, fontFamily: FONT, color: COLORS.red, fontWeight: 600, lineHeight: 1.7 }}>
-          ⚠️ 인삼이 맞는 체질도 치료엔 인삼이 더 적합
+        <div style={{ fontSize: 26, fontFamily: FONT, color: COLORS.topBar, fontWeight: 600, lineHeight: 1.7 }}>
+          ⚠️ 인삼이 맞는 3개 체질(수양, 수음, 목양)에는 홍삼도 적합
+        </div>
+        <div style={{ fontSize: 26, fontFamily: FONT, color: COLORS.red, fontWeight: 600, lineHeight: 1.7 }}>
+          ⚠️ 하지만 홍삼이 맞는 체질도 치료엔 인삼이 더 적합
         </div>
       </div>
     </FadeText>

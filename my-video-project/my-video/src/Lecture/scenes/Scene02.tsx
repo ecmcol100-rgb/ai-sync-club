@@ -19,10 +19,10 @@ export const Scene02: React.FC = () => (
           💬 오늘의 질문
         </div>
         <div style={{ fontSize: 40, color: COLORS.text, fontFamily: FONT, fontWeight: 600, lineHeight: 1.6 }}>
-          "수체질에게 인삼이 맞다니까
+          "수체질에게 인삼이 좋으니까
         </div>
         <div style={{ fontSize: 40, color: COLORS.text, fontFamily: FONT, fontWeight: 600, lineHeight: 1.6 }}>
-          인삼을 꾸준히 먹어도 되지 않나요?"
+          인삼을 매일 꾸준히 먹어도 되지 않나요?"
         </div>
       </div>
     </FadeText>

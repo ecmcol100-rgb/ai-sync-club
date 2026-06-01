@@ -76,7 +76,7 @@ export const Scene10: React.FC = () => {
           }}
         >
           <span style={{ fontSize: 30, color: COLORS.red, fontFamily: FONT, fontWeight: 700 }}>
-            즙으로 농축하면 약처럼 작용합니다
+            과식하거나 즙으로 농축해서 마시면 약처럼 작용합니다
           </span>
         </div>
       </FadeText>

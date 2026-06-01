@@ -87,7 +87,7 @@ export const Scene06: React.FC = () => {
             whiteSpace: 'nowrap',
           }}
         >
-          장기 복용 시 약물 의존 주의
+          장기 복용 시 의존성이 생기거나, 몸의 장기 기능이 퇴화할 수 있습니다.
         </div>
       </FadeText>
     </FullLayout>

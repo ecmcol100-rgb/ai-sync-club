@@ -50,7 +50,7 @@ export const Scene09: React.FC = () => {
 
       <FadeText delay={50} duration={20}>
         <div style={{ fontSize: 30, color: COLORS.textLight, fontFamily: FONT, textAlign: 'center' }}>
-          유익한 음식을 더 먹는 것보다 훨씬 중요합니다
+          유익한 음식을 먹는 것보다 훨씬 중요합니다
         </div>
       </FadeText>
     </FullLayout>

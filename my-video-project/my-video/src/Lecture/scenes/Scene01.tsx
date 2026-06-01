@@ -72,7 +72,7 @@ export const Scene01: React.FC = () => {
           </FadeText>
           <FadeText delay={34} duration={18}>
             <div style={{ color: '#A8DFCA', fontSize: 46, fontFamily: FONT, fontWeight: 700, textAlign: 'center', lineHeight: 1.45 }}>
-              매일 먹어도 괜찮을까?
+              매일 먹어도 괜찮을까요?
             </div>
           </FadeText>
         </div>

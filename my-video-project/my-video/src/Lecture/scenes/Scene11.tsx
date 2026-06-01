@@ -27,10 +27,7 @@ export const Scene11: React.FC = () => (
 
     <FadeText delay={15} duration={22}>
       <div style={{ fontSize: 52, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
-        수체질과 인삼,
-      </div>
-      <div style={{ fontSize: 52, color: COLORS.darkGreen, fontFamily: FONT, fontWeight: 800, lineHeight: 1.4, whiteSpace: 'nowrap' }}>
-        그리고 홍삼
+        수체질과 인삼, 그리고 홍삼
       </div>
     </FadeText>
 
