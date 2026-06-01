@@ -67,12 +67,12 @@ export const Scene01: React.FC = () => {
         >
           <FadeText delay={24} duration={18}>
             <div style={{ color: COLORS.white, fontSize: 46, fontFamily: FONT, fontWeight: 700, textAlign: 'center', lineHeight: 1.45 }}>
-              수체질에게 좋다는 인삼·홍삼,
+              수체질에게 좋다는 인삼,
             </div>
           </FadeText>
           <FadeText delay={34} duration={18}>
             <div style={{ color: '#A8DFCA', fontSize: 46, fontFamily: FONT, fontWeight: 700, textAlign: 'center', lineHeight: 1.45 }}>
-              매일 먹어도 괜찮을까요?
+              매일 먹어도 괜찮을까?
             </div>
           </FadeText>
         </div>
