@@ -1,0 +1,24 @@
+{
+  "layout": "center",
+  "intro": {
+    "logo": "images/logo_ecm.png",
+    "title": "8체질의학의 노래",
+    "credit": "권도원 작사·작곡",
+    "duration": 10
+  },
+  "scores": [
+    { "score": "score/score_01.png", "image": "", "start": 10.0, "end": 22.0 },
+    { "score": "score/score_02.png", "image": "", "start": 22.0, "end": 32.1 },
+    { "score": "score/score_03.png", "image": "", "start": 32.1, "end": 42.2 },
+    { "score": "score/score_04.png", "image": "", "start": 42.2, "end": 52.5 },
+    { "score": "score/score_05.png", "image": "", "start": 52.5, "end": 63.0 },
+    { "score": "score/score_06.png", "image": "", "start": 63.0, "end": 73.2 },
+    { "score": "score/score_07.png", "image": "", "start": 73.2, "end": 83.5 },
+    { "score": "score/score_08.png", "image": "", "start": 83.5, "end": 95.0 }
+  ],
+  "outro": {
+    "image": "",
+    "start": 95,
+    "end": 100
+  }
+}

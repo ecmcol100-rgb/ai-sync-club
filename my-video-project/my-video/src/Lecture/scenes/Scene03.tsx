@@ -54,11 +54,28 @@ export const Scene03: React.FC = () => (
           alignItems: 'center',
         }}
       >
-        <div style={{ fontSize: 36, color: COLORS.text, fontFamily: FONT, lineHeight: 1.6 }}>
+        <div style={{ fontSize: 36, color: COLORS.text, fontFamily: FONT, lineHeight: 1.6, whiteSpace: 'nowrap' }}>
           <span style={{ color: COLORS.textLight, fontWeight: 500 }}>우리가 흔히 하는 실수: </span>
           <span style={{ color: COLORS.red, fontWeight: 700 }}>약을 음식처럼 먹거나</span>
           <span style={{ color: COLORS.textLight }}> / </span>
           <span style={{ color: COLORS.blue, fontWeight: 700 }}>음식을 약처럼 먹거나</span>
+        </div>
+      </div>
+    </FadeText>
+
+    {/* 예시 */}
+    <FadeText delay={75} duration={22}>
+      <div
+        style={{
+          backgroundColor: COLORS.cardBg,
+          border: `1.5px solid ${COLORS.cardBorder}`,
+          borderRadius: 12,
+          padding: '16px 28px',
+        }}
+      >
+        <div style={{ fontSize: 36, color: COLORS.textLight, fontFamily: FONT, fontWeight: 500, lineHeight: 1.7 }}>
+          <span style={{ fontWeight: 700, color: COLORS.text }}>예시) </span>
+          생강차를 매일 마시기 / 당근을 갈아서 당근쥬스로 마시기
         </div>
       </div>
     </FadeText>

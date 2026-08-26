@@ -13,29 +13,29 @@ export const COLORS = {
   blueLight: '#E8F0F7',
 } as const;
 
-export const FONT =
-  '"Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "나눔고딕", sans-serif';
+/** 공용 폰트 (src/fonts.ts 에서 Google Fonts로 로드) 재수출 */
+export { FONT } from '../fonts';
 
 /** 각 장면의 프레임 수 (30fps 기준) */
 export const SCENE_DURATIONS: number[] = [
-  300, // 장면1  10초
-  450, // 장면2  15초
-  600, // 장면3  20초
-  750, // 장면4  25초
-  450, // 장면5  15초
-  450, // 장면6  15초
-  600, // 장면7  20초
-  450, // 장면8  15초
-  450, // 장면9  15초
-  600, // 장면10 20초
-  600, // 장면11 20초
-  600, // 장면12 20초
-  450, // 장면13 15초
-  600, // 장면15 20초
-  300, // 장면16 10초
+  210, // 장면1  오프닝           7초
+  480, // 장면2  주제 제시        16초
+  930, // 장면3  Chapter 1      31초
+  600, // 장면4  숙제 비유        20초
+  420, // 장면5  비교표          14초
+  570, // 장면6  약초            19초
+  420, // 장면7  Chapter 2      14초
+  540, // 장면8  휘발유 비유      18초
+  600, // 장면9  핵심            20초
+  870, // 장면10 과식·즙 주의     29초
+  510, // 장면11 Chapter 3      17초
+  870, // 장면12 평상시 주의      29초
+  330, // 장면13 부모-아이 비유   11초
+  930, // 장면14 결론            31초
+  270, // 장면15 엔딩             9초
 ];
 
-export const TOTAL_FRAMES = SCENE_DURATIONS.reduce((a, b) => a + b, 0); // 8250
+export const TOTAL_FRAMES = SCENE_DURATIONS.reduce((a, b) => a + b, 0); // 8550
 
 /** sceneIndex(0-based) 번째 장면의 시작 프레임 */
 export const getSceneStart = (idx: number): number =>
