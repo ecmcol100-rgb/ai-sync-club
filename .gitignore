@@ -5,3 +5,10 @@
 .agent/
 .agents/
 .gemini/
+
+# ----- 예외: 저장소 루트의 슬래시 커맨드는 팀에서 공유한다 -----
+# git은 제외된 디렉터리 안으로 들어가지 않으므로, 루트 .claude/ 를 먼저
+# 되살린 뒤 그 안을 다시 제외하고 commands/ 만 골라 포함시킨다.
+!/.claude/
+/.claude/*
+!/.claude/commands/
