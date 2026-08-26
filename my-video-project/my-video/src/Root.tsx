@@ -12,6 +12,9 @@ import { OrganArrayPreview, organArrayFrames, MOK_ARRAY } from "./EcmOverview/co
 import { SafetyCaptionPreview, SAFETY_PREVIEW_FRAMES } from "./EcmOverview/components/SafetyCaption";
 import { PersonTypoCardPreview, personTypoCardFrames, MOK_YANG_CARD } from "./EcmOverview/components/PersonTypoCard";
 import { ComparisonTablePreview, COMPARISON_PREVIEW_FRAMES } from "./EcmOverview/components/ComparisonTable";
+import { ItemLabelPreview, ITEM_LABEL_PREVIEW_FRAMES } from "./EcmOverview/components/ItemLabel";
+import { Section2bPreview, SECTION2B_PREVIEW_FRAMES } from "./EcmOverview/components/Section2bDiagram";
+import { Section2cPreview, SECTION2C_PREVIEW_FRAMES } from "./EcmOverview/components/Section2cGraphic";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -80,6 +83,32 @@ export const RemotionRoot: React.FC = () => {
         id="OrganArrayTransition"
         component={OrganArrayPreview}
         durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 항목 라벨 + 섹션2 도식 2종 — 단독 검수용 ===== */}
+      <Composition
+        id="ItemLabel"
+        component={ItemLabelPreview}
+        durationInFrames={ITEM_LABEL_PREVIEW_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Section2bDiagram"
+        component={Section2bPreview}
+        durationInFrames={SECTION2B_PREVIEW_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Section2cGraphic"
+        component={Section2cPreview}
+        durationInFrames={SECTION2C_PREVIEW_FRAMES}
         fps={30}
         width={1920}
         height={1080}
