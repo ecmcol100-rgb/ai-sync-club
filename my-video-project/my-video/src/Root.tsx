@@ -11,6 +11,7 @@ import { SongLyrics, calculateSongLyricsMetadata } from "./SongLyrics";
 import { OrganArrayPreview, organArrayFrames, MOK_ARRAY } from "./EcmOverview/components/OrganArrayTransition";
 import { SafetyCaptionPreview, SAFETY_PREVIEW_FRAMES } from "./EcmOverview/components/SafetyCaption";
 import { PersonTypoCardPreview, personTypoCardFrames, MOK_YANG_CARD } from "./EcmOverview/components/PersonTypoCard";
+import { ComparisonTablePreview, COMPARISON_PREVIEW_FRAMES } from "./EcmOverview/components/ComparisonTable";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -79,6 +80,16 @@ export const RemotionRoot: React.FC = () => {
         id="OrganArrayTransition"
         component={OrganArrayPreview}
         durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 9항목 대조표 (섹션 4-h) — 단독 검수용 ===== */}
+      <Composition
+        id="ComparisonTable"
+        component={ComparisonTablePreview}
+        durationInFrames={COMPARISON_PREVIEW_FRAMES}
         fps={30}
         width={1920}
         height={1080}
