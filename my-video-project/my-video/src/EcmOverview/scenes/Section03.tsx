@@ -1,5 +1,5 @@
 import { AbsoluteFill, Img, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
-import { COLORS, CREDIT, FONT, FPS, IMAGES, ecm } from '../constants';
+import { COLORS, CONSTITUTION_ACCENTS, CREDIT, FONT, FPS, IMAGES, ecm } from '../constants';
 import { SourceCaptions } from '../components/SourceCaptions';
 import { SectionBadge } from '../components/SectionBadge';
 import { Subtitles, type Cue } from '../components/Subtitles';
@@ -37,7 +37,7 @@ const CONSTITUTIONS: Constitution[] = [
     ko: '금양체질',
     organ: '폐가 강한 체질',
     desc: '창의력으로 새 기원을 여는 이상가형\n육식을 안 하는 것이 중요',
-    accent: '#52B788',
+    accent: CONSTITUTION_ACCENTS.금양,
     photos: [
       { src: ecm('kwon_4.jpg'), name: '권도원', credit: CREDIT.ecmed },
       { src: ecm('rhee_syngman.gif'), name: '이승만', credit: CREDIT.archive },
@@ -51,7 +51,7 @@ const CONSTITUTIONS: Constitution[] = [
     ko: '금음체질',
     organ: '대장이 강한 체질',
     desc: '세상을 꿰뚫어 보는 직관력과 야심\n위대한 정치가 중에 많음',
-    accent: '#457B9D',
+    accent: CONSTITUTION_ACCENTS.금음,
     photos: [
       { src: ecm('park_chunghee.jpg'), name: '박정희', credit: CREDIT.archive },
       { src: ecm('roh_moohyun.jpg'), name: '노무현', credit: CREDIT.archive },
@@ -65,7 +65,7 @@ const CONSTITUTIONS: Constitution[] = [
     ko: '토양체질',
     organ: '췌장이 강한 체질',
     desc: "부지런한 '빨리빨리' 체질\n성직자, 예술가 중에 많음",
-    accent: '#D4A24E',
+    accent: CONSTITUTION_ACCENTS.토양,
     // v3: 타이포/실루엣 → public 폴더 사진 사용. credit '' → 사진 출처 표기 없음(스펙 확정)
     photos: [{ src: IMAGES.michaelJackson, name: '마이클 잭슨', credit: '' }],
     silhouettes: [],
@@ -78,7 +78,7 @@ const CONSTITUTIONS: Constitution[] = [
     ko: '토음체질',
     organ: '위가 강한 체질',
     desc: '1년에 한 번 볼까 말까 한 희귀 체질',
-    accent: '#B07BC4',
+    accent: CONSTITUTION_ACCENTS.토음,
     photos: [],
     silhouettes: [],
     rare: true,
@@ -91,7 +91,7 @@ const CONSTITUTIONS: Constitution[] = [
     organ: '간이 강한 체질',
     // ★v5: "과묵하고 덕이 있어 보이는 체질" 복원
     desc: '과묵하고 덕이 있어 보이는 체질\n말 없이 신망을 얻어 지도자, 기업가 중에 많음',
-    accent: '#7F9E5E',
+    accent: CONSTITUTION_ACCENTS.목양,
     // ★v5: 이병철 회장 삭제 (내레이션·실루엣·근거 모두 제거)
     photos: [{ src: ecm('chun_doohwan.jpg'), name: '전두환', credit: CREDIT.archive }],
     silhouettes: [],
@@ -103,7 +103,7 @@ const CONSTITUTIONS: Constitution[] = [
     ko: '목음체질',
     organ: '담낭이 강한 체질',
     desc: '던지고 차는 운동에 탁월하고 감성적인 체질\n박세리·박찬호 선수도 이 체질로 추정',
-    accent: '#6FB3A8',
+    accent: CONSTITUTION_ACCENTS.목음,
     photos: [{ src: ecm('kim_youngsam.jpg'), name: '김영삼', credit: CREDIT.archive }],
     silhouettes: [],
     source: '출처: 권도원, 「8체질을 압시다」, 빛과소금 1994년 8월호',
@@ -114,7 +114,7 @@ const CONSTITUTIONS: Constitution[] = [
     ko: '수양체질',
     organ: '신장이 강한 체질',
     desc: "세심하고 정확한 정리의 달인\n'돌다리도 두드려보고 건너는' 신중한 성격",
-    accent: '#5B8DBE',
+    accent: CONSTITUTION_ACCENTS.수양,
     photos: [{ src: ecm('kim_daejung.jpg'), name: '김대중', credit: CREDIT.archive }],
     silhouettes: [],
     source: '출처: 빛과소금 94-8월호, 96-3월호',
@@ -126,7 +126,7 @@ const CONSTITUTIONS: Constitution[] = [
     organ: '방광이 강한 체질',
     // ★v5: "소식이 건강법인 체질" 복원
     desc: '소식이 건강법인 체질\n겉은 부드럽지만 속은\n냉철·강단 있는 외유내강형',
-    accent: '#8FA8C9',
+    accent: CONSTITUTION_ACCENTS.수음,
     photos: [{ src: ecm('churchill.jpg'), name: '윈스턴 처칠', credit: CREDIT.wiki }],
     silhouettes: [],
     estimate: true,

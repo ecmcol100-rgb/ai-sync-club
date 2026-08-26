@@ -10,6 +10,7 @@ import { TOTAL_FRAMES as ECM_TOTAL } from "./EcmOverview/constants";
 import { SongLyrics, calculateSongLyricsMetadata } from "./SongLyrics";
 import { OrganArrayPreview, organArrayFrames, MOK_ARRAY } from "./EcmOverview/components/OrganArrayTransition";
 import { SafetyCaptionPreview, SAFETY_PREVIEW_FRAMES } from "./EcmOverview/components/SafetyCaption";
+import { PersonTypoCardPreview, personTypoCardFrames, MOK_YANG_CARD } from "./EcmOverview/components/PersonTypoCard";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -78,6 +79,16 @@ export const RemotionRoot: React.FC = () => {
         id="OrganArrayTransition"
         component={OrganArrayPreview}
         durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 인물 타이포 카드 (섹션 3-g/4-g) — 단독 검수용 ===== */}
+      <Composition
+        id="PersonTypoCard"
+        component={PersonTypoCardPreview}
+        durationInFrames={personTypoCardFrames(MOK_YANG_CARD, 30)}
         fps={30}
         width={1920}
         height={1080}

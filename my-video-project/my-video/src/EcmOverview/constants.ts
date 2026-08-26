@@ -110,6 +110,21 @@ export const IMAGES = {
   michaelJackson: ecm('Michael_Jackson.jpg'),
 } as const;
 
+/**
+ * 체질 시그니처 컬러 — 개괄편 섹션3 체질 컷과 동일 톤 (시리즈 공통).
+ * 인물 카드 등 체질별 강조색이 필요한 곳은 여기서 가져다 쓴다.
+ */
+export const CONSTITUTION_ACCENTS = {
+  금양: '#52B788',
+  금음: '#457B9D',
+  토양: '#D4A24E',
+  토음: '#B07BC4',
+  목양: '#7F9E5E',
+  목음: '#6FB3A8',
+  수양: '#5B8DBE',
+  수음: '#8FA8C9',
+} as const;
+
 /** 사진 출처 표기 문구 */
 export const CREDIT = {
   ecmed: '사진 출처: ecmed.org',
