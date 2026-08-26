@@ -46,9 +46,9 @@ const mokProps: Props = {
   constitutionB: '목음체질',
   cells: [
     { id: 'liver',    labelA: '간·담낭',   labelB: '담낭·간'   },
-    { id: 'kidney',   labelA: '신장·방광', labelB: '신장·방광' },
-    { id: 'heart',    labelA: '심장·소장', labelB: '심장·소장' },
-    { id: 'pancreas', labelA: '췌장·위장', labelB: '췌장·위장' },
+    { id: 'kidney',   labelA: '신장·방광', labelB: '방광·신장' },
+    { id: 'heart',    labelA: '심장·소장', labelB: '소장·심장' },
+    { id: 'pancreas', labelA: '췌장·위장', labelB: '위장·췌장' },
     { id: 'lung',     labelA: '폐·대장',   labelB: '대장·폐'   },
   ],
   orderB: ['liver', 'heart', 'pancreas', 'kidney', 'lung'],
@@ -58,7 +58,7 @@ const mokProps: Props = {
 };
 ```
 
-**주의**: 1번과 5번 칸은 이동하지 않지만 **표기가 바뀝니다**(간·담낭 → 담낭·간, 폐·대장 → 대장·폐). 체질 A는 장(臟)이, 체질 B는 부(腑)가 앞에 오기 때문입니다. 이동과 표기 전환을 별개로 처리하십시오.
+**주의**: 체질 A는 장(臟)이 주도하므로 다섯 칸 모두 장이 앞에, 체질 B는 부(腑)가 주도하므로 **다섯 칸 모두 부가 앞에** 옵니다. 따라서 1번·5번 칸은 이동하지 않아도 표기가 바뀝니다(간·담낭 → 담낭·간, 폐·대장 → 대장·폐). 이동과 표기 전환을 별개로 처리하십시오.
 
 ---
 

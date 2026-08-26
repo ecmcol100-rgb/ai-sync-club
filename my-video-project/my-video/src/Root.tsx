@@ -8,6 +8,7 @@ import { IntroOutro, Intro, Outro, INTRO_FRAMES, OUTRO_FRAMES, TOTAL_FRAMES as I
 import { EcmOverview } from "./EcmOverview";
 import { TOTAL_FRAMES as ECM_TOTAL } from "./EcmOverview/constants";
 import { SongLyrics, calculateSongLyricsMetadata } from "./SongLyrics";
+import { OrganArrayPreview, organArrayFrames, MOK_ARRAY } from "./EcmOverview/components/OrganArrayTransition";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -66,6 +67,16 @@ export const RemotionRoot: React.FC = () => {
         id="EcmOverview"
         component={EcmOverview}
         durationInFrames={ECM_TOTAL}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 장기 강약 배열 전환 (섹션 2-a) — 단독 검수용 ===== */}
+      <Composition
+        id="OrganArrayTransition"
+        component={OrganArrayPreview}
+        durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
         fps={30}
         width={1920}
         height={1080}
