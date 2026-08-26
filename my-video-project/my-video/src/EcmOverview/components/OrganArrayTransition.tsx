@@ -81,8 +81,13 @@ const RADIUS = Math.round(8 * SCALE);
  * 아래로 가는 칸이 지나는 0.5초 동안 숫자가 잠시 가려지는 편이 낫다 —
  * 가리는 대상이 다른 카드가 아니라 정적인 참조 숫자이고, 사양서가 검증했다고
  * 밝힌 프로토타입 값(카드 높이 56 / 이동 폭 52)에서도 같은 겹침이 생긴다.
+ *
+ * 전체 세로 범위: 안전 자막 슬롯(SafetyCaption)과 같은 화면에 놓여도
+ * 겹치지 않도록, 아래로 들린 카드의 최하단까지 포함한 다이어그램 전체
+ * 발자국이 본문 한계선 CONTENT_MAX_Y(constants.ts, y=686) 위에서 끝난다.
+ * (TITLE_TOP=150 기준: 하강 카드 최하단 678, 캡션 하단 656)
  */
-const TITLE_TOP = 250;
+const TITLE_TOP = 150;
 const TITLE_H = 88;
 /** 행 위쪽에 LIFT + 여백을 확보한 위치 */
 const ROW_TOP = TITLE_TOP + TITLE_H + 24 + LIFT;

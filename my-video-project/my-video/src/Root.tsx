@@ -9,6 +9,7 @@ import { EcmOverview } from "./EcmOverview";
 import { TOTAL_FRAMES as ECM_TOTAL } from "./EcmOverview/constants";
 import { SongLyrics, calculateSongLyricsMetadata } from "./SongLyrics";
 import { OrganArrayPreview, organArrayFrames, MOK_ARRAY } from "./EcmOverview/components/OrganArrayTransition";
+import { SafetyCaptionPreview, SAFETY_PREVIEW_FRAMES } from "./EcmOverview/components/SafetyCaption";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -77,6 +78,16 @@ export const RemotionRoot: React.FC = () => {
         id="OrganArrayTransition"
         component={OrganArrayPreview}
         durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 안전·고지 자막 4종 — 단독 검수용 ===== */}
+      <Composition
+        id="SafetyCaption"
+        component={SafetyCaptionPreview}
+        durationInFrames={SAFETY_PREVIEW_FRAMES}
         fps={30}
         width={1920}
         height={1080}

@@ -57,6 +57,12 @@ export const COLORS = {
   greenPale: '#A8DFCA',
   gold: '#D4A24E',
   red: '#E63946',
+  /**
+   * 안전 자막 경고 전용 색 (SafetyCaption `medical`).
+   * 본문 그래픽의 red(#E63946)와 구분되는 밝은 경고색 — 어두운 배경에서
+   * 대비가 더 높아 "가장 눈에 띄어야 한다"는 사양서 요구를 만족한다.
+   */
+  warning: '#FF6B6B',
   blue: '#457B9D',
   text: '#F4F4EF',
   textDim: '#B9C4BE',
@@ -66,6 +72,19 @@ export const COLORS = {
 
 /** 공용 폰트 (src/fonts.ts 에서 Google Fonts로 로드) 재수출 */
 export { FONT } from '../fonts';
+
+/**
+ * ★ 본문 컴포넌트의 세로 발자국 한계(px, 1080p 기준).
+ *
+ * 화면 y ≥ 686 은 자막이 예약한 영역이다 — 안전·고지 자막 고정 슬롯
+ * (SafetyCaption SLOT: career/addiction 686~742, medical 762~842,
+ * disclaimer 862~910)과 자막 안전 영역(920~, 내레이션 전용).
+ *
+ * 다이어그램 등 새 본문 컴포넌트는 애니메이션 최대 이동 범위까지 포함한
+ * 전체 발자국이 이 선 위(y < CONTENT_MAX_Y)에서 끝나야 한다.
+ * 적용 예: OrganArrayTransition (하강 카드 최하단 678).
+ */
+export const CONTENT_MAX_Y = 686;
 
 /** public/images/ecm 기준 이미지 경로 헬퍼 */
 export const ecm = (file: string): string => `images/ecm/${file}`;
