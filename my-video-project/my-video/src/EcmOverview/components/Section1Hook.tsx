@@ -277,6 +277,7 @@ export const Section1Hook: React.FC<Section1HookProps> = ({
           <div style={{ color: COLORS.textDim, fontFamily: FONT, fontSize: 32, fontWeight: 600 }}>
             두 사람은 같은 체질
           </div>
+          {/* 본문 연출 내 언급 — 칩은 제목급 4곳 한정. 확정 색 글자(목양=하양) */}
           <div
             style={{
               marginTop: 10,

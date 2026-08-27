@@ -19,6 +19,12 @@ import { Section1HookPreview, SECTION1_HOOK_PREVIEW_FRAMES } from "./EcmOverview
 import { ItemPanelPreview, ITEM_PANEL_PREVIEW_FRAMES } from "./EcmOverview/components/ItemPanel";
 import { BloodPressurePanelPreview, BP_PREVIEW_FRAMES } from "./EcmOverview/components/BloodPressurePanel";
 import { SelfDiagnosisWarningPreview, SELF_DIAGNOSIS_PREVIEW_FRAMES } from "./EcmOverview/components/SelfDiagnosisWarning";
+import { EpisodeTitleCardPreview, EPISODE_TITLE_PREVIEW_FRAMES } from "./EcmOverview/components/EpisodeTitleCard";
+import { ConstitutionTitleCardPreview, CONSTITUTION_TITLE_PREVIEW_FRAMES } from "./EcmOverview/components/ConstitutionTitleCard";
+import { CarnivoreColonCutPreview, CARNIVORE_PREVIEW_FRAMES, FoodListPanelPreview, FOODLIST_PREVIEW_FRAMES } from "./EcmOverview/components/Section2Cutaways";
+import { EmphasisCaptionPreview, EMPHASIS_PREVIEW_FRAMES } from "./EcmOverview/components/EmphasisCaption";
+import { ClosingScenePreview, CLOSING_PREVIEW_FRAMES } from "./EcmOverview/components/ClosingScene";
+import { ConstitutionColorSheet, COLOR_SHEET_FRAMES } from "./EcmOverview/components/ConstitutionName";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -91,6 +97,17 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+
+      {/* ===== 체질명 확정 색 확인용 시트 ===== */}
+      <Composition id="ConstitutionColors" component={ConstitutionColorSheet} durationInFrames={COLOR_SHEET_FRAMES} fps={30} width={1920} height={1080} />
+
+      {/* ===== 편 타이틀·타이틀 카드·보조 컷·강조 자막·클로징 — 단독 검수용 ===== */}
+      <Composition id="EpisodeTitleCard" component={EpisodeTitleCardPreview} durationInFrames={EPISODE_TITLE_PREVIEW_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="ConstitutionTitleCard" component={ConstitutionTitleCardPreview} durationInFrames={CONSTITUTION_TITLE_PREVIEW_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="CarnivoreColonCut" component={CarnivoreColonCutPreview} durationInFrames={CARNIVORE_PREVIEW_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="FoodListPanel" component={FoodListPanelPreview} durationInFrames={FOODLIST_PREVIEW_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="EmphasisCaption" component={EmphasisCaptionPreview} durationInFrames={EMPHASIS_PREVIEW_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="ClosingScene" component={ClosingScenePreview} durationInFrames={CLOSING_PREVIEW_FRAMES} fps={30} width={1920} height={1080} />
 
       {/* ===== 자가진단 경계 (섹션 5) — 단독 검수용 ===== */}
       <Composition

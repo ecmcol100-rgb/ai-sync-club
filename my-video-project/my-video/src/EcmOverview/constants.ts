@@ -111,19 +111,52 @@ export const IMAGES = {
 } as const;
 
 /**
- * 체질 시그니처 컬러 — 개괄편 섹션3 체질 컷과 동일 톤 (시리즈 공통).
- * 인물 카드 등 체질별 강조색이 필요한 곳은 여기서 가져다 쓴다.
+ * 체질 시그니처 컬러 — 원장님 확정 8색 (시리즈 공통).
+ * 목양 하양 / 목음 붉은색 / 금양 초록 / 금음 노랑 / 토양 검정 / 토음 청색
+ * / 수양 진한 주황 / 수음 연한 주황.
+ * 제목급 체질명 표기는 이 색을 배경으로 한 칩(CONSTITUTION_TITLE_COLORS +
+ * ConstitutionName)으로 그린다. 본문 안의 체질명은 기본 텍스트로 둔다 —
+ * 칩이 남발되면 강조 기능이 사라진다.
+ * (개괄영상 Section03의 체질 컷은 확정 v5 렌더 보존을 위해 자체 톤을 쓴다)
  */
 export const CONSTITUTION_ACCENTS = {
+  목양: '#FFFFFF',
+  목음: '#E63946',
   금양: '#52B788',
-  금음: '#457B9D',
-  토양: '#D4A24E',
-  토음: '#B07BC4',
-  목양: '#7F9E5E',
-  목음: '#6FB3A8',
-  수양: '#5B8DBE',
-  수음: '#8FA8C9',
+  // 금음은 순수한 노랑 — gold(#D4A24E)로 하면 수음(연한 주황)과 겹쳐 보임
+  금음: '#EFC93B',
+  토양: '#0B0F0D',
+  토음: '#457B9D',
+  수양: '#D9731F',
+  수음: '#F2B279',
 } as const;
+
+/**
+ * 체질명 '제목 표기' 전용 색 — 원장님 확정.
+ * 목양 하양 / 목음 붉은색 / 금양 초록 / 금음 노랑 / 토양 검정 / 토음 청색
+ * / 수양 진한 주황 / 수음 연한 주황.
+ *
+ * 칩 적용 범위(원장님 확정): EpisodeTitleCard · ConstitutionTitleCard ·
+ * ComparisonTable 헤더 · PersonTypoCard 체질명 — 제목급 언급만.
+ * 본문 안의 체질명은 기본 텍스트 — 칩이 남발되면 강조 기능이 사라진다.
+ *
+ * 전 체질을 칩(배경+글자) 형태로 통일한다. 목양(하양)·토양(검정)은
+ * 글자색으로는 배경에 묻히거나 기본 텍스트와 구분되지 않아 칩이 필수인데,
+ * 두 체질만 칩이면 쌍으로 나란히 설 때(편 타이틀 등) 형식이 어긋나므로
+ * 여덟 체질 모두 같은 칩 형식으로 맞춘다. 렌더는 ConstitutionName 컴포넌트.
+ */
+export const CONSTITUTION_TITLE_COLORS = {
+  목양: { bg: CONSTITUTION_ACCENTS.목양, fg: '#14261F' },
+  목음: { bg: CONSTITUTION_ACCENTS.목음, fg: '#FFFFFF' },
+  금양: { bg: CONSTITUTION_ACCENTS.금양, fg: '#0E1A16' },
+  금음: { bg: CONSTITUTION_ACCENTS.금음, fg: '#0E1A16' },
+  토양: { bg: CONSTITUTION_ACCENTS.토양, fg: '#FFFFFF', border: 'rgba(255,255,255,0.45)' },
+  토음: { bg: CONSTITUTION_ACCENTS.토음, fg: '#FFFFFF' },
+  수양: { bg: CONSTITUTION_ACCENTS.수양, fg: '#FFFFFF' },
+  수음: { bg: CONSTITUTION_ACCENTS.수음, fg: '#0E1A16' },
+} as const;
+
+export type ConstitutionKey = keyof typeof CONSTITUTION_TITLE_COLORS;
 
 /** 사진 출처 표기 문구 */
 export const CREDIT = {

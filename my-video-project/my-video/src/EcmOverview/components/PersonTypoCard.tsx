@@ -1,5 +1,6 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { COLORS, CONSTITUTION_ACCENTS, CONTENT_MAX_Y, FONT } from '../constants';
+import { ConstitutionName } from './ConstitutionName';
 
 export interface Person {
   name: string;
@@ -34,7 +35,7 @@ export interface PersonTypoCardProps {
  *   목양 liver(간) / 목음 gallbladder(담낭) / 수양 kidney(신장) / 수음 bladder(방광)
  * 등록되지 않은 키는 저채도 글로우 배경으로 대체된다.
  */
-const ORGAN_SILHOUETTES: Record<string, { viewBox: string; paths: string[] }> = {
+export const ORGAN_SILHOUETTES: Record<string, { viewBox: string; paths: string[] }> = {
   /** 간 — 오른엽이 두툼하고 오른쪽 끝으로 갈수록 얇아지는 쐐기꼴.
    *  중앙~하단 배를 깊게 그려서(뷰박스 세로의 ~95%) 세로로 깔았을 때
    *  아래쪽 인물 행까지 실루엣 안에 들어온다 */
@@ -152,9 +153,8 @@ export const PersonTypoCard: React.FC<PersonTypoCardProps> = ({
 
       {/* [상단] 체질명 고정 노출 */}
       <div style={{ position: 'absolute', top: 132, left: 0, right: 0, textAlign: 'center', opacity: headIn }}>
-        <span style={{ color: COLORS.text, fontFamily: FONT, fontSize: 58, fontWeight: 800 }}>
-          {constitution}
-        </span>
+        {/* 체질명 — 확정 색 칩 */}
+        <ConstitutionName name={constitution} fontSize={54} />
         <span style={{ color: COLORS.textDim, fontFamily: FONT, fontSize: 30, fontWeight: 600, marginLeft: 16 }}>
           ({constitutionSub})
         </span>

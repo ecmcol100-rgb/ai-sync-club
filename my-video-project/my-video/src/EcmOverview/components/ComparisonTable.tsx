@@ -2,6 +2,7 @@ import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion';
 import { COLORS, CONSTITUTION_ACCENTS, CONTENT_MAX_Y, FONT } from '../constants';
 import { SourceCaptions } from './SourceCaptions';
 import { SafetyCaption } from './SafetyCaption';
+import { ConstitutionName } from './ConstitutionName';
 
 export interface ComparisonRow {
   label: string;
@@ -120,9 +121,8 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
         borderTop: `4px solid ${accent}`,
       }}
     >
-      <div style={{ color: COLORS.text, fontFamily: FONT, fontSize: 32, fontWeight: 800, lineHeight: 1.15 }}>
-        {title}
-      </div>
+      {/* 체질명 — 확정 색 칩 (밴드 틴트·상단 바의 시그니처색은 그래픽으로 유지) */}
+      <ConstitutionName name={title} fontSize={28} />
       <div style={{ color: COLORS.textDim, fontFamily: FONT, fontSize: 19, fontWeight: 600 }}>{sub}</div>
     </div>
   );

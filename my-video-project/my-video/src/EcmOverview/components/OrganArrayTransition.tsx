@@ -208,6 +208,7 @@ export const OrganArrayTransition: React.FC<OrganArrayTransitionProps> = ({
               textShadow: '0 2px 12px rgba(0,0,0,0.5)',
             }}
           >
+            {/* 도식 내부 언급 — 칩은 제목급 4곳 한정, 여기는 기본 텍스트 */}
             {n.name}
           </div>
         ))}

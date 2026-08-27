@@ -170,14 +170,16 @@ export const ItemPanel: React.FC<ItemPanelProps> = ({
                     width: 16,
                     height: 16,
                     borderRadius: 8,
-                    backgroundColor: p.emphasis ? accentColor : COLORS.textDim,
+                    // 강조는 시리즈 강조 관례색(gold) — 확정 체질색 중 하양(목양)은
+                    // 본문 텍스트와 구분되지 않아 강조색으로 쓸 수 없다
+                    backgroundColor: p.emphasis ? COLORS.gold : COLORS.textDim,
                     flexShrink: 0,
                     alignSelf: 'center',
                   }}
                 />
                 <span
                   style={{
-                    color: p.emphasis ? accentColor : COLORS.text,
+                    color: p.emphasis ? COLORS.gold : COLORS.text,
                     fontFamily: FONT,
                     fontSize: p.emphasis ? tier.emphasis : tier.point,
                     fontWeight: p.emphasis ? 800 : 600,
