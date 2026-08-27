@@ -15,6 +15,8 @@ import { ComparisonTablePreview, COMPARISON_PREVIEW_FRAMES } from "./EcmOverview
 import { ItemLabelPreview, ITEM_LABEL_PREVIEW_FRAMES } from "./EcmOverview/components/ItemLabel";
 import { Section2bPreview, SECTION2B_PREVIEW_FRAMES } from "./EcmOverview/components/Section2bDiagram";
 import { Section2cPreview, SECTION2C_PREVIEW_FRAMES } from "./EcmOverview/components/Section2cGraphic";
+import { Section1HookPreview, SECTION1_HOOK_PREVIEW_FRAMES } from "./EcmOverview/components/Section1Hook";
+import { ItemPanelPreview, ITEM_PANEL_PREVIEW_FRAMES } from "./EcmOverview/components/ItemPanel";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -83,6 +85,26 @@ export const RemotionRoot: React.FC = () => {
         id="OrganArrayTransition"
         component={OrganArrayPreview}
         durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 항목 패널 템플릿 (3-c/4-c 대칭 검수) ===== */}
+      <Composition
+        id="ItemPanel"
+        component={ItemPanelPreview}
+        durationInFrames={ITEM_PANEL_PREVIEW_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 섹션1 후킹 (채식의 역설 + 항목 예고) — 단독 검수용 ===== */}
+      <Composition
+        id="Section1Hook"
+        component={Section1HookPreview}
+        durationInFrames={SECTION1_HOOK_PREVIEW_FRAMES}
         fps={30}
         width={1920}
         height={1080}
