@@ -168,7 +168,7 @@ export const OrganArrayTransition: React.FC<OrganArrayTransitionProps> = ({
   fixedCells,
   liftDown,
   caption,
-  source = '출처: 생기능의학 교재(2008) / 「8체질의학론 개요」(2003)',
+  source = '출처: 생기능의학 교재(2008) / 8체질의학론 개요(2003)',
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

@@ -46,7 +46,7 @@ export const BloodPressurePanel: React.FC<BloodPressurePanelProps> = ({
   evidenceNote,
   modernView,
   stageStartsSec = [0, 3.5, 7],
-  source = '출처: 권도원, 「8체질을 압시다」, 빛과소금 1994년 8월호 / 미래한국 2009',
+  source = '출처: 빛과소금 94-8월호 / 미래한국 2009',
   medicalRanges,
 }) => {
   const frame = useCurrentFrame();

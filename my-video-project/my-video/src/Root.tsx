@@ -18,6 +18,7 @@ import { Section2cPreview, SECTION2C_PREVIEW_FRAMES } from "./EcmOverview/compon
 import { Section1HookPreview, SECTION1_HOOK_PREVIEW_FRAMES } from "./EcmOverview/components/Section1Hook";
 import { ItemPanelPreview, ITEM_PANEL_PREVIEW_FRAMES } from "./EcmOverview/components/ItemPanel";
 import { BloodPressurePanelPreview, BP_PREVIEW_FRAMES } from "./EcmOverview/components/BloodPressurePanel";
+import { SelfDiagnosisWarningPreview, SELF_DIAGNOSIS_PREVIEW_FRAMES } from "./EcmOverview/components/SelfDiagnosisWarning";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -86,6 +87,16 @@ export const RemotionRoot: React.FC = () => {
         id="OrganArrayTransition"
         component={OrganArrayPreview}
         durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 자가진단 경계 (섹션 5) — 단독 검수용 ===== */}
+      <Composition
+        id="SelfDiagnosisWarning"
+        component={SelfDiagnosisWarningPreview}
+        durationInFrames={SELF_DIAGNOSIS_PREVIEW_FRAMES}
         fps={30}
         width={1920}
         height={1080}

@@ -104,7 +104,7 @@ const ArrowLine: React.FC<{
  */
 export const Section2bDiagram: React.FC<Section2bProps> = ({
   stageStartsSec = [0, 3.5, 6.5, 10],
-  source = '출처: 권도원, 「중환자와 채식」, 빛과소금 1994년 5월호',
+  source = '출처: 빛과소금 94-5월호',
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
