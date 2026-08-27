@@ -25,6 +25,7 @@ import { CarnivoreColonCutPreview, CARNIVORE_PREVIEW_FRAMES, FoodListPanelPrevie
 import { EmphasisCaptionPreview, EMPHASIS_PREVIEW_FRAMES } from "./EcmOverview/components/EmphasisCaption";
 import { ClosingScenePreview, CLOSING_PREVIEW_FRAMES } from "./EcmOverview/components/ClosingScene";
 import { ConstitutionColorSheet, COLOR_SHEET_FRAMES } from "./EcmOverview/components/ConstitutionName";
+import { MokEpisode, MOK_EPISODE_FRAMES } from "./MokEpisode";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -97,6 +98,9 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+
+      {/* ===== 목양·목음편 본체 (8체질 기본 ①, 11:07) ===== */}
+      <Composition id="MokEpisode" component={MokEpisode} durationInFrames={MOK_EPISODE_FRAMES} fps={30} width={1920} height={1080} />
 
       {/* ===== 체질명 확정 색 확인용 시트 ===== */}
       <Composition id="ConstitutionColors" component={ConstitutionColorSheet} durationInFrames={COLOR_SHEET_FRAMES} fps={30} width={1920} height={1080} />
