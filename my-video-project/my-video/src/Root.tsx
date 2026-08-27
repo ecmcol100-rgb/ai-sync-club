@@ -17,6 +17,7 @@ import { Section2bPreview, SECTION2B_PREVIEW_FRAMES } from "./EcmOverview/compon
 import { Section2cPreview, SECTION2C_PREVIEW_FRAMES } from "./EcmOverview/components/Section2cGraphic";
 import { Section1HookPreview, SECTION1_HOOK_PREVIEW_FRAMES } from "./EcmOverview/components/Section1Hook";
 import { ItemPanelPreview, ITEM_PANEL_PREVIEW_FRAMES } from "./EcmOverview/components/ItemPanel";
+import { BloodPressurePanelPreview, BP_PREVIEW_FRAMES } from "./EcmOverview/components/BloodPressurePanel";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -85,6 +86,16 @@ export const RemotionRoot: React.FC = () => {
         id="OrganArrayTransition"
         component={OrganArrayPreview}
         durationInFrames={organArrayFrames(MOK_ARRAY, 30)}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ===== 혈압 문단 (3-f 내부) — medical·출처 상향 합성 검수 ===== */}
+      <Composition
+        id="BloodPressurePanel"
+        component={BloodPressurePanelPreview}
+        durationInFrames={BP_PREVIEW_FRAMES}
         fps={30}
         width={1920}
         height={1080}
