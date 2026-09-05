@@ -1,7 +1,9 @@
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
-import { COLORS, FONT } from '../constants';
+import { COLORS, CONSTITUTION_ACCENTS, FONT } from '../constants';
+import { ItemLabel } from './ItemLabel';
 import { SafetyCaption } from './SafetyCaption';
-import { SourceCaptions, type RaisedRange } from './SourceCaptions';
+import { SourceCaptions } from './SourceCaptions';
+import { Subtitles } from './Subtitles';
 
 export interface BloodPressurePanelProps {
   /** ① 8체질의학의 관점 — 시각적으로 강조하지 않는다 */
@@ -14,11 +16,6 @@ export interface BloodPressurePanelProps {
   stageStartsSec?: [number, number, number];
   /** 화면 출처 자막 */
   source?: string;
-  /**
-   * medical 안전 자막이 떠 있는 구간 — SourceCaptions raisedRanges로
-   * 전달되어 출처 자막이 medical 띠 위(bottom 330)로 상향된다 (사양서 4절)
-   */
-  medicalRanges?: RaisedRange[];
 }
 
 /**
@@ -36,18 +33,25 @@ export interface BloodPressurePanelProps {
  *   어느 쪽이 옳다는 판정 표현·색 차이를 두지 않는다 — 대결이 아니라 병치
  * - 수치·혈압계·심장·혈관 이미지 없음 (사양서 4절)
  * - 전환은 다른 구간보다 느리게 — 페이드 0.8초 (급히 지나가는 인상 방지)
- * - 발자국 y < 686. medical(762~842)·disclaimer(862~910) 띠를 건드리지 않는다
+ * - 발자국 y < MEDICAL_CONTENT_MAX_Y(580) — 이 화면만 한계가 낮다. medical
+ *   띠(596~676)가 본문 바로 아래에 서기 때문 (bottomLayout.ts). 카드 높이는
+ *   문안에 따라 정해지므로 CARD_TOP은 실측(BottomLayoutSheet)으로 검증한다
  *
  * 문안은 학회 공식 채널 표현으로 확정된 것 (사양서 7절) —
  * MOK_BLOOD_PRESSURE 데이터를 임의로 바꾸지 말 것.
  */
+/**
+ * 카드 위 모서리. 항목 라벨(top 84, 높이 42) 아래 14px. 좌측 카드(문안이 더
+ * 길다)가 MEDICAL_CONTENT_MAX_Y(580) 위에서 끝나도록 잡은 값 — 실측 ~566
+ */
+const CARD_TOP = 140;
+
 export const BloodPressurePanel: React.FC<BloodPressurePanelProps> = ({
   claim,
   evidenceNote,
   modernView,
   stageStartsSec = [0, 3.5, 7],
   source = '출처: 빛과소금 94-8월호 / 미래한국 2009',
-  medicalRanges,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -66,13 +70,13 @@ export const BloodPressurePanel: React.FC<BloodPressurePanelProps> = ({
 
   const cardStyle: React.CSSProperties = {
     position: 'absolute',
-    top: 200,
+    top: CARD_TOP,
     width: 780,
     minHeight: 380,
     backgroundColor: 'rgba(255,255,255,0.04)',
     border: '2px solid rgba(255,255,255,0.18)',
     borderRadius: 20,
-    padding: '36px 44px',
+    padding: '32px 44px',
   };
 
   const headerStyle: React.CSSProperties = {
@@ -86,7 +90,7 @@ export const BloodPressurePanel: React.FC<BloodPressurePanelProps> = ({
   return (
     <>
       {/* 좌 — ① 관점 + ② 근거의 성격 (부기) */}
-      <div style={{ ...cardStyle, left: 140, opacity: in1 }}>
+      <div data-probe="card-left" style={{ ...cardStyle, left: 140, opacity: in1 }}>
         <div style={headerStyle}>8체질의학의 관점</div>
         {/* ① — 보통 무게. 강조 없음 */}
         <div
@@ -129,7 +133,7 @@ export const BloodPressurePanel: React.FC<BloodPressurePanelProps> = ({
       </div>
 
       {/* 우 — ③ 현대 의학. 같은 크기·테두리의 독립 카드 (대등 병치) */}
-      <div style={{ ...cardStyle, left: 1000, opacity: in3 }}>
+      <div data-probe="card-right" style={{ ...cardStyle, left: 1000, opacity: in3 }}>
         <div style={headerStyle}>현대 의학</div>
         <div
           style={{
@@ -146,7 +150,7 @@ export const BloodPressurePanel: React.FC<BloodPressurePanelProps> = ({
         </div>
       </div>
 
-      <SourceCaptions cues={[{ fromSec: 0, text: source }]} raisedRanges={medicalRanges} />
+      <SourceCaptions cues={[{ fromSec: 0, text: source }]} />
     </>
   );
 };
@@ -163,13 +167,24 @@ export const MOK_BLOOD_PRESSURE = {
 export const BP_PREVIEW_FRAMES = 12 * 30;
 
 /**
- * 검수용 프리뷰 — 실제 배치 그대로: 본문 + medical(구간 고정) +
- * disclaimer(상시) + 출처 자막 상향(raisedRanges = medical 구간).
- * medical은 1초 시점에 떠서 구간 끝까지 유지된다.
+ * 검수용 프리뷰 — 실제 배치 그대로: 본문 + medical(1초~) + disclaimer(상시) +
+ * 출처 + 내레이션 자막(60px 2줄). 하단 스택이 전부 서는 유일한 화면이라
+ * 하단 레이아웃 검수는 이 컴포지션으로 한다.
+ *
+ * 내레이션 문구는 [측정용 임시] — TTS 대본이 저장소에 없어 실제 문안이 아니다.
+ * 두 줄이 꽉 차는 길이(줄당 한글 약 22자)로 상자 최대 크기를 확인한다.
  */
+export const BP_NARRATION_PROBE = [
+  {
+    fromSec: 0,
+    text: ['내레이션 자막 측정용 임시 문장입니다 — 60픽셀 두 줄', '실제 문안은 TTS 대본 확정 후 이 자리에 교체합니다'].join('\n'),
+  },
+];
+
 export const BloodPressurePanelPreview: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: COLORS.bg }}>
-    <BloodPressurePanel {...MOK_BLOOD_PRESSURE} medicalRanges={[{ fromSec: 1 }]} />
+    <ItemLabel label="질병·건강법" accentColor={CONSTITUTION_ACCENTS.목양} />
+    <BloodPressurePanel {...MOK_BLOOD_PRESSURE} />
     <Sequence from={30}>
       <SafetyCaption
         kind="medical"
@@ -180,5 +195,6 @@ export const BloodPressurePanelPreview: React.FC = () => (
       kind="disclaimer"
       text="일반적인 체질별 경향을 설명한 것으로, 절대적인 특성이 아닙니다."
     />
+    <Subtitles cues={BP_NARRATION_PROBE} />
   </AbsoluteFill>
 );

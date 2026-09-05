@@ -177,7 +177,7 @@ export const MokEpisode: React.FC = () => {
         <ItemPanel {...MOK_PANELS['3f']} />
       </Span>
       <Span fromSec={s.s3 + S3.bp} lenSec={S3.people - S3.bp}>
-        <BloodPressurePanel {...MOK_BLOOD_PRESSURE} medicalRanges={[{ fromSec: 0 }]} />
+        <BloodPressurePanel {...MOK_BLOOD_PRESSURE} />
       </Span>
       <Span fromSec={s.s3 + S3.people} lenSec={S3.exception - S3.people}>
         <PersonTypoCard {...MOK_YANG_CARD} />

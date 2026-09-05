@@ -25,6 +25,7 @@ import { CarnivoreColonCutPreview, CARNIVORE_PREVIEW_FRAMES, FoodListPanelPrevie
 import { EmphasisCaptionPreview, EMPHASIS_PREVIEW_FRAMES } from "./EcmOverview/components/EmphasisCaption";
 import { ClosingScenePreview, CLOSING_PREVIEW_FRAMES } from "./EcmOverview/components/ClosingScene";
 import { ConstitutionColorSheet, COLOR_SHEET_FRAMES } from "./EcmOverview/components/ConstitutionName";
+import { BottomLayoutSheet, BOTTOM_LAYOUT_SHEET_FRAMES } from "./EcmOverview/components/BottomLayoutSheet";
 import { MokEpisode, MOK_EPISODE_FRAMES } from "./MokEpisode";
 
 // Each <Composition> is an entry in the sidebar!
@@ -104,6 +105,9 @@ export const RemotionRoot: React.FC = () => {
 
       {/* ===== 체질명 확정 색 확인용 시트 ===== */}
       <Composition id="ConstitutionColors" component={ConstitutionColorSheet} durationInFrames={COLOR_SHEET_FRAMES} fps={30} width={1920} height={1080} />
+
+      {/* ===== 하단 레이아웃 검수 시트 (혈압 화면 + 눈금 + 실측) ===== */}
+      <Composition id="BottomLayout" component={BottomLayoutSheet} durationInFrames={BOTTOM_LAYOUT_SHEET_FRAMES} fps={30} width={1920} height={1080} />
 
       {/* ===== 편 타이틀·타이틀 카드·보조 컷·강조 자막·클로징 — 단독 검수용 ===== */}
       <Composition id="EpisodeTitleCard" component={EpisodeTitleCardPreview} durationInFrames={EPISODE_TITLE_PREVIEW_FRAMES} fps={30} width={1920} height={1080} />

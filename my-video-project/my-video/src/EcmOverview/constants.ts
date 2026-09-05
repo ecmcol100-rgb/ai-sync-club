@@ -74,17 +74,17 @@ export const COLORS = {
 export { FONT } from '../fonts';
 
 /**
- * ★ 본문 컴포넌트의 세로 발자국 한계(px, 1080p 기준).
+ * ★ 본문 컴포넌트의 세로 발자국 한계(px, 1080p 기준) — bottomLayout.ts에서 온다.
  *
- * 화면 y ≥ 686 은 자막이 예약한 영역이다 — 안전·고지 자막 고정 슬롯
- * (SafetyCaption SLOT: career/addiction 686~742, medical 762~842,
- * disclaimer 862~910)과 자막 안전 영역(920~, 내레이션 전용).
+ * 화면 y ≥ 686 은 하단 자막 스택이 예약한 영역이다 — 항목 행(career/addiction
+ * + 출처, 686~734) → disclaimer(744~786) → 내레이션 자막(798~). 상세 치수와
+ * medical 띠(혈압 구간 한정, 596~676)는 bottomLayout.ts 참조.
  *
  * 다이어그램 등 새 본문 컴포넌트는 애니메이션 최대 이동 범위까지 포함한
  * 전체 발자국이 이 선 위(y < CONTENT_MAX_Y)에서 끝나야 한다.
  * 적용 예: OrganArrayTransition (하강 카드 최하단 678).
  */
-export const CONTENT_MAX_Y = 686;
+export { CONTENT_MAX_Y } from './bottomLayout';
 
 /** public/images/ecm 기준 이미지 경로 헬퍼 */
 export const ecm = (file: string): string => `images/ecm/${file}`;

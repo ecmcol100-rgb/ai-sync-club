@@ -65,6 +65,18 @@ const estimateHeight = (points: PanelPoint[], t: SizeTier): number =>
   (points.length - 1) * t.gap;
 
 /**
+ * 포인트 블록의 아래 한계. CONTENT_MAX_Y(686) 바로 아래가 career/addiction
+ * 캡션 행(686~734)이라, 본문이 686까지 꽉 차면 캡션이 본문에 붙어 보인다.
+ * 32px을 비워 note(가장 아래 요소)와 캡션 사이에 숨을 둔다.
+ * 가장 빡빡한 3-d(5포인트+note, 2단계)가 이 값에서 4px 여유로 들어간다 —
+ * 더 내리려면 pointsTop을 함께 올릴 것.
+ */
+const PANEL_BOTTOM = CONTENT_MAX_Y - 32;
+
+/** 넘침 경고는 화면당 한 번만 */
+const warnedPanels = new Set<string>();
+
+/**
  * ItemPanel — 항목별 설명 화면 공통 템플릿 (섹션 3·4 × 5화면 = 10화면)
  *
  * 시리즈 전체의 항목 화면을 이 하나로 처리한다 (사양서 1절).
@@ -81,6 +93,7 @@ const estimateHeight = (points: PanelPoint[], t: SizeTier): number =>
  * - 길이는 stageStartsSec/intervalSec로 외부 제어. 내부 타임코드 없음
  */
 export const ItemPanel: React.FC<ItemPanelProps> = ({
+  itemLabel,
   headline,
   points,
   accentColor,
@@ -97,13 +110,23 @@ export const ItemPanel: React.FC<ItemPanelProps> = ({
     extrapolateRight: 'clamp',
   });
 
-  // headline(96px)이 y 150~285를 쓰므로 포인트는 300부터. 없으면 170부터
-  const pointsTop = headline ? 300 : 170;
-  const avail = CONTENT_MAX_Y - 8 - pointsTop;
+  // headline(96px)이 y 150~285를 쓰므로 포인트는 300부터. 없으면 항목 라벨
+  // (84~126) 아래 24px인 150부터 — 블록을 위로 붙여 아래쪽 캡션 행과 띄운다
+  const pointsTop = headline ? 300 : 150;
+  const avail = PANEL_BOTTOM - pointsTop;
   const tier =
     (sizeTier ? SIZE_TIERS[sizeTier - 1] : undefined) ??
     SIZE_TIERS.find((t) => estimateHeight(points, t) <= avail) ??
     SIZE_TIERS[SIZE_TIERS.length - 1];
+
+  // 명시한 단계로 띠를 넘치면 개발 중 콘솔에 경고 — 데이터 추가 시 검증용
+  const est = estimateHeight(points, tier);
+  if (est > avail && !warnedPanels.has(itemLabel + points[0]?.text)) {
+    warnedPanels.add(itemLabel + points[0]?.text);
+    console.warn(
+      `[ItemPanel] "${itemLabel}" 포인트 블록 추정 높이 ${Math.round(est)}px가 띠(${avail}px)를 넘습니다 — sizeTier를 내리거나 포인트를 줄이십시오`,
+    );
+  }
 
   return (
     <>
@@ -118,6 +141,9 @@ export const ItemPanel: React.FC<ItemPanelProps> = ({
             fontFamily: FONT,
             fontSize: 96,
             fontWeight: 800,
+            // 1.2 → 글줄 115 + 밑줄 20 = 150~285. 기본 행간(≈1.45)이면 309까지
+            // 내려와 포인트 블록(300~)과 맞닿는다
+            lineHeight: 1.2,
           }}
         >
           {headline}
@@ -135,7 +161,7 @@ export const ItemPanel: React.FC<ItemPanelProps> = ({
         </div>
       ) : null}
 
-      {/* 포인트 블록 — 띠(top ~ CONTENT_MAX_Y) 안에서 세로 중앙 정렬.
+      {/* 포인트 블록 — 띠(top ~ PANEL_BOTTOM) 안에서 세로 중앙 정렬.
           포인트가 적은 화면(외형 등)은 여백이 위아래로 나뉘어 안정감이 생기고,
           꽉 찬 화면(3-d 등)은 사실상 상단 정렬과 같다.
           항목 라벨(top 84)과 headline(top 150)은 고정 — 움직이는 것은 이 블록뿐 */}
@@ -145,7 +171,7 @@ export const ItemPanel: React.FC<ItemPanelProps> = ({
           left: 160,
           top: pointsTop,
           width: 1600,
-          // 발자국 한계 — 포인트 6개 + note까지 이 띠 안에서 끝난다
+          // 발자국 한계 — 포인트 6개 + note까지 이 띠(~654) 안에서 끝난다
           height: avail,
           display: 'flex',
           flexDirection: 'column',

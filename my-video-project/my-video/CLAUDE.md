@@ -34,10 +34,20 @@ npx remotion render MokEpisode out/MokEpisode.mp4   # 편 본체 렌더
 
 ## 반드시 지켜야 할 제약
 
-- **`CONTENT_MAX_Y = 686`** (EcmOverview/constants.ts) — 본문 그래픽은 애니메이션
-  최대 이동 범위까지 포함해 y<686에서 끝난다. 그 아래는 안전 자막 슬롯
-  (career/addiction 686~742, medical 762~842, disclaimer 862~910)과
-  자막 안전 영역(920~, 내레이션 전용)
+- **`CONTENT_MAX_Y = 686`** (bottomLayout.ts, constants.ts가 재수출) — 본문 그래픽은
+  애니메이션 최대 이동 범위까지 포함해 y<686에서 끝난다. 그 아래는 하단 자막 스택
+  (`src/EcmOverview/bottomLayout.ts`가 단일 원천): **항목 행** 686~734
+  (career/addiction 좌 + 출처 우) → **disclaimer** 744~786 → **내레이션 자막**
+  798~ (60px 2줄 상자 204px, 바닥 여백 78). 검수는 `BottomLayout` 컴포지션
+  (눈금선 + DOM 실측 OK/NG)
+- **medical 띠는 예약 슬롯이 아니다** — 혈압 구간에만 본문 바로 아래(596~676)에
+  선다. 그래서 **BloodPressurePanel만 `MEDICAL_CONTENT_MAX_Y = 580`** 적용
+  (카드 top 140). medical 띠 자체(80px·32px·3px 테두리)는 **압축 금지**,
+  z-index 최상위 — 어떤 경우에도 가려지지 않는다. 출처는 항목 행에 있어
+  medical과 구조적으로 겹치지 않는다 (예전 `raisedRanges` 상향 이동은 폐지)
+- **개괄영상(EcmOverview)은 `LEGACY_LAYOUT`으로 고정** — EcmOverview/index.tsx의
+  `BottomLayoutContext.Provider`가 v5 확정 렌더의 하단 값(내레이션 40px·출처
+  31px)을 보존한다. 이 Provider를 빼면 확정 렌더가 바뀐다
 - **`CONSTITUTION_ACCENTS` 확정 8색** (원장님 확정): 목양 하양 / 목음 붉은색 /
   금양 초록 / 금음 노랑(#EFC93B) / 토양 검정 / 토음 청색 / 수양 진한 주황 /
   수음 연한 주황. **칩(ConstitutionName)은 4곳 한정**: EpisodeTitleCard ·
@@ -46,13 +56,12 @@ npx remotion render MokEpisode out/MokEpisode.mp4   # 편 본체 렌더
   칩이 남발되면 강조 기능이 사라진다
 - **출처 자막은 간략 표기** — 저자·기고문 제목 없이 매체·월호만
   (예: `출처: 빛과소금 94-5월호 · 95-5월호 / 월간조선 2011-5월호`).
+  시리즈 프로파일은 24px(사진 크레딧 20px), 한 줄 폭 상한 1000px.
   **어떤 경우에도 두 줄 금지** — SourceCaptions가 nowrap 강제 +
   `sourceFitsOneLine()`으로 검증, 초과 시 렌더 콘솔 경고
 - **길이는 전부 외부 제어** — 컴포넌트에 프레임·타임코드 하드코딩 금지.
   단계 시각은 `stageStartsSec` 등 props, 편 전체는 `src/MokEpisode/timing.ts`가
   단일 원천(0.1초 단위 유지 — 프레임 반올림 무결성의 전제)
-- **medical 자막은 어떤 경우에도 가려지지 않는다** (z-index 최상위).
-  medical 구간에는 출처 자막이 bottom 330으로 상향(`raisedRanges`)
 - **ItemPanel의 같은 항목 3·4 쌍은 같은 `sizeTier`** — 섹션 대칭이 편의 뼈대
 
 ## 내용 원칙 (도메인 규칙)
@@ -100,7 +109,8 @@ npx remotion render MokEpisode out/MokEpisode.mp4   # 편 본체 렌더
 | ClosingScene | 섹션 6 클로징 (다음 편 예고 + 구독 CTA) |
 | ConstitutionName (공통) | 체질명 칩 렌더러 (CONSTITUTION_TITLE_COLORS) |
 
-공통 유틸: SourceCaptions(출처, raisedRanges), ORGAN_SILHOUETTES(SVG 패스 —
+공통 유틸: SourceCaptions(출처, 항목 행 우측) · Subtitles(내레이션 자막, 프로파일
+적용) · BottomLayoutSheet(하단 레이아웃 검수 시트) · ORGAN_SILHOUETTES(SVG 패스 —
 liver/gallbladder 등록, 나머지 6장기는 항목 추가만 하면 됨).
 편 본체: `src/MokEpisode/` (timing.ts + index.tsx). 각 컴포넌트는 Root.tsx에
 단독 검수용 프리뷰 컴포지션이 등록돼 있고, `ConstitutionColors`로 8색 확인 가능.

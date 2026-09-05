@@ -1,5 +1,12 @@
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
-import { COLORS, CONTENT_MAX_Y, FONT } from '../constants';
+import { COLORS, FONT } from '../constants';
+import {
+  BOTTOM_STACK,
+  DISCLAIMER_BOTTOM,
+  FRAME_H,
+  ITEM_ROW_BOTTOM,
+  MEDICAL_BOTTOM,
+} from '../bottomLayout';
 
 export type CaptionKind = 'disclaimer' | 'medical' | 'career' | 'addiction';
 
@@ -33,27 +40,31 @@ export interface SafetyCaptionProps {
  */
 
 /**
- * 고정 슬롯(px) — 사양서 5절 "처음부터 두 자리를 비워두는 방식".
+ * 고정 슬롯(px) — 사양서 5절 "처음부터 자리를 비워두는 방식".
  *
- * 네 종류 모두 bottom·height가 고정된 예약 띠 안에서만 그려진다.
- * 자막이 없는 동안에도 띠는 비워 두므로 무엇이 뜨고 지든 세로 위치가
- * 절대 변하지 않는다. career와 addiction은 교체 관계라 같은 띠(item)를
- * 공유하고, 박스 높이를 띠 높이로 통일해 교체 순간에도 기하가 그대로다 —
- * 시인성 차이는 글자 크기·테두리 색·아이콘으로만 낸다.
+ * 세 종류 모두 bottom·height가 고정된 예약 띠 안에서만 그려진다. 자막이 없는
+ * 동안에도 띠는 비워 두므로 무엇이 뜨고 지든 세로 위치가 절대 변하지 않는다.
+ * career와 addiction은 교체 관계라 같은 띠(item)를 공유하고, 박스 높이를
+ * 띠 높이로 통일해 교체 순간에도 기하가 그대로다 — 시인성 차이는 글자
+ * 크기·테두리 색·아이콘으로만 낸다.
  *
- * 띠 배치(1080p, 위→아래): career/addiction(y 686~742) → medical(762~842)
- * → disclaimer(862~910) → 자막 안전 영역(하단 160px). 띠 사이 20px.
- * 띠 높이는 한 줄 기준 — 문구는 한 줄에 들어와야 한다(사양서 6절 검수 항목).
+ * 치수는 전부 bottomLayout.ts에서 온다 (위→아래):
+ *   medical 686 위 (596~676, 혈압 구간만) → item 686~734 → disclaimer 744~786
+ *   → 내레이션 자막 798~
  *
- * 최상단 띠(item)의 위 모서리가 곧 본문 발자국 한계 CONTENT_MAX_Y(686)다 —
- * 본문 컴포넌트는 그 선 위에서 끝나야 자막과 겹치지 않는다 (constants.ts 참조).
+ * medical은 예약 띠가 아니라 본문 바로 아래에 선다 — 혈압 구간 한 곳에만
+ * 뜨므로 그 화면의 본문(BloodPressurePanel)만 MEDICAL_CONTENT_MAX_Y 위에서
+ * 끝나면 된다. 다른 자막은 medical이 뜨든 지든 움직이지 않는다.
+ * medical 띠 자체(80px·32px 글자·3px 테두리)는 압축하지 않는다 — 시인성 최상위.
+ *
+ * 항목 행(item)의 위 모서리가 곧 본문 발자국 한계 CONTENT_MAX_Y(686)다.
+ * 이 행의 오른쪽은 출처 자막(SourceCaptions)이 쓴다.
  */
-const ITEM_H = 56;
 const SLOT = {
-  disclaimer: { bottom: 170, height: 48 },
-  medical: { bottom: 238, height: 80 },
+  disclaimer: { bottom: FRAME_H - DISCLAIMER_BOTTOM, height: BOTTOM_STACK.disclaimerH },
+  medical: { bottom: FRAME_H - MEDICAL_BOTTOM, height: BOTTOM_STACK.medicalH },
   /** career / addiction 공용 — 위 모서리 = CONTENT_MAX_Y */
-  item: { bottom: 1080 - CONTENT_MAX_Y - ITEM_H, height: ITEM_H },
+  item: { bottom: FRAME_H - ITEM_ROW_BOTTOM, height: BOTTOM_STACK.itemRowH },
 } as const;
 export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
   kind,
@@ -93,6 +104,7 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
         }}
       >
         <div
+          data-probe="medical"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -129,7 +141,7 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
           position: 'absolute',
           left: 0,
           right: 0,
-          // 자막 안전 영역(하단 160px) 바로 위
+          // 내레이션 자막 바로 위 (bottomLayout.ts)
           bottom: SLOT.disclaimer.bottom,
           height: SLOT.disclaimer.height,
           display: 'flex',
@@ -139,6 +151,7 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
         }}
       >
         <div
+          data-probe="disclaimer"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -146,7 +159,7 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
             height: '100%',
             backgroundColor: COLORS.overlay,
             borderRadius: 10,
-            padding: '0 26px',
+            padding: '0 22px',
             color: COLORS.text,
             fontFamily: FONT,
             fontSize: 24,
@@ -175,6 +188,7 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
       }}
     >
       <div
+        data-probe={kind}
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -184,7 +198,7 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
           backgroundColor: COLORS.overlay,
           border: `2px solid ${isAddiction ? COLORS.gold : COLORS.textDim}`,
           borderRadius: 10,
-          padding: isAddiction ? '0 22px' : '0 18px',
+          padding: isAddiction ? '0 20px' : '0 16px',
         }}
       >
         {isAddiction ? (
