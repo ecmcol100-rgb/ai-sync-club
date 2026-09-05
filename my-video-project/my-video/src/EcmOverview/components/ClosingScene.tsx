@@ -62,9 +62,14 @@ export const ClosingScene: React.FC<ClosingSceneProps> = ({
   const [s1, s2, s3] = stageStartsSec;
   const FADE = 12; // 0.4초 크로스페이드
 
-  /** 화면 노출 구간 [fromSec, toSec?) → 0~1 (끝 미지정 시 유지) */
+  /** 화면 노출 구간 [fromSec, toSec?) → 0~1 (끝 미지정 시 유지).
+   *  들어오는 페이드를 경계 앞 FADE만큼 앞당겨 나가는 페이드와 겹친다 —
+   *  경계에서 두 화면이 모두 0이 되는 암전을 막는 크로스페이드
+   *  (SafetyCaption career↔addiction 교체와 같은 관례). 첫 화면(0초)만
+   *  구간 시작에서 페이드인 */
   const stageOpacity = (fromSec: number, toSec?: number): number => {
-    const on = interpolate(frame, [fromSec * fps, fromSec * fps + FADE], [0, 1], {
+    const onStart = fromSec === 0 ? 0 : fromSec * fps - FADE;
+    const on = interpolate(frame, [onStart, onStart + FADE], [0, 1], {
       extrapolateLeft: 'clamp',
       extrapolateRight: 'clamp',
     });
@@ -81,8 +86,9 @@ export const ClosingScene: React.FC<ClosingSceneProps> = ({
   const closureOp = stageOpacity(s1, s2);
   const teaserOp = stageOpacity(s2, s3);
   const ctaOp = stageOpacity(s3);
-  const teaserScale = spring({ frame: frame - Math.round(s2 * fps), fps, config: { damping: 17, stiffness: 80 }, from: 0.94, to: 1 });
-  const ctaSpring = spring({ frame: frame - Math.round(s3 * fps), fps, config: { damping: 15, stiffness: 90 }, from: 0, to: 1 });
+  // 스프링도 앞당긴 페이드인과 같이 출발시킨다 (등장 완료 후 늦게 튀는 것 방지)
+  const teaserScale = spring({ frame: frame - Math.round(s2 * fps - FADE), fps, config: { damping: 17, stiffness: 80 }, from: 0.94, to: 1 });
+  const ctaSpring = spring({ frame: frame - Math.round(s3 * fps - FADE), fps, config: { damping: 15, stiffness: 90 }, from: 0, to: 1 });
 
   return (
     <>
