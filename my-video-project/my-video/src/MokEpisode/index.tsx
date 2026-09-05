@@ -84,10 +84,14 @@ const S2Intro: React.FC = () => (
   </div>
 );
 
-/* ── 4-i 정답 — v9 확정: 화면 하나, 근접 체질 수음 → 토양 순차 등장 +
-   하위 자막(심화편 안내). 반대 체질(금) 화면은 삭제(v8 68항 — 클로징으로
-   일원화), 강조색은 gold(v7 65항). 앞부분(도입 질문~"아닙니다" 문단)은
-   화면 요소 없이 정답 대기 — 등장 시각은 S4_I_STAGES_SEC(임시) ── */
+/* ── 4-i 정답 — v9 확정: 화면 하나, 5단계 순차 등장.
+   ① 질문 타이포("사촌쯤 되는 것 아닌가?") + 목양·목음 칩 밀착 →
+   ② "목음체질이 아닙니다" 시점에 칩이 좌우로 벌어지고 질문은 저채도 후퇴
+   (취소선은 쓰지 않는다 — "부정이 아니라 확장" 규칙. 후퇴 방식은
+   Section1Hook 통념 제시와 동일 관례) →
+   ③ 수음 → ④ 토양 → ⑤ 심화편 안내.
+   칩이 붙었다 벌어지는 움직임이 이 구간의 메시지 — 클로징 마무리 화면
+   (gap 200)과 같은 모티프로 회수된다. 반대 체질(금)은 클로징 담당(v8 68항) ── */
 
 /** 4-i 보조 안내 줄 — 강조 자막 아래, 자기 구간에서 짧게 페이드 인/아웃 */
 const AnswerNote: React.FC<{ text: string }> = ({ text }) => {
@@ -118,18 +122,76 @@ const AnswerNote: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-const S4Answer: React.FC<{ lenSec: number; stageStartsSec: [number, number, number] }> = ({
+/** 4-i ①② — 질문 타이포와 칩 쌍. 벌어짐이 애니메이션이라 Span으로 나누지
+ *  않고 한 컴포넌트가 구간 전체를 산다 (splitSec에 상태 전환) */
+const S4Question: React.FC<{ splitSec: number }> = ({ splitSec }) => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const fadeIn = interpolate(frame, [0, 12], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const fadeOut = interpolate(frame, [durationInFrames - 10, durationInFrames], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  // 벌어짐 — 0.7초. 밀착(40) → 클로징 마무리와 같은 벌린 간격(200)
+  const split = interpolate(frame, [splitSec * fps, splitSec * fps + 21], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  const gap = 40 + split * 160;
+  // 질문은 저채도·저투명으로 후퇴 — 위치·크기는 유지
+  const questionOpacity = 1 - split * 0.68;
+  return (
+    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: Math.min(fadeIn, fadeOut) }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: 170,
+          left: 0,
+          right: 0,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap,
+        }}
+      >
+        <ConstitutionName name="목양체질" fontSize={56} />
+        <ConstitutionName name="목음체질" fontSize={56} />
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          top: 292,
+          left: 0,
+          right: 0,
+          textAlign: 'center',
+          opacity: questionOpacity,
+          color: COLORS.text,
+          fontFamily: FONT,
+          fontSize: 42,
+          fontWeight: 700,
+        }}
+      >
+        이름이 닮았으니 두 체질은 사촌쯤 되는 것 아닌가?
+      </div>
+    </div>
+  );
+};
+
+const S4Answer: React.FC<{ lenSec: number; stageStartsSec: [number, number, number, number, number] }> = ({
   lenSec,
   stageStartsSec,
 }) => {
-  const [suEumSec, toYangSec, noteSec] = stageStartsSec;
+  const [questionSec, splitSec, suEumSec, toYangSec, noteSec] = stageStartsSec;
   return (
     <>
+      <Span fromSec={questionSec} lenSec={lenSec - questionSec}>
+        <S4Question splitSec={splitSec - questionSec} />
+      </Span>
       <Span fromSec={suEumSec} lenSec={lenSec - suEumSec}>
-        <EmphasisCaption text="목양체질과 가장 가까운 체질은 수음체질입니다" top={380} />
+        <EmphasisCaption text="목양체질과 가장 가까운 체질은 수음체질입니다" top={400} />
       </Span>
       <Span fromSec={toYangSec} lenSec={lenSec - toYangSec}>
-        <EmphasisCaption text="목음체질과 가장 가까운 체질은 토양체질입니다" top={510} />
+        <EmphasisCaption text="목음체질과 가장 가까운 체질은 토양체질입니다" top={525} />
       </Span>
       <Span fromSec={noteSec} lenSec={lenSec - noteSec}>
         <AnswerNote text="해당 내용은 차후 심화편에서 다루도록 하겠습니다" />
