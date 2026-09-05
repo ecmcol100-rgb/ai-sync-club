@@ -115,13 +115,14 @@ export const EpisodeTitleCard: React.FC<EpisodeTitleCardProps> = ({
 };
 
 /**
- * 목양·목음편 타이틀 — 부제는 스펙 v5 '시리즈 위치: 8체질 기본 시리즈 ①' 기준.
+ * 목양·목음편 타이틀 — 부제는 스펙 v6 '시리즈 위치: 8체질 기본 시리즈 ①' 기준.
  * 체질명은 확정 색 칩(CONSTITUTION_TITLE_COLORS: 목양 하양 / 목음 붉은색).
  */
 export const MOK_EPISODE_TITLE: EpisodeTitleCardProps = {
+  // v6 54항 — 체질명 나열 표기는 가운데점(·)으로 통일 (조사 문장은 예외)
   titleParts: [
     { text: '목양체질', isName: true },
-    { text: '과 ' },
+    { text: ' · ' },
     { text: '목음체질', isName: true },
   ],
   sub: '8체질 기본 ①',

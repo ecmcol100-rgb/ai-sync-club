@@ -158,7 +158,8 @@ export const FoodListPanel: React.FC<FoodListPanelProps> = ({
   groups = [
     {
       label: '맞는 음식',
-      items: ['육식', '무', '당근', '도라지', '마늘', '버섯', '호박'],
+      // v6 45항 — 이로운 음식으로 권하는 문맥이므로 소고기 병기
+      items: ['육식(특히 소고기)', '무', '당근', '도라지', '마늘', '버섯', '호박'],
       color: COLORS.greenBright,
     },
     {

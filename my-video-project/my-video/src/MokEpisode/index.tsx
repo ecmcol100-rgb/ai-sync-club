@@ -44,6 +44,7 @@ import {
 
 export { TOTAL_FRAMES as MOK_EPISODE_FRAMES } from './timing';
 
+const NL = String.fromCharCode(10);
 const DISCLAIMER_TEXT = '일반적인 체질별 경향을 설명한 것으로, 절대적인 특성이 아닙니다.';
 const CAREER_TEXT = '직업 적성은 경향이며, 진로 판단의 근거가 아닙니다.';
 const ADDICTION_TEXT = '알코올 의존은 전문적인 치료가 필요한 문제입니다.';
@@ -82,18 +83,36 @@ const S2Intro: React.FC = () => (
   </div>
 );
 
-/* ── 4-i 정답 + 예고 — [가안] 전용 컴포넌트 미정, 강조 자막 2연으로 배선 ── */
+/* ── 4-i 정답 + 예고 — v6 47항 확정 문안 (8ch_mok_tts_v3.md 기준).
+   편명·다음 편 예고는 여기서 밝히지 않는다(클로징과 이중 예고 방지).
+   52항 — 심화편 안내 자막을 4-i 구간 전체에 유지 ── */
 const S4Answer: React.FC<{ lenSec: number }> = ({ lenSec }) => (
   <>
     <Span fromSec={0} lenSec={lenSec * 0.55}>
-      <EmphasisCaption text={'목양체질과 가장 가까운 체질은\n수음체질입니다'} />
+      <EmphasisCaption text={'목양체질과 가장 가까운 체질은'+NL+'수음체질입니다'} />
     </Span>
     <Span fromSec={lenSec * 0.55} lenSec={lenSec * 0.45}>
       <EmphasisCaption
-        text={'그리고 목(木)과 반대에 있는 금(金) —\n다음 편에서 다룹니다'}
+        text={'그리고 목(木)과 반대편에 있는 것이'+NL+'금(金)입니다'}
         accentColor={CONSTITUTION_ACCENTS.금양}
       />
     </Span>
+    {/* v6 52항 — 심화편 안내 (본문 강조 아래, y<686) */}
+    <div
+      style={{
+        position: 'absolute',
+        top: 640,
+        left: 0,
+        right: 0,
+        textAlign: 'center',
+        color: COLORS.textDim,
+        fontFamily: FONT,
+        fontSize: 30,
+        fontWeight: 500,
+      }}
+    >
+      해당 내용은 차후 심화편에서 다루도록 하겠습니다
+    </div>
   </>
 );
 
@@ -152,10 +171,10 @@ export const MokEpisode: React.FC = () => {
       <Span fromSec={s.s2 + S2.food} lenSec={S2.bathing - S2.food}>
         <FoodListPanel stageStartsSec={FOOD_STAGES_SEC} />
       </Span>
-      <Span fromSec={s.s2 + S2.bathing} lenSec={S2.bridge - S2.bathing}>
+      {/* v6 48항 — 전환 문장 구간(S2.bridge~end)에도 최종 상태 유지 (공백 금지) */}
+      <Span fromSec={s.s2 + S2.bathing} lenSec={S2.end - S2.bathing}>
         <Section2cGraphic stageStartsSec={S2C_STAGES_SEC} />
       </Span>
-      {/* S2.bridge~end — 전환 문장 (내레이션만, 화면 공백) */}
 
       {/* ═══ 섹션 3 — 목양체질 ═══ */}
       <Span fromSec={s.s3 + S3.title} lenSec={S3.b - S3.title}>

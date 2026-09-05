@@ -260,9 +260,11 @@ export const ItemPanel: React.FC<ItemPanelProps> = ({
 /**
  * 목양·목음편 10화면 데이터 (사양서 5절).
  *
- * emphasis는 화면당 하나 이하 — 4-f는 사양서 표에 강조 후보가 둘
- * (근제통 / 하복부 보온)이라 규칙에 따라 결론인 건강법(하복부 보온)에만
- * 강조를 두고, 근제통은 한자 병기 텍스트로 처리했다.
+ * emphasis는 화면당 하나 이하. v6 49항으로 3-b 눈사람·4-e 오 년 강조를
+ * 취소해 강조가 남는 화면은 3-f(온수욕)·4-f(하복부 보온)뿐이다.
+ * 4-f는 사양서 표에 강조 후보가 둘(근제통 / 하복부 보온)이라 규칙에 따라
+ * 결론인 건강법에만 강조를 두고 근제통은 한자 병기 텍스트로 처리
+ * (2026-09-05 원장님 확인 — 화면당 1개 규칙 유지).
  * 3-f 혈압 문단·4-d 알코올 문단은 별도 처리 대상이라 넣지 않는다 (사양서 7절).
  */
 export const MOK_PANELS: Record<string, ItemPanelProps> = {
@@ -273,7 +275,8 @@ export const MOK_PANELS: Record<string, ItemPanelProps> = {
     points: [
       { text: '풍채가 좋고 체구가 큰 편' },
       { text: '어깨는 좁고 아래로 내려가면서 굵어짐' },
-      { text: '눈사람처럼 허리가 넓어지는 체형', emphasis: true },
+      // v6 49항 — 강조 취소 (강조는 3-f 온수욕·4-f 하복부 보온만 남김)
+      { text: '눈사람처럼 허리가 넓어지는 체형' },
     ],
   },
   '3c': {
@@ -346,10 +349,10 @@ export const MOK_PANELS: Record<string, ItemPanelProps> = {
       { text: '감수성을 함께 고려' },
       { text: '감정 대립 · 질투 · 비판이 잦은 일은 부담' },
       { text: '술과 거리가 있는 일' },
-      { text: '교육계 · 기계공학' },
       {
-        text: '나무와 불을 다루는 일만 빼면 무엇이든',
-        emphasis: true,
+        // v6 46항 — "나무와 불을 다루는 일만 빼면 무엇이든" 포인트 삭제
+        // (근거 설명이 어려움). 유보 note는 대본에 남으므로 마지막 포인트에 유지
+        text: '교육계 · 기계공학',
         note: '경향성일 뿐 같은 체질 안에서도 예외가 있음',
       },
     ],
@@ -361,7 +364,8 @@ export const MOK_PANELS: Record<string, ItemPanelProps> = {
     accentColor: CONSTITUTION_ACCENTS.목음,
     points: [
       { text: '손으로 던지고 발로 차는 운동에 능함' },
-      { text: '오 년 늦게 시작해도 앞지름', emphasis: true },
+      // v6 49항 — 강조 취소
+      { text: '오 년 늦게 시작해도 앞지름' },
       { text: '공이 생각한 지점에 그대로 감' },
       { text: '박세리 · 박찬호 · 이승엽', tag: '추정' },
     ],

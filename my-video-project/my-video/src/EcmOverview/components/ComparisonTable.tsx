@@ -29,18 +29,19 @@ export interface ComparisonTableProps {
  * 표 세로 배치(px).
  *
  * 이 컴포넌트가 CONTENT_MAX_Y 제약을 가장 크게 받는다 — 9행+헤더를 넣기 위해
- * 행 높이는 내용 줄 수로 계산한다(1줄 행 40px, 2줄 행 70px). 목양·목음편
- * 데이터(1줄×5, 2줄×4) 기준 총높이 68+5×41+4×71 = 557 → 표 하단 y 653 < 686.
+ * 행 높이는 내용 줄 수로 계산한다(1줄 행 42px, 2줄 행 74px). 목양·목음편
+ * 데이터(1줄×5, 2줄×4) 기준 총높이 68+5×43+4×75 = 583 → 표 하단 y 667 < 686.
+ * ★v6 51항 — 글자 확대(셀 23→26, 라벨열 24→26, 행높이 30→32, 상단 96→84).
  * 다른 편에서 줄 수가 늘어 686을 넘으면 글자를 줄이기 전에 행 여백(PAD_Y)을
  * 먼저 조정할 것 (사양서 4절 — 가독성 최우선).
  */
-const TABLE_TOP = 96;
+const TABLE_TOP = 84;
 const TABLE_W = 1720;
 const TABLE_LEFT = (1920 - TABLE_W) / 2;
 const LABEL_W = 180;
 const COL_W = (TABLE_W - LABEL_W) / 2;
 const HEADER_H = 68;
-const LINE_H = 30;
+const LINE_H = 32;
 const PAD_Y = 5;
 
 const rowLines = (r: ComparisonRow): number =>
@@ -97,7 +98,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
   const cellText: React.CSSProperties = {
     color: COLORS.text,
     fontFamily: FONT,
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 500,
     lineHeight: `${LINE_H}px`,
     whiteSpace: 'pre-line',
@@ -180,7 +181,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
                   justifyContent: 'center',
                   color: COLORS.greenPale,
                   fontFamily: FONT,
-                  fontSize: 23,
+                  fontSize: 26,
                   fontWeight: 700,
                 }}
               >
@@ -249,8 +250,9 @@ export const MOK_COMPARISON: ComparisonTableProps = {
   rows: [
     {
       label: '장기강약',
-      left: '간이 선두 / 폐·대장이 약한 자리',
-      right: '담낭이 선두 / 폐·대장이 약한 자리',
+      // v6 51항 — 주도 장부 기준 하나씩 (좌우가 서로 다른 장부를 가리킴)
+      left: '간이 선두 / 폐가 약한 자리',
+      right: '담낭이 선두 / 대장이 약한 자리',
     },
     {
       label: '외형',
@@ -272,7 +274,8 @@ export const MOK_COMPARISON: ComparisonTableProps = {
     {
       label: '음식',
       shared: true,
-      left: '육식 · 무 · 당근 · 도라지 · 마늘 · 버섯 · 호박\n해물 · 푸른 잎채소 · 포도 주의',
+      // v6 45항 — 이로운 음식 문맥이므로 소고기 병기
+      left: '육식(특히 소고기) · 무 · 당근 · 도라지 · 마늘 · 버섯 · 호박\n해물 · 푸른 잎채소 · 포도 주의',
       right: '',
     },
     { label: '건강법', left: '온수욕 + 전신 발한', right: '온수욕 + 하복부 보온' },

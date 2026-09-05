@@ -5,7 +5,9 @@
  * 쓰지 않는다. 오디오 확보 후 이 파일의 초 단위 값만 실측으로 교체하면
  * 전체 배선이 따라온다 (문단 구간은 섹션 길이를 글자 수 비율로 분배).
  *
- * 현재 값은 5.5자/초 환산 임시 길이. 총 667초 = 11:07 (낭독 639 + 무음 28).
+ * 현재 값은 5.5자/초 환산 임시 길이. 총 671초 = 11:11 ≈ 약 11:10 (v6 61항).
+ * v6 47항의 4-i 낭독 추가(+4초)만 반영했다 — 46항 삭제분 등 문단 단위
+ * 재분배는 TTS 실측(8ch_mok_tts_v3.md) 때 일괄 처리한다.
  */
 
 export const FPS = 30;
@@ -18,22 +20,22 @@ export const SECTION_STARTS_SEC = {
   s2: 56,
   s3: 192,
   s4: 395,
-  s5: 607,
-  s6: 653,
+  s5: 611,
+  s6: 657,
 } as const;
 
-/** 섹션 길이(초). 섹션 4는 낭독 192 + 대조표 무음 20 */
+/** 섹션 길이(초). 섹션 4는 낭독 196 + 대조표 무음 20 (v6 47항 +4초) */
 export const SECTION_LENGTHS_SEC = {
   s0: 8,
   s1: 48,
   s2: 136,
   s3: 203,
-  s4: 212,
+  s4: 216,
   s5: 45,
   s6: 14,
 } as const;
 
-export const TOTAL_SEC = SECTION_STARTS_SEC.s6 + SECTION_LENGTHS_SEC.s6; // 667 = 11:07
+export const TOTAL_SEC = SECTION_STARTS_SEC.s6 + SECTION_LENGTHS_SEC.s6; // 671 = 11:11
 export const TOTAL_FRAMES = SEC(TOTAL_SEC);
 
 /* ── 섹션 1 — 후킹 (문단 5개) ─────────────────────────────────── */
@@ -61,7 +63,7 @@ export const S2 = {
   carnivore: 87.4,
   food: 101.4,
   bathing: 117.2,
-  bridge: 131.7, // 전환 문장 (화면은 공백)
+  bridge: 131.7, // 전환 문장 — Section2cGraphic 최종 상태 유지 (v6 48항, 공백 금지)
   end: 136,
 } as const;
 
@@ -107,12 +109,13 @@ export const S4 = {
   f: 114.3, // 질병·건강법
   people: 154.0, // 유명인
   table: 160.2, // 9항목 대조표 — 무음 20초, 전환 없이 즉시
-  answer: 180.2, // 4-i 정답 + 예고
-  end: 212,
+  answer: 180.2, // 4-i 정답 + 예고 (v6 47항 확정 문안, +4초)
+  end: 216,
 } as const;
 
-/** 4-d 포인트 등장(패널 상대초) — 3번째(술)가 알코올 문단 시작(24.5)과 맞물림 */
-export const S4_D_POINTS_SEC: number[] = [0.4, 6, 24.5, 37, 40];
+/** 4-d 포인트 등장(패널 상대초) — 3번째(술)가 알코올 문단 시작(24.5)과 맞물림.
+ *  v6 46항으로 포인트 4개 (나무와 불 삭제) */
+export const S4_D_POINTS_SEC: number[] = [0.4, 6, 24.5, 37];
 
 /** 섹션 4 자막 구간 (상대초) — career는 알코올 문단을 비켜 두 구간 */
 export const S4_CAPTIONS = {

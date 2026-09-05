@@ -136,8 +136,10 @@ export const CONSTITUTION_ACCENTS = {
  * 목양 하양 / 목음 붉은색 / 금양 초록 / 금음 노랑 / 토양 검정 / 토음 청색
  * / 수양 진한 주황 / 수음 연한 주황.
  *
- * 칩 적용 범위(원장님 확정): EpisodeTitleCard · ConstitutionTitleCard ·
- * ComparisonTable 헤더 · PersonTypoCard 체질명 — 제목급 언급만.
+ * 칩 적용 범위(원장님 확정, v6 57항 — 5곳): EpisodeTitleCard ·
+ * ConstitutionTitleCard · ComparisonTable 헤더 · PersonTypoCard 체질명 ·
+ * 섹션 2 도입. 판단 기준: "제목·도입에서 체질을 소개하는 자리에만.
+ * 본문 서술 중 언급에는 쓰지 않음".
  * 본문 안의 체질명은 기본 텍스트 — 칩이 남발되면 강조 기능이 사라진다.
  *
  * 전 체질을 칩(배경+글자) 형태로 통일한다. 목양(하양)·토양(검정)은
