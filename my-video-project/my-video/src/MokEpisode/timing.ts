@@ -5,9 +5,10 @@
  * 쓰지 않는다. 오디오 확보 후 이 파일의 초 단위 값만 실측으로 교체하면
  * 전체 배선이 따라온다 (문단 구간은 섹션 길이를 글자 수 비율로 분배).
  *
- * 현재 값은 5.5자/초 환산 임시 길이. 총 671초 = 11:11 ≈ 약 11:10 (v6 61항).
- * v6 47항의 4-i 낭독 추가(+4초)만 반영했다 — 46항 삭제분 등 문단 단위
- * 재분배는 TTS 실측(8ch_mok_tts_v3.md) 때 일괄 처리한다.
+ * 현재 값은 5.5자/초 환산 임시 길이. 총 680초 = 11:20 ≈ 약 11:22 (v9).
+ * v8 68항(4-i −4초)·69항(클로징 +13초)까지 반영. 문서 간 표기 편차
+ * (v9 본문 11:19 / 목표 11:22)는 환산 근사 — 문단 단위 재분배와 함께
+ * TTS 실측(8ch_mok_tts_v6.md) 때 일괄 해소한다.
  */
 
 export const FPS = 30;
@@ -20,22 +21,22 @@ export const SECTION_STARTS_SEC = {
   s2: 56,
   s3: 192,
   s4: 395,
-  s5: 611,
-  s6: 657,
+  s5: 607,
+  s6: 652,
 } as const;
 
-/** 섹션 길이(초). 섹션 4는 낭독 196 + 대조표 무음 20 (v6 47항 +4초) */
+/** 섹션 길이(초). 섹션 4는 낭독 192 + 대조표 무음 20 / 섹션 6은 28초(v8 69항) */
 export const SECTION_LENGTHS_SEC = {
   s0: 8,
   s1: 48,
   s2: 136,
   s3: 203,
-  s4: 216,
+  s4: 212,
   s5: 45,
-  s6: 14,
+  s6: 28,
 } as const;
 
-export const TOTAL_SEC = SECTION_STARTS_SEC.s6 + SECTION_LENGTHS_SEC.s6; // 671 = 11:11
+export const TOTAL_SEC = SECTION_STARTS_SEC.s6 + SECTION_LENGTHS_SEC.s6; // 680 = 11:20
 export const TOTAL_FRAMES = SEC(TOTAL_SEC);
 
 /* ── 섹션 1 — 후킹 (문단 5개) ─────────────────────────────────── */
@@ -109,8 +110,8 @@ export const S4 = {
   f: 114.3, // 질병·건강법
   people: 154.0, // 유명인
   table: 160.2, // 9항목 대조표 — 무음 20초, 전환 없이 즉시
-  answer: 180.2, // 4-i 정답 + 예고 (v6 47항 확정 문안, +4초)
-  end: 216,
+  answer: 180.2, // 4-i 정답 — 약 32초, 화면 하나 (v8 68항으로 금 문장 삭제)
+  end: 212,
 } as const;
 
 /** 4-d 포인트 등장(패널 상대초) — 3번째(술)가 알코올 문단 시작(24.5)과 맞물림.
@@ -123,6 +124,11 @@ export const S4_CAPTIONS = {
   addiction: [53.1, 65.5] as const,
   career2: [65.5, 82.9] as const,
 } as const;
+
+/** 4-i 내부 등장 시각(구간 상대초) — 내레이션 글자 수 비례 임시값.
+ *  도입 질문·"아닙니다" 문단이 지나간 뒤 [수음 문장, 토양 문장, 심화편 안내]
+ *  순차 등장 (v9 연출 메모 — 화면 하나, 순차 등장). 실측 때 재조정 */
+export const S4_I_STAGES_SEC: [number, number, number] = [15.9, 22.9, 26.3];
 
 /** 대조표 진입 시 내부 페이드인(0.5초)을 건너뛰는 오프셋 프레임 —
  *  "전환 없이 즉시 정지 화면" (조립 사양서 4절) */
@@ -137,6 +143,10 @@ export const S5_STAGES_SEC: [number, number, number, number, number] = [
   33.1, // 대안
 ];
 
+/* ── 섹션 6 — 클로징 3화면 (상대초): 마무리 / 예고 / CTA (v8 69항 표준 구조).
+   문단 글자 수 비례 임시값 — 실측 때 재조정 ── */
+export const S6_STAGES_SEC: [number, number, number] = [0, 11.8, 21.3];
+
 /* ── 유튜브 챕터 (검수용 기록 — 섹션 시작·대조표 지점과 일치) ── */
 export const YOUTUBE_CHAPTERS: [number, string][] = [
   [0, '시작'],
@@ -146,5 +156,5 @@ export const YOUTUBE_CHAPTERS: [number, string][] = [
   [SECTION_STARTS_SEC.s4, '목음체질'],
   [SECTION_STARTS_SEC.s4 + S4.table, '두 체질 한눈에 비교'],
   [SECTION_STARTS_SEC.s5, '자가진단을 하지 마셔야 하는 이유'],
-  [SECTION_STARTS_SEC.s6, '다음 편 예고'],
+  [SECTION_STARTS_SEC.s6, '이 편 마무리 · 다음 편 예고'],
 ];

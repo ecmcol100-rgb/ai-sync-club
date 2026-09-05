@@ -37,6 +37,8 @@ import {
   S3_CAPTIONS,
   S4,
   S4_D_POINTS_SEC,
+  S4_I_STAGES_SEC,
+  S6_STAGES_SEC,
   S4_CAPTIONS,
   TABLE_SKIP_FADE_FRAMES,
   S5_STAGES_SEC,
@@ -44,7 +46,6 @@ import {
 
 export { TOTAL_FRAMES as MOK_EPISODE_FRAMES } from './timing';
 
-const NL = String.fromCharCode(10);
 const DISCLAIMER_TEXT = '일반적인 체질별 경향을 설명한 것으로, 절대적인 특성이 아닙니다.';
 const CAREER_TEXT = '직업 적성은 경향이며, 진로 판단의 근거가 아닙니다.';
 const ADDICTION_TEXT = '알코올 의존은 전문적인 치료가 필요한 문제입니다.';
@@ -83,10 +84,10 @@ const S2Intro: React.FC = () => (
   </div>
 );
 
-/* ── 4-i 정답 + 예고 — 2026-09-05 원장님 수정 지시로 순서·문안 변경.
-   ① 반대 체질(금) + 다음 편 안내 → ② 가까운 체질(수음·토양) + 심화편 안내.
-   ※ TTS 대본 v3와 어긋남(대본은 수음→금 순서, 목음–토양 문장 없음) —
-   대본 v4 갱신 필요. 목음–토양 근접 관계의 근거는 편 스펙 v4 변경 이력 15항 ── */
+/* ── 4-i 정답 — v9 확정: 화면 하나, 근접 체질 수음 → 토양 순차 등장 +
+   하위 자막(심화편 안내). 반대 체질(금) 화면은 삭제(v8 68항 — 클로징으로
+   일원화), 강조색은 gold(v7 65항). 앞부분(도입 질문~"아닙니다" 문단)은
+   화면 요소 없이 정답 대기 — 등장 시각은 S4_I_STAGES_SEC(임시) ── */
 
 /** 4-i 보조 안내 줄 — 강조 자막 아래, 자기 구간에서 짧게 페이드 인/아웃 */
 const AnswerNote: React.FC<{ text: string }> = ({ text }) => {
@@ -117,23 +118,25 @@ const AnswerNote: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-const S4Answer: React.FC<{ lenSec: number }> = ({ lenSec }) => (
-  <>
-    <Span fromSec={0} lenSec={lenSec * 0.45}>
-      <EmphasisCaption
-        text={'목체질과 반대되는 체질이'+NL+'금체질입니다'}
-        accentColor={CONSTITUTION_ACCENTS.금양}
-      />
-      <AnswerNote text="금체질에 대해서는 다음 편에서 다루도록 하겠습니다" />
-    </Span>
-    <Span fromSec={lenSec * 0.45} lenSec={lenSec * 0.55}>
-      <EmphasisCaption
-        text={'목양체질과 가장 가까운 체질은 수음체질이고,'+NL+'목음체질과 가장 가까운 체질은 토양체질입니다'}
-      />
-      <AnswerNote text="해당 내용은 차후 심화편에서 다루도록 하겠습니다" />
-    </Span>
-  </>
-);
+const S4Answer: React.FC<{ lenSec: number; stageStartsSec: [number, number, number] }> = ({
+  lenSec,
+  stageStartsSec,
+}) => {
+  const [suEumSec, toYangSec, noteSec] = stageStartsSec;
+  return (
+    <>
+      <Span fromSec={suEumSec} lenSec={lenSec - suEumSec}>
+        <EmphasisCaption text="목양체질과 가장 가까운 체질은 수음체질입니다" top={380} />
+      </Span>
+      <Span fromSec={toYangSec} lenSec={lenSec - toYangSec}>
+        <EmphasisCaption text="목음체질과 가장 가까운 체질은 토양체질입니다" top={510} />
+      </Span>
+      <Span fromSec={noteSec} lenSec={lenSec - noteSec}>
+        <AnswerNote text="해당 내용은 차후 심화편에서 다루도록 하겠습니다" />
+      </Span>
+    </>
+  );
+};
 
 /**
  * MokEpisode — 목양·목음편 본체 (docs/episode_assembly_spec.md)
@@ -285,7 +288,7 @@ export const MokEpisode: React.FC = () => {
         </Sequence>
       </Span>
       <Span fromSec={s.s4 + S4.answer} lenSec={S4.end - S4.answer}>
-        <S4Answer lenSec={S4.end - S4.answer} />
+        <S4Answer lenSec={S4.end - S4.answer} stageStartsSec={S4_I_STAGES_SEC} />
       </Span>
 
       {/* 섹션 4 — 항목 라벨 (직업은 세 문단에 걸쳐 하나로 유지) */}
@@ -329,7 +332,7 @@ export const MokEpisode: React.FC = () => {
 
       {/* ═══ 섹션 6 — 클로징 ═══ */}
       <Span fromSec={s.s6} lenSec={len.s6}>
-        <ClosingScene />
+        <ClosingScene stageStartsSec={S6_STAGES_SEC} />
       </Span>
     </AbsoluteFill>
   );
