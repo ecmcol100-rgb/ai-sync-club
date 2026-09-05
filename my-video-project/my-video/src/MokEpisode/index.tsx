@@ -1,4 +1,4 @@
-import { AbsoluteFill, Freeze, Sequence } from 'remotion';
+import { AbsoluteFill, Freeze, Sequence, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 import { COLORS, CONSTITUTION_ACCENTS, FONT } from '../EcmOverview/constants';
 import { EpisodeTitleCard, MOK_EPISODE_TITLE } from '../EcmOverview/components/EpisodeTitleCard';
 import { Section1Hook } from '../EcmOverview/components/Section1Hook';
@@ -83,21 +83,21 @@ const S2Intro: React.FC = () => (
   </div>
 );
 
-/* ── 4-i 정답 + 예고 — v6 47항 확정 문안 (8ch_mok_tts_v3.md 기준).
-   편명·다음 편 예고는 여기서 밝히지 않는다(클로징과 이중 예고 방지).
-   52항 — 심화편 안내 자막을 4-i 구간 전체에 유지 ── */
-const S4Answer: React.FC<{ lenSec: number }> = ({ lenSec }) => (
-  <>
-    <Span fromSec={0} lenSec={lenSec * 0.55}>
-      <EmphasisCaption text={'목양체질과 가장 가까운 체질은'+NL+'수음체질입니다'} />
-    </Span>
-    <Span fromSec={lenSec * 0.55} lenSec={lenSec * 0.45}>
-      <EmphasisCaption
-        text={'그리고 목(木)과 반대편에 있는 것이'+NL+'금(金)입니다'}
-        accentColor={CONSTITUTION_ACCENTS.금양}
-      />
-    </Span>
-    {/* v6 52항 — 심화편 안내 (본문 강조 아래, y<686) */}
+/* ── 4-i 정답 + 예고 — 2026-09-05 원장님 수정 지시로 순서·문안 변경.
+   ① 반대 체질(금) + 다음 편 안내 → ② 가까운 체질(수음·토양) + 심화편 안내.
+   ※ TTS 대본 v3와 어긋남(대본은 수음→금 순서, 목음–토양 문장 없음) —
+   대본 v4 갱신 필요. 목음–토양 근접 관계의 근거는 편 스펙 v4 변경 이력 15항 ── */
+
+/** 4-i 보조 안내 줄 — 강조 자막 아래, 자기 구간에서 짧게 페이드 인/아웃 */
+const AnswerNote: React.FC<{ text: string }> = ({ text }) => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const fadeIn = interpolate(frame, [0, 8], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const fadeOut = interpolate(frame, [durationInFrames - 8, durationInFrames], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  return (
     <div
       style={{
         position: 'absolute',
@@ -105,14 +105,33 @@ const S4Answer: React.FC<{ lenSec: number }> = ({ lenSec }) => (
         left: 0,
         right: 0,
         textAlign: 'center',
+        opacity: Math.min(fadeIn, fadeOut),
         color: COLORS.textDim,
         fontFamily: FONT,
         fontSize: 30,
         fontWeight: 500,
       }}
     >
-      해당 내용은 차후 심화편에서 다루도록 하겠습니다
+      {text}
     </div>
+  );
+};
+
+const S4Answer: React.FC<{ lenSec: number }> = ({ lenSec }) => (
+  <>
+    <Span fromSec={0} lenSec={lenSec * 0.45}>
+      <EmphasisCaption
+        text={'목체질과 반대되는 체질이'+NL+'금체질입니다'}
+        accentColor={CONSTITUTION_ACCENTS.금양}
+      />
+      <AnswerNote text="금체질에 대해서는 다음 편에서 다루도록 하겠습니다" />
+    </Span>
+    <Span fromSec={lenSec * 0.45} lenSec={lenSec * 0.55}>
+      <EmphasisCaption
+        text={'목양체질과 가장 가까운 체질은 수음체질이고,'+NL+'목음체질과 가장 가까운 체질은 토양체질입니다'}
+      />
+      <AnswerNote text="해당 내용은 차후 심화편에서 다루도록 하겠습니다" />
+    </Span>
   </>
 );
 
