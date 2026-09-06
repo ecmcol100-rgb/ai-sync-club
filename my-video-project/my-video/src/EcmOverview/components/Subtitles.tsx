@@ -41,6 +41,8 @@ export const Subtitles: React.FC<SubtitlesProps> = ({ cues }) => {
   if (activeIdx < 0) return null;
 
   const cue = cues[activeIdx];
+  // 빈 텍스트 cue는 자막 소거 센티널 — 무음 구간(대조표 등)에서 이전 자막을 내린다
+  if (!cue.text) return null;
   const startFrame = cue.fromSec * FPS;
   const opacity = interpolate(frame, [startFrame, startFrame + 8], [0, 1], {
     extrapolateLeft: 'clamp',

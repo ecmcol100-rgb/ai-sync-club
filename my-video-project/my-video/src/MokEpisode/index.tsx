@@ -21,6 +21,8 @@ import { SafetyCaption } from '../EcmOverview/components/SafetyCaption';
 import { ComparisonTable, MOK_COMPARISON } from '../EcmOverview/components/ComparisonTable';
 import { SelfDiagnosisWarning, MOK_SELF_DIAGNOSIS } from '../EcmOverview/components/SelfDiagnosisWarning';
 import { ClosingScene } from '../EcmOverview/components/ClosingScene';
+import { Subtitles } from '../EcmOverview/components/Subtitles';
+import { S1_CUES, S2_CUES, S3_CUES, S4_CUES, S5_CUES, S6_CUES } from './narration';
 import {
   SEC,
   SECTION_STARTS_SEC,
@@ -395,6 +397,27 @@ export const MokEpisode: React.FC = () => {
       {/* ═══ 섹션 6 — 클로징 ═══ */}
       <Span fromSec={s.s6} lenSec={len.s6}>
         <ClosingScene stageStartsSec={S6_STAGES_SEC} />
+      </Span>
+
+      {/* ═══ 내레이션 자막 — 원천: docs/8ch_mok_tts_v7.md (섹션 0 타이틀은 무낭독).
+          cue 시각은 narration.ts(글자 수 비례 임시값) — 실측 후 전면 교체 ═══ */}
+      <Span fromSec={s.s1} lenSec={len.s1}>
+        <Subtitles cues={S1_CUES} />
+      </Span>
+      <Span fromSec={s.s2} lenSec={len.s2}>
+        <Subtitles cues={S2_CUES} />
+      </Span>
+      <Span fromSec={s.s3} lenSec={len.s3}>
+        <Subtitles cues={S3_CUES} />
+      </Span>
+      <Span fromSec={s.s4} lenSec={len.s4}>
+        <Subtitles cues={S4_CUES} />
+      </Span>
+      <Span fromSec={s.s5} lenSec={len.s5}>
+        <Subtitles cues={S5_CUES} />
+      </Span>
+      <Span fromSec={s.s6} lenSec={len.s6}>
+        <Subtitles cues={S6_CUES} />
       </Span>
     </AbsoluteFill>
   );

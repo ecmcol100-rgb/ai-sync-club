@@ -38,7 +38,10 @@ export interface ClosingSceneProps {
  * ③ CTA — 구독 필 (문구는 v6 53항 원장님 승인분 유지)
  *
  * 화면 전환 시각은 stageStartsSec(외부 제어), 각 화면은 0.4초 크로스페이드.
- * CTA는 개괄편 Section06과 같은 자막 안전 영역 위(bottom 180)에 배치.
+ * CTA 필은 bottom 300 — 시리즈 내레이션 자막 슬롯(y 798~1002, 60px 2줄)을
+ * 비켜 그 바로 위(y ~696~780)에 선다. 개괄편의 bottom 180은 자막이 40px이던
+ * 시절 값이라 그대로 쓰면 마지막 자막("구독과 좋아요…")과 겹친다.
+ * 이 구간(섹션 6)에는 항목 행·disclaimer가 뜨지 않아 자리가 비어 있다.
  */
 export const ClosingScene: React.FC<ClosingSceneProps> = ({
   stageStartsSec = [0, 11.8, 21.3],
@@ -238,7 +241,7 @@ export const ClosingScene: React.FC<ClosingSceneProps> = ({
       <div
         style={{
           position: 'absolute',
-          bottom: 180,
+          bottom: 300,
           left: 0,
           right: 0,
           display: 'flex',
