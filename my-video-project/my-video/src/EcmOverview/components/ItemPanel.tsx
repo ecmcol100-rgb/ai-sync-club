@@ -359,7 +359,8 @@ export const MOK_PANELS: Record<string, ItemPanelProps> = {
     headline: '이 체질의 특징이 가장 선명하게 드러납니다',
     accentColor: CONSTITUTION_ACCENTS.목음,
     points: [
-      { text: '손으로 던지고 발로 차는 운동에 능함' },
+      // 2026-09-06 원장님 지시 — 이 항목을 강조 (화면당 1개 규칙 안: 4-e 유일)
+      { text: '손으로 던지고 발로 차는 운동에 능함', emphasis: true },
       // v6 49항 — 강조 취소
       { text: '오 년 늦게 시작해도 앞지름' },
       { text: '공이 생각한 지점에 그대로 감' },
