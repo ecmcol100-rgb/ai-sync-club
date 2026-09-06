@@ -113,7 +113,7 @@ npx remotion render MokEpisode out/MokEpisode.mp4   # 편 본체 렌더
 | PersonTypoCard | 3-g/4-g 인물 타이포 카드 (사진 금지, SVG 장기 실루엣) |
 | EmphasisCaption | 강조 자막 (체형 반례 — 섹션 5와 수미상관) |
 | SafetyCaption | 안전 자막 4종 (disclaimer/career/addiction/medical) — 고정 슬롯 |
-| ComparisonTable | 4-h 9항목 대조표 (20초 무음 정지, 스크린샷·썸네일 지점) |
+| ComparisonTable | 4-h 9항목 대조표 (20초 무음 정지, 스크린샷·썸네일 지점, **전용 상한 TABLE_MAX_Y=880** — 자막 없는 구간이라 y<686 예외) |
 | SelfDiagnosisWarning | 섹션 5 자가진단 경계 (공포 금지, 경고→조언 톤 전환) |
 | ClosingScene | 섹션 6 클로징 (다음 편 예고 + 구독 CTA) |
 | ConstitutionName (공통) | 체질명 칩 렌더러 (CONSTITUTION_TITLE_COLORS) |

@@ -375,8 +375,16 @@ export const MokEpisode: React.FC = () => {
         <ItemLabel label="유명인" accentColor={CONSTITUTION_ACCENTS.목음} />
       </Span>
 
-      {/* 섹션 4 — 안전 자막. career는 알코올 문단을 비켜 두 구간, 사이에 addiction */}
-      <Span fromSec={s.s4} lenSec={len.s4}>
+      {/* 섹션 4 — 안전 자막. career는 알코올 문단을 비켜 두 구간, 사이에 addiction.
+          disclaimer는 대조표 20초(표가 자막 슬롯까지 확장)만 표 아래(938~980)로
+          하향 — 표준 슬롯과의 위치 점프는 대조표가 하드 컷이라 전환에 묻힌다 */}
+      <Span fromSec={s.s4} lenSec={S4.table}>
+        <SafetyCaption kind="disclaimer" text={DISCLAIMER_TEXT} />
+      </Span>
+      <Span fromSec={s.s4 + S4.table} lenSec={S4.answer - S4.table}>
+        <SafetyCaption kind="disclaimer" text={DISCLAIMER_TEXT} bottomOverride={100} />
+      </Span>
+      <Span fromSec={s.s4 + S4.answer} lenSec={len.s4 - S4.answer}>
         <SafetyCaption kind="disclaimer" text={DISCLAIMER_TEXT} />
       </Span>
       <Span fromSec={s.s4 + S4_CAPTIONS.career1[0]} lenSec={S4_CAPTIONS.career1[1] - S4_CAPTIONS.career1[0]}>

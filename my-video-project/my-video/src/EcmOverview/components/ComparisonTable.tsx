@@ -1,5 +1,5 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion';
-import { COLORS, CONSTITUTION_ACCENTS, CONTENT_MAX_Y, FONT } from '../constants';
+import { COLORS, CONSTITUTION_ACCENTS, FONT } from '../constants';
 import { SourceCaptions } from './SourceCaptions';
 import { SafetyCaption } from './SafetyCaption';
 import { ConstitutionName } from './ConstitutionName';
@@ -28,21 +28,32 @@ export interface ComparisonTableProps {
 /**
  * 표 세로 배치(px).
  *
- * 이 컴포넌트가 CONTENT_MAX_Y 제약을 가장 크게 받는다 — 9행+헤더를 넣기 위해
- * 행 높이는 내용 줄 수로 계산한다(1줄 행 42px, 2줄 행 74px). 목양·목음편
- * 데이터(1줄×5, 2줄×4) 기준 총높이 68+5×43+4×75 = 583 → 표 하단 y 667 < 686.
- * ★v6 51항 — 글자 확대(셀 23→26, 라벨열 24→26, 행높이 30→32, 상단 96→84).
- * 다른 편에서 줄 수가 늘어 686을 넘으면 글자를 줄이기 전에 행 여백(PAD_Y)을
+ * ★ 이 화면만 본문 발자국 한계가 CONTENT_MAX_Y(686)가 아니라
+ * TABLE_MAX_Y(880)다 — 4-h 대조표는 무음 20초 구간이라 내레이션 자막이
+ * 없고(narration.ts 빈 cue 센티널), 읽으라고 세운 화면이라 가독성을
+ * 우선해 자막 슬롯까지 확장한다 (2026-09-06 원장님 지시).
+ * 출처·disclaimer는 표 아래(896~980)로 하향 — 유튜브 진행바가 하단
+ * 약 80~100px을 덮으므로 980을 넘기지 않는다.
+ *
+ * 행 높이는 내용 줄 수로 계산한다(1줄 행 54px, 2줄 행 98px). 목양·목음편
+ * 데이터(1줄×5, 2줄×4) 기준 총높이 125+5×55+4×99 = 796 → 표 y 84~880.
+ * 다른 편에서 줄 수가 늘어 한계를 넘으면 글자를 줄이기 전에 행 여백(PAD_Y)을
  * 먼저 조정할 것 (사양서 4절 — 가독성 최우선).
  */
 const TABLE_TOP = 84;
-const TABLE_W = 1720;
+const TABLE_W = 1800;
 const TABLE_LEFT = (1920 - TABLE_W) / 2;
 const LABEL_W = 180;
 const COL_W = (TABLE_W - LABEL_W) / 2;
-const HEADER_H = 68;
-const LINE_H = 32;
+const HEADER_H = 125;
+const LINE_H = 44;
 const PAD_Y = 5;
+
+/**
+ * 4-h 대조표 전용 발자국 상한. 자막 없는 구간이라 슬롯 침범 허용 —
+ * 그 외 전 화면은 CONTENT_MAX_Y(686)를 따른다.
+ */
+export const TABLE_MAX_Y = 880;
 
 const rowLines = (r: ComparisonRow): number =>
   Math.max(r.left.split('\n').length, r.right.split('\n').length, 1);
@@ -54,12 +65,13 @@ export const comparisonTableHeight = (rows: ComparisonRow[]): number =>
   HEADER_H + rows.reduce((acc, r) => acc + rowHeight(r) + 1, 0);
 
 /**
- * 행 데이터가 본문 발자국 한계(CONTENT_MAX_Y) 안에 들어가는지 검사.
- * 다른 편 데이터를 넣을 때 이 값이 false면 글자를 줄이기 전에
+ * 행 데이터가 대조표 전용 상한(TABLE_MAX_Y) 안에 들어가는지 검사.
+ * 이 화면은 CONTENT_MAX_Y(686) 검사 대상이 아니다 — 검사를 없애지 말고
+ * 이 함수로 대체한다. 다른 편 데이터를 넣을 때 false면 글자를 줄이기 전에
  * PAD_Y·행 여백부터 조정할 것 (사양서 4절 — 가독성 최우선).
  */
 export const comparisonTableFits = (rows: ComparisonRow[]): boolean =>
-  TABLE_TOP + comparisonTableHeight(rows) <= CONTENT_MAX_Y - 14;
+  TABLE_TOP + comparisonTableHeight(rows) <= TABLE_MAX_Y;
 
 /**
  * ComparisonTable — 9항목 대조표 (섹션 4-h)
@@ -98,7 +110,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
   const cellText: React.CSSProperties = {
     color: COLORS.text,
     fontFamily: FONT,
-    fontSize: 26,
+    fontSize: 35,
     fontWeight: 500,
     lineHeight: `${LINE_H}px`,
     whiteSpace: 'pre-line',
@@ -123,8 +135,8 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
       }}
     >
       {/* 체질명 — 확정 색 칩 (밴드 틴트·상단 바의 시그니처색은 그래픽으로 유지) */}
-      <ConstitutionName name={title} fontSize={28} />
-      <div style={{ color: COLORS.textDim, fontFamily: FONT, fontSize: 19, fontWeight: 600 }}>{sub}</div>
+      <ConstitutionName name={title} fontSize={38} />
+      <div style={{ color: COLORS.textDim, fontFamily: FONT, fontSize: 26, fontWeight: 600 }}>{sub}</div>
     </div>
   );
 
@@ -155,7 +167,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
               justifyContent: 'center',
               color: COLORS.textDim,
               fontFamily: FONT,
-              fontSize: 20,
+              fontSize: 27,
               fontWeight: 700,
               letterSpacing: 2,
             }}
@@ -181,7 +193,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
                   justifyContent: 'center',
                   color: COLORS.greenPale,
                   fontFamily: FONT,
-                  fontSize: 26,
+                  fontSize: 35,
                   fontWeight: 700,
                 }}
               >
@@ -236,7 +248,8 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
         })}
       </div>
 
-      <SourceCaptions cues={[{ fromSec: 0, text: source }]} />
+      {/* 출처 — 표가 자막 슬롯까지 내려오므로 표 아래(y 896~936)로 하향 */}
+      <SourceCaptions cues={[{ fromSec: 0, text: source }]} bottomOverride={144} />
     </>
   );
 };
@@ -294,9 +307,11 @@ export const COMPARISON_PREVIEW_FRAMES = 20 * 30;
 export const ComparisonTablePreview: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: COLORS.bg }}>
     <ComparisonTable {...MOK_COMPARISON} />
+    {/* 실전(index.tsx)과 동일 — 대조표 구간은 disclaimer를 표 아래(938~980)로 하향 */}
     <SafetyCaption
       kind="disclaimer"
       text="일반적인 체질별 경향을 설명한 것으로, 절대적인 특성이 아닙니다."
+      bottomOverride={100}
     />
   </AbsoluteFill>
 );

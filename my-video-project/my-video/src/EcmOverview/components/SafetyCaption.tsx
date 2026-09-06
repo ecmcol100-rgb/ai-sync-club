@@ -16,6 +16,11 @@ export interface SafetyCaptionProps {
   text: string;
   fadeInFrames?: number;
   fadeOutFrames?: number;
+  /**
+   * disclaimer 전용: 고정 슬롯 대신 쓸 bottom(px). 4-h 대조표처럼 본문이
+   * 자막 슬롯까지 확장되는 특수 화면에서만 사용 — 남용 금지
+   */
+  bottomOverride?: number;
 }
 
 /**
@@ -71,6 +76,7 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
   text,
   fadeInFrames = 8,
   fadeOutFrames = 8,
+  bottomOverride,
 }) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
@@ -141,8 +147,8 @@ export const SafetyCaption: React.FC<SafetyCaptionProps> = ({
           position: 'absolute',
           left: 0,
           right: 0,
-          // 내레이션 자막 바로 위 (bottomLayout.ts)
-          bottom: SLOT.disclaimer.bottom,
+          // 내레이션 자막 바로 위 (bottomLayout.ts). 대조표 화면만 하향
+          bottom: bottomOverride ?? SLOT.disclaimer.bottom,
           height: SLOT.disclaimer.height,
           display: 'flex',
           justifyContent: 'center',

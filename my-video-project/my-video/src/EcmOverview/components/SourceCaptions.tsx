@@ -13,6 +13,11 @@ export interface SourceCue {
 
 interface SourceCaptionsProps {
   cues: SourceCue[];
+  /**
+   * 표준 위치(항목 행 우측) 대신 쓸 bottom(px). 4-h 대조표처럼 본문이
+   * 자막 슬롯까지 확장되는 특수 화면에서만 사용 — 남용 금지
+   */
+  bottomOverride?: number;
 }
 
 /** 글자폭 추정 — 한글·한자·전각기호 1em, 그 외(숫자·라틴·기호) 0.55em */
@@ -56,7 +61,7 @@ const warnedTexts = new Set<string>();
  *   출처가 medical과 겹치지 않는다 (예전의 상향 이동이 필요 없어졌다)
  * - legacy: 개괄영상 v5 확정 렌더 값 (bottom 235, 31px)
  */
-export const SourceCaptions: React.FC<SourceCaptionsProps> = ({ cues }) => {
+export const SourceCaptions: React.FC<SourceCaptionsProps> = ({ cues, bottomOverride }) => {
   const frame = useCurrentFrame();
   const sec = frame / FPS;
   const { source: style } = useBottomLayout();
@@ -73,7 +78,7 @@ export const SourceCaptions: React.FC<SourceCaptionsProps> = ({ cues }) => {
       style={{
         position: 'absolute',
         right: style.right,
-        bottom: style.bottom,
+        bottom: bottomOverride ?? style.bottom,
         // 항목 행 높이에 맞춰 세로 중앙 (legacy는 rowH 0 → 내용 높이)
         height: style.rowH || undefined,
         display: 'flex',
